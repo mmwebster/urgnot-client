@@ -1,69 +1,15 @@
 <div {{action 'blur'}}>Back</div>
-<div {{bind-attr class=':star-wrapper origin1a1EnabledL1:layer-1-wrapper :top-wrapper :wrapper'}}>
-  <div {{bind-attr class=':star origin1a1EnabledL1:layer-1 :top :content'}}> 
-    <div {{bind-attr class=':planet-wrapper origin2a1EnabledL1:layer-1-wrapper origin2EnabledL2:layer-2-wrapper :order-1 :wrapper'}}> 
-      <div {{bind-attr class=':planet origin2a1EnabledL1:layer-1 origin2EnabledL2:layer-2 :content :focused'}} {{action 'focus' 2 1}}>
+<div class="star-wrapper wrapper {{if origin1a1EnabledL1 'layer-1-wrapper' 'top-wrapper'}}">
+  <div class="star content {{if origin1a1EnabledL1 'layer-1' 'top'}}"> 
+    <div class="planet-wrapper order-1 wrapper {{if origin2a1EnabledL1 'layer-1-wrapper'}} {{if origin2EnabledL2 'layer-2-wrapper'}}"> 
+      <div class="planet content focused {{if origin2a1EnabledL1 'layer-1'}} {{if origin2EnabledL2 'layer-2'}}" {{action 'focus' 2 1}}>
         <div id="text-test"></div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-1 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
+
+        <div class="moon-wrapper order-1 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
           </div>
         </div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-2 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
-          </div>
-        </div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-3 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
-          </div>
-        </div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-4 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
-          </div>
-        </div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-5 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
-          </div>
-        </div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-6 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
-          </div>
-        </div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-7 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
-          </div>
-        </div>
-        <div {{bind-attr class=':moon-wrapper origin3a1EnabledL1:layer-1-wrapper origin3EnabledL2:layer-2-wrapper :order-8 :wrapper'}}>
-          <div {{bind-attr class=':moon origin3a1EnabledL1:layer-1 origin3EnabledL2:layer-2 :content :focused-2'}}>
-          </div>
-        </div>
-        <!-- <div class='moon&#45;wrapper layer&#45;3&#45;wrapper order&#45;2'> -->
-        <!--   <div class='moon moon&#45;2 layer layer&#45;3'> -->
-        <!--   </div> -->
-        <!-- </div> -->
-        <!-- <div class='moon&#45;wrapper layer&#45;3&#45;wrapper order&#45;3'> -->
-        <!--   <div class='moon moon&#45;3 layer layer&#45;3'> -->
-        <!--   </div> -->
-        <!-- </div> -->
-        <!-- <div class='moon&#45;wrapper layer&#45;3&#45;wrapper order&#45;4'> -->
-        <!--   <div class='moon moon&#45;4 layer layer&#45;3'> -->
-        <!--   </div> -->
-        <!-- </div> -->
-        <!-- <div class='moon&#45;wrapper layer&#45;3&#45;wrapper order&#45;5'> -->
-        <!--   <div class='moon moon&#45;5 layer layer&#45;3'> -->
-        <!--   </div> -->
-        <!-- </div> -->
-        <!-- <div class='moon&#45;wrapper layer&#45;3&#45;wrapper order&#45;6'> -->
-        <!--   <div class='moon moon&#45;6 layer layer&#45;3'> -->
-        <!--   </div> -->
-        <!-- </div> -->
-        <!-- <div class='moon&#45;wrapper layer&#45;3&#45;wrapper order&#45;7'> -->
-        <!--   <div class='moon moon&#45;7 layer layer&#45;3'> -->
-        <!--   </div> -->
-        <!-- </div> -->
-        <!-- <div class='moon&#45;wrapper layer&#45;3&#45;wrapper order&#45;8'> -->
-        <!--   <div class='moon moon&#45;8 layer layer&#45;3'> -->
-        <!--   </div> -->
-        <!-- </div> -->
+
       </div>                      
     </div>
   </div>
