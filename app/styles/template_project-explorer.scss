@@ -1,5 +1,5 @@
 // variables
-$transitionLength: .5s;
+$transitionLength: .60s;
 
 // styles
 .project-explorer {
@@ -11,6 +11,9 @@ $transitionLength: .5s;
 // persistent style on wrappers and their contents 
 .wrapper {
   position: absolute;
+  // transform: rotate(45deg);
+  margin-top: 80%;
+  margin-left: 20%;
 }
 .content {
   position: relative;
@@ -18,7 +21,8 @@ $transitionLength: .5s;
 }
 .wrapper, .content {
   border-radius: 100%;
-  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength;
+  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, -webkit-transform $transitionLength;
+  // transition: all $transitionLength;
   width: 0%;
   height: 0%;
   top: 0%;
@@ -31,6 +35,7 @@ $transitionLength: .5s;
     width: 100%;
     top: 0%;
     left: 0%;
+    margin: 0%;
   }
   .top {
     height: 100%;
@@ -71,38 +76,62 @@ $transitionLength: .5s;
     opacity: 1;
   }
   // origin - moon layer
-  .layer-3-wrapper {
-    height: 166.5%;
-    width: 33.2%;
-    top: -33.2%;
-    left: 50%;
-    margin-left: -16.6%;
-    opacity: .05;
-  }
+  // .layer-3-wrapper {
+  //   height: 166.5%;
+  //   width: 33.2%;
+  //   top: -33.2%;
+  //   left: 50%;
+  //   margin-left: -16.6%;
+  //   opacity: .05;
+  // }
   // layer wrapper orders for use in rotations (irrelevant)
-  .order-1 {
+  .layer-2-wrapper.order-1 {
     transform: rotate(45deg);
+    .content {
+      transform: rotate(-45deg);
+    }
   }
-  .order-2 {
+  .layer-2-wrapper.order-2 {
     transform: rotate(90deg);
+    .content {
+      transform: rotate(-90deg);
+    }
   }
-  .order-3 {
+  .layer-2-wrapper.order-3 {
     transform: rotate(135deg);
+    .content {
+      transform: rotate(-135deg);
+    }
   }
-  .order-4 {
+  .layer-2-wrapper.order-4 {
     transform: rotate(180deg);
+    .content {
+      transform: rotate(-180deg);
+    }
   }
-  .order-5 {
+  .layer-2-wrapper.order-5 {
     transform: rotate(225deg);
+    .content {
+      transform: rotate(-225deg);
+    }
   }
-  .order-6 {
+  .layer-2-wrapper.order-6 {
     transform: rotate(270deg);
+    .content {
+      transform: rotate(-270deg);
+    }
   }
-  .order-7 {
+  .layer-2-wrapper.order-7 {
     transform: rotate(315deg);
+    .content {
+      transform: rotate(-315deg);
+    }
   }
-  .order-8 {
+  .layer-2-wrapper.order-8 {
     transform: rotate(0deg);
+    .content {
+      transform: rotate(0deg);
+    }
   }
   .focused {
     background-color: rgba(0,200,0,.5) !important;
@@ -110,4 +139,25 @@ $transitionLength: .5s;
   .focused-2 {
     background-color: rgba(0,0,200,.5) !important;
   } 
+}
+
+// General purpose explorer content styles
+.text {
+  transition: all $transitionLength;
+}
+.layer-2 > .text {
+  font-size: 90%;
+  text-align: center;
+  padding: 10%;
+  font-family: 'Open Sans';
+  font-weight: 100;
+  color: #fff;
+}
+.layer-1 > .text {
+  font-size: 150%;
+  text-align: center;
+  padding: 20% 10%;
+  font-family: 'Open Sans';
+  font-weight: 100;
+  color: #fff;
 }
