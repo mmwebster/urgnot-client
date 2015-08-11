@@ -21,8 +21,7 @@ $transitionLength: .60s;
 }
 .wrapper, .content {
   border-radius: 100%;
-  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, -webkit-transform $transitionLength;
-  // transition: all $transitionLength;
+  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength;
   width: 0%;
   height: 0%;
   top: 0%;
