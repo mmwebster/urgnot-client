@@ -3,10 +3,66 @@ $transitionLength: .60s;
 
 // styles
 .project-explorer {
-  width: 100vw;
+  width: 94vw;
   height: 100vw;
-  background-color: rgba(0,0,0,.1);
   position: relative;
+}
+#menu {
+  width: 100%;
+  height: 6%;
+  .button {
+    padding: 10px;
+    font-family: 'Open Sans';
+    z-index: 100;
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    font-weight: 100;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 100%;  
+    font-size: 3vw;
+    padding-top: 1vw;
+    background-color: rgba(0,0,0,.1);
+  }
+  .button.active:hover {
+    background-color: rgba(0,0,0,.3);
+  }
+  .inactive.button {
+    color: #aaa;
+  }
+}
+#explorer-wrapper {
+  width: 100%;
+  height: 94%;
+  position: relative;
+  #explorer {
+    width: 94vw;
+    height: 94vw;
+  }
+}
+
+
+
+
+.layer-1-wrapper, .layer-2-wrapper {
+  .star {
+    background-color: rgba(250,250,0,.5);
+  }
+  .star > .text {
+    color: #444;
+  }
+  .planet {
+    background-color: rgba(0,250,100,.5);
+  }
+  .moon {
+    background-color: rgba(100,150,100,.5);
+  }
+  .content {
+    border: 1px solid rgba(0,0,0,.1);
+  }
 }
 // persistent style on wrappers and their contents 
 .wrapper {
@@ -18,10 +74,11 @@ $transitionLength: .60s;
 .content {
   position: relative;
   opacity: 0;
+  border: none;
 }
 .wrapper, .content {
   border-radius: 100%;
-  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength;
+  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   width: 0%;
   height: 0%;
   top: 0%;
@@ -51,7 +108,6 @@ $transitionLength: .60s;
     height: 60%;
   }
   .layer-1 {
-    background-color: rgba(0,0,0,.5);
     width: 100%;
     height: 100%;
     opacity: 1;
@@ -66,7 +122,6 @@ $transitionLength: .60s;
     margin-top: 0%;
   }
   .layer-2 {
-    background-color: rgba(0,0,0,.1);
     padding: 0px;
     width: 80%;
     height: 16%;
@@ -132,31 +187,26 @@ $transitionLength: .60s;
       transform: rotate(0deg);
     }
   }
-  .focused {
-    background-color: rgba(0,200,0,.5) !important;
-  } 
-  .focused-2 {
-    background-color: rgba(0,0,200,.5) !important;
-  } 
 }
 
 // General purpose explorer content styles
 .text {
   transition: all $transitionLength;
+  text-align: center;
+  font-family: 'Open Sans';
+  color: rgba(0,0,0,0);
+  padding: 2vw;
+}
+.layer-2 > .text, .layer-1 > .text {
+  color: rgba(250,250,250,1);
 }
 .layer-2 > .text {
-  font-size: 90%;
-  text-align: center;
-  padding: 10%;
-  font-family: 'Open Sans';
+  font-size: 2.5vw;
+  padding: 2vw;
   font-weight: 100;
-  color: #fff;
 }
 .layer-1 > .text {
-  font-size: 150%;
-  text-align: center;
-  padding: 20% 10%;
-  font-family: 'Open Sans';
+  font-size: 7vw;
+  padding: 7vw 2vh;
   font-weight: 100;
-  color: #fff;
 }

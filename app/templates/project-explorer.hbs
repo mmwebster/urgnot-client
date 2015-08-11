@@ -1,337 +1,345 @@
-<div {{action 'blur'}}>Back</div>
-<div class="star-wrapper wrapper {{if origin1a1EnabledL1 'layer-1-wrapper' 'top-wrapper'}}">
-  <div class="star content {{if origin1a1EnabledL1 'layer-1' 'top'}}"> 
+<div id='menu'>
+  <div {{action 'blur'}} class='active button'>Back</div>
+  <div class='inactive button'>Home</div>
+  <div class='inactive button'>Current</div>
+</div>
+<div id='explorer-wrapper'>
+  <div id='explorer'>
+    <div class="star-wrapper wrapper {{if origin1a1EnabledL1 'layer-1-wrapper' 'top-wrapper'}}">
+      <div class="star content {{if origin1a1EnabledL1 'layer-1' 'top'}}"> 
+        <p class='text'>Star</p>
 
+        <div class="planet-wrapper order-1 wrapper {{if origin2a1EnabledL1 'layer-1-wrapper'}} {{if origin2EnabledL2 'layer-2-wrapper'}}"> 
+          <div class="planet content {{if origin2a1EnabledL1 'layer-1'}} {{if origin2EnabledL2 'layer-2'}}" {{action 'focus' 2 1}}>
+            <p class='text'>Planet</p>
 
-    <div class="planet-wrapper order-1 wrapper {{if origin2a1EnabledL1 'layer-1-wrapper'}} {{if origin2EnabledL2 'layer-2-wrapper'}}"> 
-      <div class="planet content focused {{if origin2a1EnabledL1 'layer-1'}} {{if origin2EnabledL2 'layer-2'}}" {{action 'focus' 2 1}}>
-        <p class='text'>Info - Green</p>
+            <div class="moon-wrapper order-1 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}" {{action 'focus' 3 1}}>
+                <p class='text'>Moon</p>
+              </div>
+            </div>
 
-        <div class="moon-wrapper order-1 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}" {{action 'focus' 3 1}}>
-            <p class='text'>Info</p>
-          </div>
+            <div class="moon-wrapper order-2 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
+                <p class='text'>Moon</p>
+              </div>
+            </div>
+
+            <div class="moon-wrapper order-3 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
+                <p class='text'>Moon</p>
+              </div>
+            </div>
+
+            <div class="moon-wrapper order-4 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
+                <p class='text'>Moon</p>
+              </div>
+            </div>
+
+            <div class="moon-wrapper order-5 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
+                <p class='text'>Moon</p>
+              </div>
+            </div>
+
+            <div class="moon-wrapper order-6 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
+                <p class='text'>Moon</p>
+              </div>
+            </div>
+
+            <div class="moon-wrapper order-7 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
+                <p class='text'>Moon</p>
+              </div>
+            </div>
+
+            <div class="moon-wrapper order-8 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
+              <div class="moon content {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
+                <p class='text'>Moon</p>
+              </div>
+            </div>
+          </div>                      
         </div>
 
-        <div class="moon-wrapper order-2 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
-            <p class='text'>Info</p>
-          </div>
-        </div>
 
-        <div class="moon-wrapper order-3 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
-            <p class='text'>Info</p>
-          </div>
-        </div>
+        <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
+        <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
+        <!--     <p class='text'>Info &#45; Green</p> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 6</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--   </div>                       -->
+        <!-- </div> -->
+        <!--  -->
+        <!--  -->
+        <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
+        <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
+        <!--     <p class='text'>Info &#45; Green</p> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 6</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--   </div>                       -->
+        <!-- </div> -->
+        <!--  -->
+        <!--  -->
+        <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
+        <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
+        <!--     <p class='text'>Info &#45; Green</p> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 6</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--   </div>                       -->
+        <!-- </div> -->
+        <!--  -->
+        <!--  -->
+        <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
+        <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
+        <!--     <p class='text'>Info &#45; Green</p> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 6</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--   </div>                       -->
+        <!-- </div> -->
+        <!--  -->
+        <!--  -->
+        <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
+        <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
+        <!--     <p class='text'>Info &#45; Green</p> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>Info</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 6</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--  -->
+        <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
+        <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
+        <!--         <p class='text'>hi 7</p> -->
+        <!--       </div> -->
+        <!--     </div> -->
+        <!--   </div>                       -->
+        <!-- </div> -->
 
-        <div class="moon-wrapper order-4 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
-            <p class='text'>Info</p>
-          </div>
-        </div>
 
-        <div class="moon-wrapper order-5 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
-            <p class='text'>Info</p>
-          </div>
-        </div>
-
-        <div class="moon-wrapper order-6 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
-            <p class='text'>hi 6</p>
-          </div>
-        </div>
-
-        <div class="moon-wrapper order-7 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
-            <p class='text'>hi 7</p>
-          </div>
-        </div>
-
-        <div class="moon-wrapper order-8 wrapper {{if origin3a1EnabledL1 'layer-1-wrapper'}} {{if origin3EnabledL2 'layer-2-wrapper'}}">
-          <div class="moon content focused-2 {{if origin3a1EnabledL1 'layer-1'}} {{if origin3EnabledL2 'layer-2'}}">
-            <p class='text'>hi 7</p>
-          </div>
-        </div>
-      </div>                      
+      </div>
     </div>
-
-
-    <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
-    <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
-    <!--     <p class='text'>Info &#45; Green</p> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 6</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--   </div>                       -->
-    <!-- </div> -->
-    <!--  -->
-    <!--  -->
-    <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
-    <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
-    <!--     <p class='text'>Info &#45; Green</p> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 6</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--   </div>                       -->
-    <!-- </div> -->
-    <!--  -->
-    <!--  -->
-    <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
-    <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
-    <!--     <p class='text'>Info &#45; Green</p> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 6</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--   </div>                       -->
-    <!-- </div> -->
-    <!--  -->
-    <!--  -->
-    <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
-    <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
-    <!--     <p class='text'>Info &#45; Green</p> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 6</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--   </div>                       -->
-    <!-- </div> -->
-    <!--  -->
-    <!--  -->
-    <!-- <div class="planet&#45;wrapper order&#45;1 wrapper {{if origin2a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin2EnabledL2 'layer&#45;2&#45;wrapper'}}">  -->
-    <!--   <div class="planet content focused {{if origin2a1EnabledL1 'layer&#45;1'}} {{if origin2EnabledL2 'layer&#45;2'}}" {{action 'focus' 2 1}}> -->
-    <!--     <p class='text'>Info &#45; Green</p> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;1 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}" {{action 'focus' 3 1}}> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;2 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;3 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;4 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;5 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>Info</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;6 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 6</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;7 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <div class="moon&#45;wrapper order&#45;8 wrapper {{if origin3a1EnabledL1 'layer&#45;1&#45;wrapper'}} {{if origin3EnabledL2 'layer&#45;2&#45;wrapper'}}"> -->
-    <!--       <div class="moon content focused&#45;2 {{if origin3a1EnabledL1 'layer&#45;1'}} {{if origin3EnabledL2 'layer&#45;2'}}"> -->
-    <!--         <p class='text'>hi 7</p> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--   </div>                       -->
-    <!-- </div> -->
-
-
   </div>
 </div>
