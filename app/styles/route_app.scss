@@ -1,12 +1,11 @@
 @import '_graphics';
 @import 'route_application';
 @import 'route_index';
+@import 'route_app';
 @import 'template_top-nav';
 @import 'template_project-explorer';
 @import 'template_action-panel';
 
-// fonts
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
 // universal
 html {
@@ -26,9 +25,6 @@ body {
   font-weight: 100;
   box-sizing: border-box;
 }
-
-.clearfix {
-  clear: both; }
 
 // graphic size specs 
 .urgnot {
