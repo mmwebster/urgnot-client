@@ -4,8 +4,7 @@
   <div class='inactive button'>Current</div>
 </div>
 
-
-<div id='explorer-wrapper'>
+<div id='explorer-wrapper' style='display: none;'>
   <div id='explorer'>
     <div class="star-wrapper wrapper {{if origin1a1EnabledL1 'layer-1-wrapper' 'top-wrapper'}}">
       <div class="star content {{if origin1a1EnabledL1 'layer-1' 'top'}}"> 
@@ -67,4 +66,9 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<div class='explorer-wrapper'>
+  {{explorer-entity entity=model isTop=true}}
 </div>

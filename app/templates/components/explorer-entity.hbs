@@ -1,0 +1,11 @@
+<div class='entity-wrapper'>
+  <div class='entity-content'>
+    {{entity.name}}
+    {{#if entity.children}}
+      {{#each child in entity.children}}
+        {{explorer-entity entity=child}}
+      {{/each}}
+    {{/if}}
+  </div>
+</div>
+
