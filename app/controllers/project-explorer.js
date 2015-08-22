@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
       this.set('currentLevelBottom', layer+1);
     },
     blur: function() {
-      if (this.get('pathTree.lastObject') != this.get('pathTree.firstObject')) {
+      if (this.get('pathTree.lastObject') !== this.get('pathTree.firstObject')) {
         // set previous settings to false
         this.negatePreviousSettings();
         //destroy previous pathTree object 
