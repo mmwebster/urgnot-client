@@ -66,14 +66,14 @@
 
 .project-explorer {
   // properties to retain on top level
-  .entity.top {
+  .entity.parent-blur {
     height: 100%;
     width: 100%;
     top: 0%;
     left: 0%;
     margin: 0%;
   }
-  .entity.top .content {
+  .entity.parent-blur > .content {
     height: 100%;
     width: 100%;
     opacity: 1;
@@ -101,7 +101,7 @@
     margin-left: -17.5%;
     margin-top: 0%;
   }
-  .entity.layer-2 > .content.type-planet {
+  .entity.layer-2 > .content {
     padding: 0px;
     width: 80%;
     height: 16%;
