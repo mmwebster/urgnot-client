@@ -9,7 +9,6 @@ export default Ember.Component.extend({
   layer1: false,
   layer2: false,
   blurParent: false,
-  blurSibling: false,
   allowContentTransition: false,
 
   init: function() {

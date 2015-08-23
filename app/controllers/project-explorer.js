@@ -6,18 +6,20 @@ export default Ember.Controller.extend({
   actions: {
     back: function() {
       var currentNode = Window.projectExplorer.currentNode;
-      // set transition length if not already
-      if (this.get('transitionLength') === null) {
-        this.set('transitionLength', $('.project-explorer').css('transition').split(" ")[1].split("s")[0] * 1000);
-      }
-      // temporarily add full array of transition to current node
-      currentNode.set('allowContentTransition', true);
-      Ember.run.later(function() {
-        currentNode.set('allowContentTransition', false);
-      }, this.get('transitionLength'));
-
+      
       // blur project explorer if not at root
       if (!currentNode.get('isRoot')) {
+
+        // set transition length if not already
+        if (this.get('transitionLength') === null) {
+          this.set('transitionLength', $('.project-explorer').css('transition').split(" ")[1].split("s")[0] * 1000);
+        }
+        // temporarily add full array of transition to current node
+        currentNode.set('allowContentTransition', true);
+        Ember.run.later(function() {
+          currentNode.set('allowContentTransition', false);
+        }, this.get('transitionLength'));
+
         Em.debug('Blurring (' + currentNode.get('nodeModel.type') + ') - (' 
               + currentNode.get('nodeModel.name') + ')');
 
