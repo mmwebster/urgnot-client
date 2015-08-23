@@ -13,6 +13,12 @@ export default Ember.Component.extend({
 
   init: function() {
     this._super();
+    // set current node if is root
+    if (this.get('isRoot')) {
+      Window.projectExplorer = {};
+      Window.projectExplorer.currentNode = this;
+    }
+    // set children and siblings arrays local this component instance
     this.set('children', []);
     this.set('siblings', []);
   },
@@ -80,6 +86,10 @@ export default Ember.Component.extend({
     focus: function() {
       Em.debug('Focusing (' + this.get('nodeModel.type') + ') - (' 
             + this.get('nodeModel.name') + ')');
+
+      // reset current node - for use in project explorer interfacing
+      Window.projectExplorer.currentNode = this;
+
       // promote this node
       this.set('layer2', false);
       this.set('layer1', true);
