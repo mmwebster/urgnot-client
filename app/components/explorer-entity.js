@@ -38,10 +38,14 @@ export default Ember.Component.extend({
   // rotation computation
   wrapperStyle: function() {
     var parent = this.get('parentModel');
+    // if is not root and node is at layer 2
     if (parent) {
       // degree increments for each sibling
       var rotationIncrements = (360 / parent.children.length);
       var rotation = rotationIncrements * this.get('nodeIndex');
+      if (!this.get('layer1') && !this.get('layer2')) {
+        rotation = -(rotation*3);
+      }
       // save out for use in content rotation correction
       this.set('rotation', rotation);
       // return styling
@@ -49,7 +53,7 @@ export default Ember.Component.extend({
     } else {
       return "";
     }
-  }.property('level2'),
+  }.property('layer2'),
 
   willInsertElement: function() {
     // populate node's parent's children
