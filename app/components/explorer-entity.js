@@ -44,13 +44,6 @@ export default Ember.Component.extend({
         var type = this.get('entity.type');
         console.log('clicked ' + type + ':' + this.get('entityOrder'));
       }
-      // if (type === 'star') {
-      //   this.toggleProperty('layer1');
-      // } else if (type === 'planet') {
-      //   this.toggleProperty('layer2');
-      // } else {
-      //   console.log('un-typed');
-      // }
     },
 
   },

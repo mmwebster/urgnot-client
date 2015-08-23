@@ -8,7 +8,7 @@ export default Ember.Route.extend({
       type: 'star',
       children: [ 
         {
-          name: 'Planet 1',
+          name: 'Planet 0',
           type: 'planet',
           children: [
             {
@@ -32,11 +32,11 @@ export default Ember.Route.extend({
           ]
         },
         {
-          name: 'Planet 2',
+          name: 'Planet 1',
           type: 'planet'
         },
         {
-          name: 'Planet 3',
+          name: 'Planet 2',
           type: 'planet'
         }
       ]
