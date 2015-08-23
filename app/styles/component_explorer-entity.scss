@@ -18,15 +18,17 @@
   }
 }
 
-// class applied if entity is on layer 2
+// class applied if node is on layer 2
 .actionable {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 10;
+  background-color: rgba(0,0,0,.1);
+  cursor: pointer;
 }
 
-.entity.layer-1, .entity.layer-2 {
+.node.layer-1, .node.layer-2 {
   .content.type-star {
     background-color: rgba(250,250,0,.5);
   }
@@ -43,18 +45,18 @@
     border: 1px solid rgba(0,0,0,.1);
   }
 }
-.entity{
+.node{
   position: absolute;
   // transform: rotate(45deg);
   margin-top: 80%;
   margin-left: 20%;
 }
-.entity .content {
+.node .content {
   position: relative;
   opacity: 0;
   border: none;
 }
-.entity, .content {
+.node, .content {
   border-radius: 100%;
   transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   width: 0%;
@@ -66,20 +68,20 @@
 
 .project-explorer {
   // properties to retain on top level
-  .entity.parent-blur {
+  .node.parent-blur {
     height: 100%;
     width: 100%;
     top: 0%;
     left: 0%;
     margin: 0%;
   }
-  .entity.parent-blur > .content {
+  .node.parent-blur > .content {
     height: 100%;
     width: 100%;
     opacity: 1;
   }
   // origin - star layer
-  .entity.layer-1 {
+  .node.layer-1 {
     top: 50%;
     margin-top: -30%;
     left: 50%;
@@ -93,7 +95,7 @@
     }
   }
   // origin - planet layer
-  .entity.layer-2 {
+  .node.layer-2 {
     width: 33.2%;
     height: 166.5%;
     top: -33.2%;
@@ -101,7 +103,7 @@
     margin-left: -17.5%;
     margin-top: 0%;
   }
-  .entity.layer-2 > .content {
+  .node.layer-2 > .content {
     padding: 0px;
     width: 80%;
     height: 16%;

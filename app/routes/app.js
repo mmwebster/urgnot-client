@@ -15,7 +15,7 @@ export default Ember.Route.extend({
           children: [
             {
               id: 3,
-              name: 'moon 1',
+              name: 'moon 0',
               type: 'moon',
               children: [
                 {
@@ -69,6 +69,16 @@ export default Ember.Route.extend({
         {
           id: 7,
           name: 'Planet 2',
+          type: 'planet'
+        },
+        {
+          id: 8,
+          name: 'Planet 3',
+          type: 'planet'
+        },
+        {
+          id: 9,
+          name: 'Planet 4',
           type: 'planet'
         }
       ]

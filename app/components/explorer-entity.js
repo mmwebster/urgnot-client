@@ -2,93 +2,99 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   // bindings
-  classNames: ['entity'],
+  classNames: ['node'],
   classNameBindings: ['type', 'id', 'index', 'layer1:layer-1', 'layer2:layer-2', 'blurParent:parent-blur', 'isRoot:is-root'],
   attributeBindings: ['wrapperStyle:style'],     
   // properties
   layer1: false,
   layer2: false,
-  blurredParent: false,
-  blurredSibling: false,
+  blurParent: false,
+  blurSibling: false,
+
+  init: function() {
+    this._super();
+    this.set('children', []);
+    this.set('siblings', []);
+  },
 
   id: function() {
-    return "id-" + this.get('node.id');
-  }.property('node.id'),
+    return "id-" + this.get('nodeModel.id');
+  }.property(),
 
   index: function() {
     return "index-" + this.get('nodeIndex');
-  }.property('nodeIndex'),
+  }.property(),
 
   type: function() {
-    return "type-" + this.get('node.type');
-  }.property('node.type'),
+    return "type-" + this.get('nodeModel.type');
+  }.property(),
 
-  // siblings: function() {
-  //   var parent = this.get('parent');
-  //   if (parent) {
-  //     return parent.children;
-  //   } else {
-  //     return this.get('node');
-  //   }
-  // }.property('parent'),
-
+  // rotation computation
   wrapperStyle: function() {
-    // degree increments for each sibling
-    var rotationIncrements = (360 / this.get('siblings.length'));
-    var rotation = rotationIncrements * this.get('index');
-    // save out for use in content rotation correction
-    this.set('rotation', rotation);
-    // return styling
-    return "transform: rotate(" + rotation + "deg) !important;";
-  }.property('siblings.length', 'index'),
+    var parent = this.get('parentModel');
+    if (parent) {
+      // degree increments for each sibling
+      var rotationIncrements = (360 / parent.children.length);
+      var rotation = rotationIncrements * this.get('nodeIndex');
+      // save out for use in content rotation correction
+      this.set('rotation', rotation);
+      // return styling
+      return "transform: rotate(" + rotation + "deg) !important;";
+    } else {
+      return "";
+    }
+  }.property('level2'),
 
   willInsertElement: function() {
-    debugger;
-    // insert all component properties into the js object's properties hash
-    var type = this.get('node.type');
-    if (type === 'star') {
-      this.set('layer1', true);
-    } else if (type === 'planet') {
-      this.set('layer2', true);
+    // populate node's parent's children
+    parent = this.get('parentComponent');
+    if (parent) {
+      parent.get('children').pushObject(this);
     }
-    console.log("Inserted component of (" + type + ").");
+    // insert all component properties into the js object's properties hash
+    switch(this.get('nodeModel.type')) {
+      case 'star': 
+        this.set('layer1', true);
+        break;
+      case 'planet':
+        this.set('layer2', true);
+        break;
+    }
+  },
+
+  didInsertElement: function() {
+    // populate node's siblings, removing this
+    var _this = this;
+    parent = this.get('parentComponent');
+    if (parent) {
+      parent.get('children').forEach(function(node) {
+        if (_this.toString() !== node.toString()) {
+          _this.get('siblings').pushObject(node);
+        }
+      });
+    }
+    console.log("Inserted component (" + this.get('nodeModel.type') + ").");
   },
 
   actions: {
-
     focus: function() {
-      // focus if entity is at layer 2
-      if (this.get('layer2')) {
-        debugger;
-        console.log('clicked ' + this.get('entity.type') + ':' + this.get('entityOrder'));
-        var entity = this.get('entity');
-        // focus node
-        this.set('layer2', false);
-        this.set('layer1', true);
-        // var target = ".id-" + entity.id;
-        // $(target).removeClass('layer-2');
-        // $(target).addClass('layer-1');
-        // focus chidren
-        var children = entity.children || {};
-        for (var i = 0; i < children.length; i++) {
-          target = ".id-" + children[i].id;
-          $(target).addClass('layer-2');
-        }
-        // blur parent node
-        var target = ".id-" + this.get('parent.id');
-        $(target).addClass('parent-blur');
-        $(target).removeClass('layer-1');
-        // blur sibling nodes
-        var target;
-        var siblings = this.get('siblings') || {};
-        for (var i = 0; i < siblings.length; i++) {
-          if (siblings[i].id !== entity.id) {
-            target = ".id-" + siblings[i].id;
-            $(target).addClass('parent-blur');
-            $(target).removeClass('layer-2');
-          }
-        }
-      }
-    },
+      Em.debug('Focusing (' + this.get('nodeModel.type') + ') - (' 
+            + this.get('nodeModel.name') + ')');
+      debugger;
+      // promote this node
+      this.set('layer2', false);
+      this.set('layer1', true);
+      // focus child nodes
+      this.get('children').forEach(function(node) {
+        node.set('layer2', true);
+      });
+      // blur parent node
+      this.set('parentComponent.layer1', false);
+      this.set('parentComponent.blurParent', true);
+      // blur siblings
+      this.get('siblings').forEach(function(node) {
+         node.set('layer2', false); 
+      });
+    }
   },
 });

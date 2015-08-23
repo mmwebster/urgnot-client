@@ -1,11 +1,11 @@
-<div class='content type-{{node.type}}' style='transform: rotate(-{{nodeRotation}}deg) !important;'>
+<div class='content type-{{nodeModel.type}}' style='transform: rotate(-{{rotation}}deg) !important;'>
   {{#if layer2}}
     <div class='actionable' {{action 'focus'}}></div>
   {{/if}}
-  <p class='text'>{{node.name}}</p>
-  {{#if node.children}}
-    {{#each node.children as |child index|}}
-      {{explorer-entity action='blurParent' parent=this node=child nodeIndex=index}}
+  <p class='text'>{{nodeModel.name}}</p>
+  {{#if nodeModel.children}}
+    {{#each nodeModel.children as |child index|}}
+      {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index}}
     {{/each}}
   {{/if}}
 </div>
