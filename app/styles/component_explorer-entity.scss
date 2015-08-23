@@ -26,35 +26,35 @@
   background-color: rgba(0,0,0,.2);
 }
 
-.layer-1-wrapper, .layer-2-wrapper {
-  .star {
+.entity.layer-1, .entity.layer-2 {
+  .content.type-star {
     background-color: rgba(250,250,0,.5);
   }
-  .star > .text {
+  .content.type-star > .text {
     color: #444;
   }
-  .planet {
+  .content.type-planet {
     background-color: rgba(0,250,100,.5);
   }
-  .moon {
+  .content.type-moon {
     background-color: rgba(100,150,100,.5);
   }
   .content {
     border: 1px solid rgba(0,0,0,.1);
   }
 }
-.entity-wrapper {
+.entity{
   position: absolute;
   // transform: rotate(45deg);
   margin-top: 80%;
   margin-left: 20%;
 }
-.entity-content {
+.entity .content {
   position: relative;
   opacity: 0;
   border: none;
 }
-.entity-wrapper, .entity-content {
+.entity, .content {
   border-radius: 100%;
   transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   width: 0%;
@@ -66,94 +66,94 @@
 
 .project-explorer {
   // properties to retain on top level
-  .entity-top-wrapper {
+  .entity.top {
     height: 100%;
     width: 100%;
     top: 0%;
     left: 0%;
     margin: 0%;
   }
-  .entity-top-content {
+  .entity.top .content {
     height: 100%;
     width: 100%;
     opacity: 1;
   }
   // origin - star layer
-  .layer-1-wrapper {
+  .entity.layer-1 {
     top: 50%;
     margin-top: -30%;
     left: 50%;
     margin-left: -30%;
     width: 60%;
     height: 60%;
-  }
-  .layer-1 {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
+    .content {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+    }
   }
   // origin - planet layer
-  .layer-2-wrapper {
+  .entity.layer-2 {
     width: 33.2%;
     height: 166.5%;
     top: -33.2%;
     left: 50%;
     margin-left: -17.5%;
     margin-top: 0%;
-  }
-  .layer-2 {
-    padding: 0px;
-    width: 80%;
-    height: 16%;
-    top: 2%;
-    left: 10%;
-    opacity: 1;
-    cursor: pointer;
+    .content {
+      padding: 0px;
+      width: 80%;
+      height: 16%;
+      top: 2%;
+      left: 10%;
+      opacity: 1;
+      cursor: pointer;
+    }
   }
   // layer wrapper orders for use in rotations (irrelevant)
-  .layer-2-wrapper.order-1 {
+  .layer-2.order-0 {
     transform: rotate(45deg);
     .content {
       transform: rotate(-45deg);
     }
   }
-  .layer-2-wrapper.order-2 {
+  .layer-2.order-1 {
     transform: rotate(90deg);
     .content {
       transform: rotate(-90deg);
     }
   }
-  .layer-2-wrapper.order-3 {
+  .layer-2.order-2 {
     transform: rotate(135deg);
     .content {
       transform: rotate(-135deg);
     }
   }
-  .layer-2-wrapper.order-4 {
+  .layer-2.order-3 {
     transform: rotate(180deg);
     .content {
       transform: rotate(-180deg);
     }
   }
-  .layer-2-wrapper.order-5 {
+  .layer-2.order-4 {
     transform: rotate(225deg);
     .content {
       transform: rotate(-225deg);
     }
   }
-  .layer-2-wrapper.order-6 {
+  .layer-2.order-5 {
     transform: rotate(270deg);
     .content {
       transform: rotate(-270deg);
     }
   }
-  .layer-2-wrapper.order-7 {
+  .layer-2.order-6 {
     transform: rotate(315deg);
     .content {
       transform: rotate(-315deg);
     }
   }
-  .layer-2-wrapper.order-8 {
+  .layer-2.order-7 {
     transform: rotate(0deg);
     .content {
       transform: rotate(0deg);
@@ -168,26 +168,26 @@
   color: rgba(0,0,0,0);
   padding: 2vw;
 }
-.layer-2-content > .text, .layer-1-content > .text {
+.layer-2 > .content > .text, .layer-1 > .content > .text {
   color: rgba(250,250,250,1);
 }
-.layer-2-content > .text {
+.layer-2 > .content > .text {
   font-size: 1.7vw;
   padding: 1.7vw 0vw;
   font-weight: 100;
 }
-.layer-1-content > .text {
+.layer-1 > .content > .text {
   font-size: 4vw;
   padding: 3vw 2vh;
   font-weight: 100;
 }
 @media all and (max-width: 780px) {
-  .layer-2-content > .text {
+  .layer-2 > .content > .text {
     font-size: 13.3px;
     padding: 13.3px 0px;
     font-weight: 100;
   }
-  .layer-1-content > .text {
+  .layer-1 > .content > .text {
     font-size: 31.3px;
     padding: 23.5px 15.5px;
     font-weight: 100;

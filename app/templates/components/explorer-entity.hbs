@@ -1,11 +1,11 @@
-<div class='entity-wrapper'>
-  <div class='entity-content'>
-    {{entity.name}}
-    {{#if entity.children}}
-      {{#each child in entity.children}}
-        {{explorer-entity entity=child}}
-      {{/each}}
-    {{/if}}
-  </div>
+<div class='content type-{{entity.type}}'>
+  {{#if layer2}}
+    <div class='actionable' {{action 'focus'}}></div>
+  {{/if}}
+  <p class='text'>{{entity.name}}</p>
+  {{#if entity.children}}
+    {{#each entity.children as |child index|}}
+      {{explorer-entity entity=child entityOrder=index}}
+    {{/each}}
+  {{/if}}
 </div>
-
