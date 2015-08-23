@@ -23,6 +23,15 @@ export default Ember.Component.extend({
     this.set('siblings', []);
   },
 
+  // sumarize content for layer2 nodes
+  name: function() {
+    if (this.get('layer2')) {
+      return this.get('nodeModel.name').split(" ")[0];
+    } else {
+      return this.get('nodeModel.name');
+    }
+  }.property('layer2'),
+
   id: function() {
     return "id-" + this.get('nodeModel.id');
   }.property(),

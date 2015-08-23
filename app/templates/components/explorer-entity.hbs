@@ -2,7 +2,11 @@
   {{#if layer2}}
     <div class='actionable' {{action 'focus'}}></div>
   {{/if}}
-  <p class='text'>{{nodeModel.name}}</p>
+  <p class='text'>{{name}}
+  {{#if layer1}} 
+    <p style='font-size: 13px; color: #666;'>{{nodeModel._content}}</p>
+  {{/if}}
+  </p>
   {{#if nodeModel.children}}
     {{#each nodeModel.children as |child index|}}
       {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index}}
