@@ -23,7 +23,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.2);
+  z-index: 10;
 }
 
 .entity.layer-1, .entity.layer-2 {
@@ -100,65 +100,65 @@
     left: 50%;
     margin-left: -17.5%;
     margin-top: 0%;
-    .content {
-      padding: 0px;
-      width: 80%;
-      height: 16%;
-      top: 2%;
-      left: 10%;
-      opacity: 1;
-      cursor: pointer;
-    }
+  }
+  .entity.layer-2 > .content.type-planet {
+    padding: 0px;
+    width: 80%;
+    height: 16%;
+    top: 2%;
+    left: 10%;
+    opacity: 1;
+    // cursor: pointer;
   }
   // layer wrapper orders for use in rotations (irrelevant)
-  .layer-2.order-0 {
-    transform: rotate(45deg);
-    .content {
-      transform: rotate(-45deg);
-    }
-  }
-  .layer-2.order-1 {
-    transform: rotate(90deg);
-    .content {
-      transform: rotate(-90deg);
-    }
-  }
-  .layer-2.order-2 {
-    transform: rotate(135deg);
-    .content {
-      transform: rotate(-135deg);
-    }
-  }
-  .layer-2.order-3 {
-    transform: rotate(180deg);
-    .content {
-      transform: rotate(-180deg);
-    }
-  }
-  .layer-2.order-4 {
-    transform: rotate(225deg);
-    .content {
-      transform: rotate(-225deg);
-    }
-  }
-  .layer-2.order-5 {
-    transform: rotate(270deg);
-    .content {
-      transform: rotate(-270deg);
-    }
-  }
-  .layer-2.order-6 {
-    transform: rotate(315deg);
-    .content {
-      transform: rotate(-315deg);
-    }
-  }
-  .layer-2.order-7 {
-    transform: rotate(0deg);
-    .content {
-      transform: rotate(0deg);
-    }
-  }
+  // .layer-2.order-0 {
+  //   transform: rotate(45deg);
+  //   .content {
+  //     transform: rotate(-45deg);
+  //   }
+  // }
+  // .layer-2.order-1 {
+  //   transform: rotate(90deg);
+  //   .content {
+  //     transform: rotate(-90deg);
+  //   }
+  // }
+  // .layer-2.order-2 {
+  //   transform: rotate(135deg);
+  //   .content {
+  //     transform: rotate(-135deg);
+  //   }
+  // }
+  // .layer-2.order-3 {
+  //   transform: rotate(180deg);
+  //   .content {
+  //     transform: rotate(-180deg);
+  //   }
+  // }
+  // .layer-2.order-4 {
+  //   transform: rotate(225deg);
+  //   .content {
+  //     transform: rotate(-225deg);
+  //   }
+  // }
+  // .layer-2.order-5 {
+  //   transform: rotate(270deg);
+  //   .content {
+  //     transform: rotate(-270deg);
+  //   }
+  // }
+  // .layer-2.order-6 {
+  //   transform: rotate(315deg);
+  //   .content {
+  //     transform: rotate(-315deg);
+  //   }
+  // }
+  // .layer-2.order-7 {
+  //   transform: rotate(0deg);
+  //   .content {
+  //     transform: rotate(0deg);
+  //   }
+  // }
 }
 
 .text {

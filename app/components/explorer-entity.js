@@ -3,17 +3,28 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['entity'],
   classNameBindings: ['type', 'order', 'layer1:layer-1', 'layer2:layer-2'],
+  attributeBindings: ['wrapperStyle:style'],     
   layer1: false,
   layer2: false,
+  entityRotation: null,
 
   type: function() {
-    return ("type-" + this.get('entity.type'));
+    return "type-" + this.get('entity.type');
   }.property('entity.type'),
 
   order: function() {
-    // debugger;
-    return ("order-" + this.get('entityOrder'));
+    return "order-" + this.get('entityOrder');
   }.property('entityOrder'),
+
+  wrapperStyle: function() {
+    // degree increments for each sibling
+    var rotationIncrements = (360 / this.get('numSiblings'));
+    var rotation = rotationIncrements * this.get('entityOrder');
+    // save out for use in content rotation correction
+    this.set('entityRotation', rotation);
+    // return styling
+    return "transform: rotate(" + rotation + "deg) !important;";
+  }.property(),
        
   willInsertElement: function() {
     var type = this.get('entity.type');
