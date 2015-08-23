@@ -1,8 +1,11 @@
+$transitionLength: .7s;
+
 .project-explorer {
   width: 40%;
   height: 100%;
   position: relative;
   float: left;
+  transition: none $transitionLength;
 }
 
 .explorer-wrapper {
@@ -66,15 +69,30 @@
   opacity: 0;
   border: none;
 }
+
 .node, .content {
   border-radius: 100%;
-  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   width: 0%;
   height: 0%;
   top: 0%;
   left: 0%;
 }
 
+.node {
+  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+}
+.content {
+  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+}
+.layer-2 > .content {
+  transition: top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+}
+.allow-content-transition > .content {
+  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+}
+// .allow-content-transition > .content .content {
+//   transition: top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength !important;
+// }
 
 .project-explorer {
   // properties to retain on top level
@@ -122,6 +140,10 @@
     left: 10%;
     opacity: 1;
     pointer-events: all;
+  }
+  .layer-2 .content > .node .content {
+    width: 80%;
+    height: 16%;
   }
   // layer wrapper orders for use in rotations (irrelevant)
   // .layer-2.order-0 {

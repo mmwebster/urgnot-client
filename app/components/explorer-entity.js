@@ -3,13 +3,14 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   // bindings
   classNames: ['node'],
-  classNameBindings: ['type', 'id', 'index', 'layer1:layer-1', 'layer2:layer-2', 'blurParent:parent-blur', 'isRoot:is-root'],
+  classNameBindings: ['type', 'id', 'index', 'layer1:layer-1', 'layer2:layer-2', 'blurParent:parent-blur', 'isRoot:is-root', 'allowContentTransition'],
   attributeBindings: ['wrapperStyle:style'],     
   // properties
   layer1: false,
   layer2: false,
   blurParent: false,
   blurSibling: false,
+  allowContentTransition: false,
 
   init: function() {
     this._super();
@@ -53,7 +54,7 @@ export default Ember.Component.extend({
       var rotationIncrements = (360 / parent.children.length);
       var rotation = rotationIncrements * this.get('nodeIndex');
       if (!this.get('layer1') && !this.get('layer2')) {
-        rotation = -(rotation*3);
+        rotation = -360;
       }
       // save out for use in content rotation correction
       this.set('rotation', rotation);
