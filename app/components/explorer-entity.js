@@ -80,7 +80,6 @@ export default Ember.Component.extend({
     focus: function() {
       Em.debug('Focusing (' + this.get('nodeModel.type') + ') - (' 
             + this.get('nodeModel.name') + ')');
-      debugger;
       // promote this node
       this.set('layer2', false);
       this.set('layer1', true);
