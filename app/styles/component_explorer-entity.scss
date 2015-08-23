@@ -27,6 +27,14 @@
   cursor: pointer;
 }
 
+.node {
+  opacity: 0;
+}
+
+.node.layer-1, .node.layer-2, .node.parent-blur {
+  opacity: 1;
+}
+
 .node.layer-1, .node.layer-2 {
   .content.type-star {
     background-color: rgba(250,250,0,.5);
