@@ -11,6 +11,7 @@ export default Ember.Component.extend({
   blurParent: false,
   allowContentTransition: false,
 
+  // on component instantiation, prior to DOM insertion
   init: function() {
     this._super();
     // set current node if is root
@@ -21,6 +22,37 @@ export default Ember.Component.extend({
     // set children and siblings arrays local this component instance
     this.set('children', []);
     this.set('siblings', []);
+  },
+
+  // on DOM insertion, prepares the node tree. Method run only once, and on the tree root.
+  treeReady: function() {
+    Ember.debug('Tree is ready.');
+    // if tree root is not current node
+    var rootIsCurrent = this.get('nodeModel.isCurrent');
+    if (!rootIsCurrent || rootIsCurrent === 'undefined') {
+      // recursively find current node
+      this.discoverCurrentNode(this.get('children'));
+      // focus in to node
+      var _this = this;
+      Ember.run.later(function() {
+        _this.get('discoveredCurrentNode').autofocus(_this.toString(), [], _this.get('discoveredCurrentNode'), _this.get('discoveredCurrentNode'));
+      }, 500);
+    }
+  },
+
+  discoverCurrentNode: function(nodes) {
+    nodes.some(function(node) {
+      var children = node.get('children'); 
+      if (node.get('nodeModel.isCurrent')) {
+        // check if this node isCurrent
+        this.set('discoveredCurrentNode', node);
+        return true;
+        // return true;
+      } else if (children.length > 0) {
+        // if node has children, recursively check if they are current or their children
+        this.discoverCurrentNode(children);
+      }
+    }, this);
   },
 
   // sumarize content for layer2 nodes
@@ -69,7 +101,7 @@ export default Ember.Component.extend({
     // populate node's parent's children
     parent = this.get('parentComponent');
     if (parent) {
-      parent.get('children').pushObject(this);
+      parent.get('children').push(this);
     }
     // set top level w/o animation
     if (this.get('nodeModel.type') === 'star') {
@@ -100,34 +132,68 @@ export default Ember.Component.extend({
       case 'star':
         Ember.run.next(function() {
           _this.set('scaleDown', false);
+          _this.treeReady();
         });
         break;
     }
     console.log("Inserted component (" + this.get('nodeModel.type') + ").");
   },
 
+ // target is defined, now checking recursion to see why current node is not
+
+  /* 
+   * @param rootNodeString: toString() conversion of root level node
+   * @param treeNodePath: empty array to be recursively filled with node in reverse focus order
+   * @param currentNode: the current node in the context of the autofocus() function
+   * @param targetNode: the node with isCurrent state that is to be focused to
+   */
+  autofocus: function(rootNodeString, treeNodePath, currentNode, targetNode) {
+    if (rootNodeString !== currentNode.get('parentComponent').toString()) {
+      treeNodePath.push(currentNode);
+      this.autofocus(rootNodeString, treeNodePath, currentNode.get('parentComponent'), targetNode);
+    } else {
+      currentNode.focus(targetNode, treeNodePath, treeNodePath.length);
+    }
+  },
+
+  focus: function(autofocusTargetNode, treeNodeFocusPath, treeNodeFocusPathLength) {
+    // perform focus on this node
+    Em.debug('Focusing (' + this.get('nodeModel.type') + ') - (' 
+          + this.get('nodeModel.name') + ')');
+
+    // reset current node - for use in project explorer interfacing
+    Window.projectExplorer.currentNode = this;
+
+    // promote this node
+    this.set('layer2', false);
+    this.set('layer1', true);
+    // focus child nodes
+    this.get('children').forEach(function(node) {
+      node.set('layer2', true);
+    });
+    // blur parent node
+    this.set('parentComponent.layer1', false);
+    this.set('parentComponent.blurParent', true);
+    // blur siblings
+    this.get('siblings').forEach(function(node) {
+       node.set('layer2', false); 
+    });
+
+    // if autofocusing, continue down path if target not reached
+    if (autofocusTargetNode) {
+      if (this.toString() !== autofocusTargetNode.toString()) {
+        Ember.run.later(function() {
+          var nodeFocusChild = treeNodeFocusPath[treeNodeFocusPath.length - 1];
+          treeNodeFocusPath.splice(treeNodeFocusPath.indexOf(nodeFocusChild), 1);
+          nodeFocusChild.focus(autofocusTargetNode, treeNodeFocusPath, treeNodeFocusPathLength);
+        }, 1);
+      }
+    }
+  },
+
   actions: {
-    focus: function() {
-      Em.debug('Focusing (' + this.get('nodeModel.type') + ') - (' 
-            + this.get('nodeModel.name') + ')');
-
-      // reset current node - for use in project explorer interfacing
-      Window.projectExplorer.currentNode = this;
-
-      // promote this node
-      this.set('layer2', false);
-      this.set('layer1', true);
-      // focus child nodes
-      this.get('children').forEach(function(node) {
-        node.set('layer2', true);
-      });
-      // blur parent node
-      this.set('parentComponent.layer1', false);
-      this.set('parentComponent.blurParent', true);
-      // blur siblings
-      this.get('siblings').forEach(function(node) {
-         node.set('layer2', false); 
-      });
+    click: function() {
+      this.focus(false);
     }
   },
 });

@@ -33,6 +33,7 @@ export default Ember.Route.extend({
             {
               id: 5,
               name: 'moon 2',
+              isCurrent: true,
               type: 'moon',
               children: [
                 {

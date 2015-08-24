@@ -4,6 +4,10 @@ export default Ember.Controller.extend({
   transitionLength: null,
 
   actions: {
+    home: function() {
+    },
+    current: function() {
+    },
     back: function() {
       var currentNode = Window.projectExplorer.currentNode;
       
