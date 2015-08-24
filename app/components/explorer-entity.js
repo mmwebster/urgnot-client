@@ -62,7 +62,7 @@ export default Ember.Component.extend({
     } else {
       return "";
     }
-  }.property('layer2'),
+  }.property('layer2', 'parentModel'),
 
   willInsertElement: function() {
     // populate node's parent's children

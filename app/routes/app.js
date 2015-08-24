@@ -97,6 +97,22 @@ export default Ember.Route.extend({
           id: 9,
           name: 'Planet 4',
           type: 'planet'
+        },
+        
+        {
+          id: 8,
+          name: 'Planet 3',
+          type: 'planet'
+        },
+        {
+          id: 9,
+          name: 'Planet 4',
+          type: 'planet'
+        },
+        {
+          id: 9,
+          name: 'Planet 4',
+          type: 'planet'
         }
       ]
     }

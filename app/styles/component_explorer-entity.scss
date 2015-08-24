@@ -82,17 +82,22 @@ $transitionLength: .7s;
   transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
 }
 .content {
-  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+  transition: box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
 }
 .layer-2 > .content {
-  transition: top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+  transition: box-shadow .2s, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
 }
 .allow-content-transition > .content {
-  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+  transition: box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
 }
-// .allow-content-transition > .content .content {
-//   transition: top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength !important;
-// }
+
+
+.node.layer-2 > .content {
+  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0);
+}
+.node.layer-2 > .content:hover {
+  box-shadow: 0px 0px 10px 1px rgba(0,0,0,.2);
+}
 
 .project-explorer {
   // properties to retain on top level
