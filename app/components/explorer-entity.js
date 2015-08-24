@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   // bindings
   classNames: ['node'],
-  classNameBindings: ['type', 'id', 'index', 'layer1:layer-1', 'layer2:layer-2', 'blurParent:parent-blur', 'isRoot:is-root', 'allowContentTransition'],
+  classNameBindings: ['type', 'id', 'index', 'layer1:layer-1', 'layer2:layer-2', 'blurParent:parent-blur', 'isRoot:is-root', 'allowContentTransition', 'scaleDown'],
   attributeBindings: ['wrapperStyle:style'],     
   // properties
   layer1: false,
@@ -47,6 +47,7 @@ export default Ember.Component.extend({
   // rotation computation
   wrapperStyle: function() {
     var parent = this.get('parentModel');
+    var output = "";
     // if is not root and node is at layer 2
     if (parent) {
       // degree increments for each sibling
@@ -58,10 +59,10 @@ export default Ember.Component.extend({
       // save out for use in content rotation correction
       this.set('rotation', rotation);
       // return styling
-      return "transform: rotate(" + rotation + "deg) !important;";
-    } else {
-      return "";
-    }
+      output = "transform: rotate(" + rotation + "deg) !important;";
+    }  
+    // confirm string is safe, non integer operations will always result in NaN
+    return new Ember.Handlebars.SafeString(output);
   }.property('layer2', 'parentModel'),
 
   willInsertElement: function() {
@@ -70,14 +71,10 @@ export default Ember.Component.extend({
     if (parent) {
       parent.get('children').pushObject(this);
     }
-    // insert all component properties into the js object's properties hash
-    switch(this.get('nodeModel.type')) {
-      case 'star': 
+    // set top level w/o animation
+    if (this.get('nodeModel.type') === 'star') {
         this.set('layer1', true);
-        break;
-      case 'planet':
-        this.set('layer2', true);
-        break;
+        this.set('scaleDown', true);
     }
   },
 
@@ -91,6 +88,20 @@ export default Ember.Component.extend({
           _this.get('siblings').pushObject(node);
         }
       });
+    }
+    // upon full hiearchy insertion (page load) animate in layers 
+    _this = this;
+    switch(this.get('nodeModel.type')) {
+      case 'planet':
+        Ember.run.next(function() {
+          _this.set('layer2', true);
+        });
+        break;
+      case 'star':
+        Ember.run.next(function() {
+          _this.set('scaleDown', false);
+        });
+        break;
     }
     console.log("Inserted component (" + this.get('nodeModel.type') + ").");
   },

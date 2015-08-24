@@ -30,6 +30,10 @@ $transitionLength: .7s;
   cursor: pointer;
 }
 
+.scale-down > .content{
+  transform: scale3d(.4,.4,0);
+}
+
 .node {
   opacity: 0;
 }
