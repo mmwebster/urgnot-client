@@ -101,13 +101,15 @@ export default Ember.Route.extend({
             {
               id: 5,
               name: 'moon 2',
-              isCurrent: true,
               type: 'moon',
               children: [
                 {
                   name: 'crater 1',
                   _content: 'This is a lovely crater, much fun!',
-                  type: 'crater'
+                  type: 'crater',
+                  children: [
+                  {name: 'another', type: 'crater', children: [{name: 'another final', type: 'star', isCurrent: true}]} 
+                    ]
                 },
                 {
                   name: 'crater 2',
