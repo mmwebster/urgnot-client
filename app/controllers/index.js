@@ -6,7 +6,6 @@ export default Ember.Controller.extend({
   actions: {
     start: function() {
       this.toggleProperty('displayLogin');
-      // debugger;
     },
     submit: function() {
       var newUser = this.store.createRecord('user', {

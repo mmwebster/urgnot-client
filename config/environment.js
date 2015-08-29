@@ -9,7 +9,7 @@ module.exports = function(environment) {
     },
     firebase: 'https://urgnot.firebaseio.com/',
     torii: {
-      sessionServiceName: 'session'
+      sessionServiceName: 'session',
     },
     baseURL: '/',
     locationType: 'auto',

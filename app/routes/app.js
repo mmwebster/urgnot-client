@@ -151,4 +151,7 @@ export default Ember.Route.extend({
   model: function() {
     return this.get('routeModel');
   },
+  afterModel: function() {
+    // debugger;
+  },
 });
