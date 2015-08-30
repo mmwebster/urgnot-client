@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  classNames: ['top-nav'],
+  classNames: ['top-nav']
 });

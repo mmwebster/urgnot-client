@@ -27,11 +27,21 @@ export default Ember.Controller.extend({
           password: this.get('password')
         }).then(function(data) {
           Ember.debug(data.currentUser);
+          var uid = _this.get('controllers.application.currentUser.uid');
+          _this.store.find('user', uid).catch(function(error) {
+            debugger;
+            // no user record found
+            var newUser = _this.store.createRecord('user', {
+              id: data.uid,
+              email: data.currentUser.email
+            });
+            newUser.save();
+          }).then(function(user) {
+            // user record found or now created
+            _this.transitionToRoute('app');
+          });
 
-          // create user if doesn't exist
-          _this.createUser(data);
 
-          _this.transitionToRoute('app');
         }, function(error) {
           console.warn('Incorrect credentials');
         });

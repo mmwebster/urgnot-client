@@ -1,4 +1,3 @@
-{{#link-to 'app.index' tagName='div' class='urgnot flex action'}}{{/link-to}}
-{{#link-to 'app.settings'}}Settings{{/link-to}}
-<!-- <div class='urgnot flex'></div> -->
-
+{{#link-to 'app.index' tagName='div' class='urgnot flex action nav-item'}}{{/link-to}}
+{{#link-to 'app.settings' class='settings nav-item'}}{{/link-to}}
+<div class='sign-out nav-item action' {{action 'signOut'}}></div>

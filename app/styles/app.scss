@@ -1,6 +1,7 @@
 @import '_graphics';
 @import 'route_application';
 @import 'route_index';
+@import 'route_app';
 @import 'template_top-nav';
 @import 'template_project-explorer';
 @import 'template_action-panel';
@@ -46,12 +47,23 @@ body {
   height: 310px;
 }
 
-// font sizes
+// font sizes and classes
 h1 {
   font-size: 35px;
 }
 h2 {
   font-size: 25px;
+}
+h2.page-header {
+  height: 43px;
+  padding: 4px;
+  text-align: center;
+  background-color: rgba(0,100,0,.5);
+  color: #fff;
+}
+h2.page-header.active.action:hover {
+  cursor: pointer;
+  background-color: rgba(0,100,0,.6);
 }
 
 // actions
@@ -59,4 +71,7 @@ h2 {
   cursor: pointer;
 }
 
-// 
+// general
+ul li {
+  list-style: none;
+}

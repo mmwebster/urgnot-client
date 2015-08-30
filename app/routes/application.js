@@ -12,11 +12,29 @@ export default Ember.Route.extend({
   actions: {
     signOut: function() {
       if (this.get('session').content.isAuthenticated) {
-        this.get("session").close().then(function() {
-          console.log('User signed out');
-        });
+        var signOut = confirm("Are you sure you want to sign out?");
+        if(signOut) {
+          var _this = this;
+          this.get("session").close().then(function() {
+            console.log('User signed out');
+            _this.transitionTo('index');
+          });
+        }
       } else {
         console.warn('User already signed out');
+        this.transitionTo('index');
+      }
+    },
+    willTransition: function(transition) {
+      // prevent un auth'ed clients attempt to access auth requiring routes
+      if(!this.get('session').content.isAuthenticated) {
+        this.transitionTo('application');
+      }
+    },
+    didTransition: function(transition) {
+      // prevent un auth'ed clients attempt to access auth requiring routes
+      if(!this.get('session').content.isAuthenticated) {
+        this.transitionTo('application');
       }
     }
   }

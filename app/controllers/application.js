@@ -15,4 +15,12 @@ export default Ember.Controller.extend({
       return null;
     }
   }.property('session.content.isAuthenticated'),
+
+  // perform UX functions upon change in path or auth status
+  observeAuthentication: function() {
+    debugger;
+    if(!this.get('session').content.isAuthenticated) {
+      this.transitionToRoute('application');
+    }
+  }.property('currentPath', 'session.content.isAuthenticated')
 });
