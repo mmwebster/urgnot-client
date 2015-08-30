@@ -1,6 +1,28 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  beforeModel: function() {
+    return this.get("session").fetch().catch(function() {});
+  },
+  model: function() {
+    return this.get('routeModel');
+  },
+  setupController: function(controller, model) {
+    controller.set('model', model);
+    var uid = this.controllerFor('application').get('currentUser.uid');
+    this.store.find('user', uid).then(function(userModel) {
+      controller.set('user', userModel);
+    });
+  },
+  afterModel: function() {
+    var user = this.controllerFor('application').get('currentUser');
+    // debugger;
+    Em.debug('UID: ' + user.uid);
+    this.store.find('user', user.uid).then(function(user) {
+      Em.debug('UID (model): ' + user.id);
+    });
+  },
+
   routeModel: {
     // top level entity is project level
     entity: {
@@ -147,11 +169,5 @@ export default Ember.Route.extend({
         }
       ]
     }
-  }, 
-  model: function() {
-    return this.get('routeModel');
-  },
-  afterModel: function() {
-    // debugger;
   },
 });

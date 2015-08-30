@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 
   createUser: function(data) {
     var newUser = this.store.createRecord('user', {
-      uid: data.uid,
+      id: data.uid,
       email: data.currentUser.email
     });
     newUser.save();
@@ -36,8 +36,19 @@ export default Ember.Controller.extend({
           _this.createUser(data);
 
           // populate global user
-          _this.set('controllers.application.currentUser', data.currentUser);
-          debugger;
+          _this.set('controllers.application.currentUser', {
+            'uid': data.uid,
+            'email': data.currentUser.email
+          });
+
+          // var newOrg = _this.store.createRecord('organization', {
+          //   name: "test"
+          // }).then(function() {
+          //   newOrg.save();
+          //   debugger;
+          // });
+          // newOrg.save();
+
 
           _this.transitionToRoute('app');
         }, function(error) {

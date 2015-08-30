@@ -7,8 +7,10 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: { 
       'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
+      'frame-src': "'self' https://*.firebaseio.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
-      'font-src': "'self' fonts.gstatic.com"
+      'font-src': "'self' fonts.gstatic.com",
+      'script-src': "'self' 'unsafe-eval' https://*.firebaseio.com localhost:49154 0.0.0.0:49154"
     },
 
     firebase: 'https://urgnot.firebaseio.com/',

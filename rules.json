@@ -1,13 +1,17 @@
 {
   "rules": {
+    ".read": "true",
+    ".write": "true",
     "users": {
       "$uid": {
-        ".read": "true",
-        ".write": "true"
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        "organizations": {
+          "$organization": {
+            ".read": "auth != null"
+          }
+        }
       }
     }
   }
 }
-
-        // ".read": "auth != null && auth.uid == $uid",
-        // ".write": "auth != null && auth.uid == $uid"
