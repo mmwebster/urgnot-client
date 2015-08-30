@@ -3,10 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   needs: ['application'],
 
-  isAuthenticated: function() {
-    return this.get('session.content.isAuthenticated');
-  }.property('session.content.isAuthenticated'),
-
   displayLogin: false,
 
   createUser: function(data) {
@@ -30,25 +26,10 @@ export default Ember.Controller.extend({
           email: this.get('email'),
           password: this.get('password')
         }).then(function(data) {
-          console.log(data.currentUser);
+          Ember.debug(data.currentUser);
 
           // create user if doesn't exist
           _this.createUser(data);
-
-          // populate global user
-          _this.set('controllers.application.currentUser', {
-            'uid': data.uid,
-            'email': data.currentUser.email
-          });
-
-          // var newOrg = _this.store.createRecord('organization', {
-          //   name: "test"
-          // }).then(function() {
-          //   newOrg.save();
-          //   debugger;
-          // });
-          // newOrg.save();
-
 
           _this.transitionToRoute('app');
         }, function(error) {
