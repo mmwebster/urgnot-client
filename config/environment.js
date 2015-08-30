@@ -4,9 +4,13 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'urgnot',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
-      'style-src': "'self' 'unsafe-inline'"
+
+    contentSecurityPolicy: { 
+      'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
+      'font-src': "'self' fonts.gstatic.com"
     },
+
     firebase: 'https://urgnot.firebaseio.com/',
     torii: {
       sessionServiceName: 'session',
@@ -19,6 +23,12 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
+
+    // fonts
+    googleFonts: [
+      'Open+Sans:300,400',
+      'Roboto:300'
+    ],
 
     APP: {
       // Here you can pass flags/options to your application instance
