@@ -37,5 +37,34 @@
     a:hover {
       background-color: #900;
     }
+    form {
+      input {
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+      // single targets
+      input[type='email'] {
+        margin-right: 20px;
+      }
+      input[type='button'] { 
+        background-color: rgba(0,100,0,.6);
+      }
+      input[type='submit'] { 
+        background-color: #900;
+      }
+      // multiple targets
+      input[type='email'], input[type='password'] {
+        background-color: rgba(0,100,0,.3);
+        padding: 20px;
+        color: #080 !important;
+      }
+      input[type='submit'], input[type='button'] {
+        margin-top: 20px;
+        padding: 10px;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
   }
 }

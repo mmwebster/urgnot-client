@@ -1,27 +1,23 @@
 // app/routes/application.js
 import Ember from 'ember';
 
+// Provides hooks and globals for all user auth and management
+
 export default Ember.Route.extend({
+
   beforeModel: function() {
     return this.get("session").fetch().catch(function() {});
   },
+
   actions: {
-    signIn: function() {
-      this.get("session").open("firebase", { 
-        provider: 'password',
-        email: 'milo.webster@gmail.com',
-        password: 'urgnotisrad'
-      }).then(function(data) {
-        console.log(data.currentUser);
-        debugger;
-      });
-
-    },
-
     signOut: function() {
-
-      this.get("session").close();
-
+      if (this.get('session').content.isAuthenticated) {
+        this.get("session").close().then(function() {
+          console.log('User signed out');
+        });
+      } else {
+        console.warn('User already signed out');
+      }
     }
   }
 });
