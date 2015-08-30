@@ -1,8 +1,5 @@
-<p>User: id - {{user.id}}, email - {{user.email}}</p>
+<p>User: id - {{model.id}}, email - {{model.email}}</p>
 
 {{render "topNav"}}
 
-{{render "projectExplorer" model.entity}}
-
-{{render "actionPanel"}}
-
+{{outlet}}
