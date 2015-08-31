@@ -5,8 +5,8 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   email: DS.attr('string'),
   type: DS.attr('string'),
-  endAffiliations: DS.hasMany('organization', {inverse: 'endUsers'}),
-  adminAffiliations: DS.hasMany('organization', {inverse: 'adminUsers'}),
+  endOrganizations: DS.hasMany('organization', {inverse: 'endUsers', async: true}),
+  adminOrganizations: DS.hasMany('organization', {inverse: 'adminUsers', async: true}),
   tags: DS.belongsTo('tag'),
   projects: DS.hasMany('project', {inverse: 'author'}),
   collaborations: DS.hasMany('project', {inverse: 'collaborators'})

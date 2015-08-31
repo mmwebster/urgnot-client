@@ -1,1 +1,22 @@
-{{outlet}}
+<div class='list'>
+  <div class='row labels'>
+    <div class='col name'>Name</div>
+    <div class='col admin'>Administrators</div>
+    <div class='col end'>Students</div>
+    <div class='clearfix'></div>
+  </div>
+  <form class='row newRow'>
+    <div class='col name'>{{input type='text' value=newRowName placeholder='Organization name...'}}</div>
+    <div class='col newRowSubmit'><button type='submit' {{action 'newRow'}}>+</button></div>
+    <div class='clearfix'></div>
+  </form>
+  {{#each model as |org|}}
+    <div class='row content'>
+      <div class='col name'>{{org.name}}</div>
+      <div class='col admin'>{{org.adminUsers.length}}</div>
+      <div class='col end'>{{org.endUsers.length}}</div>
+      <div class='clearfix'></div>
+    </div>
+  {{/each}}
+  <div class='clearfix'></div>
+</div>

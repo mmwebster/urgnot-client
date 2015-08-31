@@ -18,4 +18,7 @@ loadInitializers(App, config.modulePrefix);
 // temporarily silence deprecation warnings
 Ember.deprecate = function(){};
 
+// firebase logging
+Firebase.enableLogging(true);
+
 export default App;
