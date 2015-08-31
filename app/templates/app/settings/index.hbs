@@ -1,0 +1,10 @@
+<ul class='regular'>
+  <li><div class='label'>Name</div><div class='value name'>{{#if socketedName}}{{socketedName}}{{else}}- - - - - - - - - - - {{/if}}</div></li>
+  <li><div class='label'>Email</div><div class='value'>{{#if socketedEmail}}{{socketedEmail}}{{else}}- - - - - - - - - -{{/if}}</div></li>
+  <li class='advanced'><p class="toggle-button advanced-toggle {{if showAdvanced 'show' 'hide'}}" {{action 'showAdvancedS'}}>Show Advanced Settings</p>
+    <ul class="content {{if showAdvanced 'show' 'hide'}}">
+      <li><div class='label'>UID</div><div class='value'>{{#if model.id}}{{model.id}}{{else}}- - - - - - - - - -{{/if}}</div></li>
+      <li><div class='label'>Type</div><div class='value'>{{#if socketedType}}{{socketedType}}{{else}}- - - - - - - - - -{{/if}}</div></li>
+    </ul>
+  </li>
+</ul>

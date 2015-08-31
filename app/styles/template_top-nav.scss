@@ -23,8 +23,12 @@
   .nav-item:hover {
     opacity: .7;
   }
-  .settings {
+  .settings.nav-item {
     background-image: url('images/gear-blanked.svg');
+    height: auto;
+  }
+  .settings:hover {
+    background-image: url('images/gear-blanked-hover.svg');
   }
   .sign-out {
     background-image: url('images/icon-power-on.svg');

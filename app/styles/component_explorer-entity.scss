@@ -6,104 +6,111 @@ $transitionLength: .7s; // .7s
   position: relative;
   float: left;
   transition: none $transitionLength;
-}
 
-.explorer-wrapper {
-  width: 100%; 
-  height: calc(100% - 43px);
-  float: left;
-  position: relative;
-  .explorer {
-    width: 100%;
-    height: 40vw;
-    min-height: 300px;
+
+
+
+    
+  .explorer-wrapper {
+    width: 100%; 
+    height: calc(100% - 43px);
+    float: left;
     position: relative;
+    .explorer {
+      width: 100%;
+      height: 40vw;
+      min-height: 300px;
+      position: relative;
+    }
   }
-}
 
-// class applied if node is on layer 2
-.actionable {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.scale-down > .content{
-  transform: scale3d(.4,.4,0);
-}
-
-.node {
-  opacity: 0;
-}
-
-.node.layer-1, .node.layer-2, .node.parent-blur {
-  opacity: 1;
-}
-
-.node.layer-1, .node.layer-2 {
-  .content.type-star {
-    background-color: rgba(250,250,0,.5);
+  // class applied if node is on layer 2
+  .actionable {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
   }
-  .content.type-star > .text {
-    color: #444;
+
+  .scale-down > .content{
+    transform: scale3d(.4,.4,0);
   }
-  .content.type-planet {
-    background-color: rgba(0,250,100,.5);
+
+  .node {
+    opacity: 0;
   }
-  .content.type-moon {
-    background-color: rgba(100,150,100,.5);
+
+  .node.layer-1, .node.layer-2, .node.parent-blur {
+    opacity: 1;
   }
-  .content.type-crater {
-    background-color: rgba(100,150,100,.3);
+
+  .node.layer-1, .node.layer-2 {
+    .content.type-star {
+      background-color: rgba(250,250,0,.5);
+    }
+    .content.type-star > .text {
+      color: #444;
+    }
+    .content.type-planet {
+      background-color: rgba(0,250,100,.5);
+    }
+    .content.type-moon {
+      background-color: rgba(100,150,100,.5);
+    }
+    .content.type-crater {
+      background-color: rgba(100,150,100,.3);
+    }
+    .content {
+      border: 1px solid rgba(0,0,0,.1);
+    }
+  }
+  .node{
+    position: absolute;
+    // transform: rotate(45deg);
+    margin-top: 80%;
+    margin-left: 20%;
+  }
+  .node .content {
+    position: relative;
+    opacity: 0;
+    border: none;
+  }
+
+  .node, .content {
+    border-radius: 100%;
+    width: 0%;
+    height: 0%;
+    top: 0%;
+    left: 0%;
+  }
+
+  .node {
+    transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   }
   .content {
-    border: 1px solid rgba(0,0,0,.1);
+    transition: box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   }
-}
-.node{
-  position: absolute;
-  // transform: rotate(45deg);
-  margin-top: 80%;
-  margin-left: 20%;
-}
-.node .content {
-  position: relative;
-  opacity: 0;
-  border: none;
-}
-
-.node, .content {
-  border-radius: 100%;
-  width: 0%;
-  height: 0%;
-  top: 0%;
-  left: 0%;
-}
-
-.node {
-  transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
-}
-.content {
-  transition: box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
-}
-.layer-2 > .content {
-  transition: box-shadow .2s, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
-}
-.allow-content-transition > .content {
-  transition: box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
-}
+  .layer-2 > .content {
+    transition: box-shadow .2s, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+  }
+  .allow-content-transition > .content {
+    transition: box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+  }
 
 
-.node.layer-2 > .content {
-  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0);
-}
-.node.layer-2 > .content:hover {
-  box-shadow: 0px 0px 10px 1px rgba(0,0,0,.2);
-}
+  .node.layer-2 > .content {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0);
+  }
+  .node.layer-2 > .content:hover {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.2);
+  }
 
-.project-explorer {
+
+
+
+
+
   // properties to retain on top level
   .node.parent-blur {
     height: 100%;
@@ -154,36 +161,45 @@ $transitionLength: .7s; // .7s
     width: 80%;
     height: 16%;
   }
-}
-.text {
-  transition: all $transitionLength;
-  text-align: center;
-  font-family: 'Open Sans';
-  color: rgba(0,0,0,0);
-  padding: 2vw;
-}
-.layer-2 > .content > .text, .layer-1 > .content > .text {
-  color: rgba(250,250,250,1);
-}
-.layer-2 > .content > .text {
-  font-size: 1.7vw;
-  padding: 1.7vw 0vw;
-  font-weight: 100;
-}
-.layer-1 > .content > .text {
-  font-size: 4vw;
-  padding: 3vw 2vh;
-  font-weight: 100;
-}
-@media all and (max-width: 780px) {
+
+
+
+  .text {
+    transition: all $transitionLength;
+    text-align: center;
+    font-family: 'Open Sans';
+    color: rgba(0,0,0,0);
+    padding: 2vw;
+  }
+  .layer-2 > .content > .text, .layer-1 > .content > .text {
+    color: rgba(250,250,250,1);
+  }
   .layer-2 > .content > .text {
-    font-size: 13.3px;
-    padding: 13.3px 0px;
+    font-size: 1.7vw;
+    padding: 1.7vw 0vw;
     font-weight: 100;
   }
   .layer-1 > .content > .text {
-    font-size: 31.3px;
-    padding: 23.5px 15.5px;
+    font-size: 4vw;
+    padding: 3vw 2vh;
     font-weight: 100;
   }
+  @media all and (max-width: 780px) {
+    .layer-2 > .content > .text {
+      font-size: 13.3px;
+      padding: 13.3px 0px;
+      font-weight: 100;
+    }
+    .layer-1 > .content > .text {
+      font-size: 31.3px;
+      padding: 23.5px 15.5px;
+      font-weight: 100;
+    }
+  }
+
+
+
+
 }
+
+

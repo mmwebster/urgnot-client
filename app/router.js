@@ -8,7 +8,10 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('index', { path: '/' });
   this.route('app', function() {
-    this.route('settings');  
+    this.route('settings', function() {
+      this.route('projects');
+      this.route('organizations');
+    });  
   });
 });
 
