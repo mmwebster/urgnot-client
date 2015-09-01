@@ -5,14 +5,6 @@ export default Ember.Controller.extend({
 
   displayLogin: false,
 
-  createUser: function(data) {
-    var newUser = this.store.createRecord('user', {
-      id: data.uid,
-      email: data.currentUser.email
-    });
-    newUser.save();
-  },
-
   actions: {
     start: function() {
       this.toggleProperty('displayLogin');
@@ -36,6 +28,16 @@ export default Ember.Controller.extend({
               email: data.currentUser.email
             });
             newUser.save();
+
+            // find the correct organization
+            var emailDomain = data.currentUser.email.split('@')[1];
+            _this.store.find('organization', {email: emailDomain}).then(function(org) {
+              newUser.get('endOrganizations').addObject(org);
+
+              org.save().then(function() {
+                return newUser.save();
+              });
+            });
           }).then(function(user) {
             // user record found or now created
             _this.transitionToRoute('app');

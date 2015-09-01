@@ -1,9 +1,10 @@
 {
   "rules": {
+    ".read": "true",
     "users": {
       "$uid": {
-        ".read": "auth != null && auth.uid == $uid",
-        ".write": "auth != null && auth.uid == $uid",
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
         "organizations": {
           "$organization": {
             ".read": "auth != null"
@@ -12,10 +13,11 @@
       }
     },
     "organizations": {
+      ".read": "auth != null",
       "$organization": {
-        ".read": "auth != null",
         ".write": "auth != null"
       }
     }
   }
 }
+
