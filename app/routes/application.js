@@ -25,13 +25,13 @@ export default Ember.Route.extend({
         this.transitionTo('index');
       }
     },
-    willTransition: function(transition) {
+    willTransition: function() {
       // prevent un auth'ed clients attempt to access auth requiring routes
       if(!this.get('session').content.isAuthenticated) {
         this.transitionTo('application');
       }
     },
-    didTransition: function(transition) {
+    didTransition: function() {
       // prevent un auth'ed clients attempt to access auth requiring routes
       if(!this.get('session').content.isAuthenticated) {
         this.transitionTo('application');

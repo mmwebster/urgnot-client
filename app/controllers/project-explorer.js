@@ -9,9 +9,11 @@ export default Ember.Controller.extend({
     // blur project explorer if not at root
     if (!currentNode.get('isRoot')) {
 
-      // set transition length if not already
+      // set transition length form element style if not null
       if (this.get('transitionLength') === null) {
-        this.set('transitionLength', $('.project-explorer').css('transition').split(" ")[1].split("s")[0] * 1000);
+        var transitionStyle = $('.project-explorer').css('transition-duration');
+        var transitionInMilliseconds = parseFloat(transitionStyle.split("s")[0]) * 1000; // convert seconds->miliseconds
+        this.set('transitionLength', transitionInMilliseconds);
       }
       // temporarily add full array of transition to current node
       currentNode.set('allowContentTransition', true);
@@ -19,8 +21,7 @@ export default Ember.Controller.extend({
         currentNode.set('allowContentTransition', false);
       }, this.get('transitionLength'));
 
-      Em.debug('Blurring (' + currentNode.get('nodeModel.type') + ') - (' 
-            + currentNode.get('nodeModel.name') + ')');
+      Ember.debug('Blurring (' + currentNode.get('nodeModel.type') + ') - (' + currentNode.get('nodeModel.name') + ')');
 
       // demote this node
       currentNode.set('layer2', true);

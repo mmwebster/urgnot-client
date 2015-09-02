@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
     newRow: function() {
       var uid = this.get('controllers.application.currentUser.uid');
       var _this = this;
-      var user = this.store.find('user', uid).then(function(user) {
+      this.store.find('user', uid).then(function(user) {          // var user = 
         var newOrg = _this.store.createRecord('organization', {
           name: _this.get('newRowName'),
           email: _this.get('newRowEmail').split('@')[1] // remove the '@'

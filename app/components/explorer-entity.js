@@ -99,7 +99,7 @@ export default Ember.Component.extend({
 
   willInsertElement: function() {
     // populate node's parent's children
-    parent = this.get('parentComponent');
+    var parent = this.get('parentComponent');
     if (parent) {
       parent.get('children').push(this);
     }
@@ -113,7 +113,7 @@ export default Ember.Component.extend({
   didInsertElement: function() {
     // populate node's siblings, removing this
     var _this = this;
-    parent = this.get('parentComponent');
+    var parent = this.get('parentComponent');
     if (parent) {
       parent.get('children').forEach(function(node) {
         if (_this.toString() !== node.toString()) {
@@ -158,8 +158,7 @@ export default Ember.Component.extend({
 
   focus: function(autofocusTargetNode, treeNodeFocusPath, treeNodeFocusPathLength) {
     // perform focus on this node
-    Em.debug('Focusing (' + this.get('nodeModel.type') + ') - (' 
-          + this.get('nodeModel.name') + ')');
+    Ember.debug('Focusing (' + this.get('nodeModel.type') + ') - (' + this.get('nodeModel.name') + ')');
 
     // reset current node - for use in project explorer interfacing
     Window.projectExplorer.currentNode = this;
