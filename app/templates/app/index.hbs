@@ -1,3 +1,5 @@
-{{render "projectExplorer" model.entity}}
+<div class="project-explorer {{if hideExplorer 'hiden' 'shown'}}">
+  {{render "projectExplorer" model.entity}}
+</div>
 
 {{render "actionPanel"}}
