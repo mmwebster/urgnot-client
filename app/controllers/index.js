@@ -11,8 +11,10 @@ export default Ember.Controller.extend({
     },
     signIn: function() {
       if (!this.get('session').content.isAuthenticated) {
+
         var _this = this;
 
+        // auth user, or create and configure if doesn't exist
         this.get("session").open("firebase", { 
           provider: 'password',
           email: this.get('email'),
@@ -21,28 +23,30 @@ export default Ember.Controller.extend({
           Ember.debug(data.currentUser);
           var uid = _this.get('controllers.application.currentUser.uid');
           _this.store.find('user', uid).catch(function(error) {
-            debugger;
-            // no user record found
+            // no user record found create one
             var newUser = _this.store.createRecord('user', {
               id: data.uid,
               email: data.currentUser.email
             });
-            newUser.save();
 
-            // find the correct organization
-            var emailDomain = data.currentUser.email.split('@')[1];
-            _this.store.find('organization', {email: emailDomain}).then(function(org) {
-              newUser.get('endOrganizations').addObject(org);
-
-              org.save().then(function() {
-                return newUser.save();
+            // auto map this new user with an organization based on their email domain
+            _this.store.find('organization', {}).then(function(records) {
+              var emailDomain = data.currentUser.email.split('@')[1];
+              records.forEach(function(org) {
+                if(org.get('email') == emailDomain) {
+                  // found mapped organization, now add it to the user and save
+                  newUser.get('endOrganizations').addObject(org);
+                  org.save().then(function() {
+                    return newUser.save();
+                  });
+                }
               });
             });
+
           }).then(function(user) {
             // user record found or now created
             _this.transitionToRoute('app');
           });
-
 
         }, function(error) {
           console.warn('Incorrect credentials');
