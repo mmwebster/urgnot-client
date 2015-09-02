@@ -8,9 +8,16 @@ export default Ember.Controller.extend({
       var uid = this.get('controllers.application.currentUser.uid');
       var _this = this;
       this.store.find('user', uid).then(function(user) {          // var user = 
+
+        // split into email domain if possible
+        var emailDomain = _this.get('newRowEmail');
+        if(emailDomain.indexOf("@") != -1) {
+          emailDomain = emailDomain.split('@')[1];
+        }
+
         var newOrg = _this.store.createRecord('organization', {
           name: _this.get('newRowName'),
-          email: _this.get('newRowEmail').split('@')[1] // remove the '@'
+          email: emailDomain// remove the '@'
         });
 
         user.get('adminOrganizations').addObject(newOrg);
