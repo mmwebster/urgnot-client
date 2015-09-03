@@ -2,13 +2,21 @@
   <div class='header'>
     <h3>Messenger</h3>
   </div>
+  {{#if errorIsDisplayed}}
+    <div class='row'>
+      {{error}}
+    </div>
+  {{/if}}
   <div class='body'>
     <div class="threads {{if threadFocused 'hide' 'show'}}">
-      <div class='row' {{action 'createThread'}}><button>New Message</button> {{input type='text' value=newThreadTitle}}</div>
+      <div class='row newThread'>
+        {{input type="text" value=newThreadName class="name" placeholder="Subject"}}
+        <button type="submit" {{action 'createThread'}} class="submit">+</button>
+      </div>
       {{#each threads as |thread|}}
         <div class='row thread' {{action 'focusThread' thread}}>
-          <div class='col name'>A New Message Thread!</div>
-          <div class='col name'>id: {{thread.name}}</div>
+          <div class='col name'>{{thread.name}} :: {{thread.date}}</div>
+          <div class='col name'>id: {{thread.authorUid}}</div>
         </div>
       {{/each}}
     </div>

@@ -6,6 +6,7 @@
   right: 5%;
   background-color: rgba(0,124,165,.7);
   .header {
+    height: 50px;
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #fff;
@@ -13,7 +14,8 @@
     background-color: rgba(0,124,165,.8);
   }
   .body {
-    overflow: hidden;
+    height: calc(100% - 50px);
+    overflow: scroll;
     width: 100%;
     .threads, .messages {
       position: relative;

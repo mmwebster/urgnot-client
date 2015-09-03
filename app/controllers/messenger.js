@@ -11,6 +11,11 @@ export default Ember.Controller.extend({
     return this.get('thread.messages');
   }.property('threadFocused','thread'),
 
+  newThreadName: "",
+
+  errorIsDisplayed: false,
+  error: null,
+
   needs: ['application'],
   data: function() {
   }.property(),
@@ -24,23 +29,41 @@ export default Ember.Controller.extend({
     
     // Need to figure out how to filter by user/project/organization
     this.store.find('thread', {
+      orderBy: 'date'
     }).then(function(threads) {
       _this.set('threads', threads);
     });
   }.on("init"),
 
+  displayError: function(error) {
+    this.set('errorIsDisplayed', true);
+    this.set('error', error);
+    var _this = this;
+    Ember.run.later(function() {
+      _this.set('errorIsDisplayed', false);
+      _this.set('error', null);
+    }, 3500);
+  },
+
   actions: {
     createThread: function() {
-      var _this = this;
-      var newThread = this.store.createRecord('thread', {
-        name: this.get('uid')
-      });
-      this.store.find('user', this.get('uid')).then(function(user) {
-        newThread.get('endUser').addObject(user);
-        user.save().then(function() {
-          return newThread.save();
+      if(this.get('newThreadName') != "") {
+        var _this = this;
+        var date = -1 * Date.now();
+        var newThread = this.store.createRecord('thread', {
+          name: this.get('newThreadName'),
+          date: date,
+          authorUid: this.get('uid')
         });
-      });
+        this.store.find('user', this.get('uid')).then(function(user) {
+          newThread.get('endUser').addObject(user);
+          user.save().then(function() {
+            return newThread.save();
+          });
+        });
+      } else {
+        this.displayError("Subject cannot be empty");
+      }
     },
     createMessage: function() {
       
