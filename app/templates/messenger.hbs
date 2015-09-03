@@ -15,8 +15,9 @@
       </div>
       {{#each threads as |thread|}}
         <div class='row thread' {{action 'focusThread' thread}}>
-          <div class='col name'>{{thread.name}} :: {{thread.date}}</div>
-          <div class='col name'>id: {{thread.authorUid}}</div>
+          <div class='col name'>{{thread.name}}</div>
+          <div class='col arrow'>></div>
+          <div class='clearfix'></div>
         </div>
       {{/each}}
     </div>
