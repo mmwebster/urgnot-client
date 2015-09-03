@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr('string'),
-  participants: DS.hasMany('user'),
+  endUser: DS.belongsTo('user');
+  adminUser: DS.belongsTo('user');
   messages: DS.hasMany('message')
 });

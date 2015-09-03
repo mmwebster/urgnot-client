@@ -2,12 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    return this.get('routeModel');
+    var uid = this.controllerFor('application').get('currentUser.uid');
+    return this.store.find('user', uid);
   },
   setupController: function(controller, model) {
-    this.set('model', model);
-    
-
+    controller.set('model', model);
+    controller.set('explorerRoot', this.get('routeModel.entity'));
   },
   routeModel: {
     // top level entity is project level

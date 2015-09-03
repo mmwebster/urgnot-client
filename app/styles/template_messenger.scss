@@ -1,0 +1,18 @@
+.messenger {
+  width: 275px;
+  height: 400px;
+  position: absolute;
+  bottom: 0px;
+  right: 5%;
+  .header {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+    color: #fefefe;
+    background-color: rgba(0,124,165,.8);
+  }
+  .body {
+    background-color: rgba(0,124,165,.7);
+    height: 100%;
+  }
+}
