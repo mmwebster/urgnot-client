@@ -30,7 +30,10 @@ export default Ember.Controller.extend({
             });
 
             // auto map this new user with an organization based on their email domain
-            _this.store.find('organization', {}).then(function(records) {
+            _this.store.find('organization', {
+              orderBy: 'email',
+              equalTo: 'ucsc.edu'
+            }).then(function(records) {
               var emailDomain = data.currentUser.email.split('@')[1];
               records.forEach(function(org) {
                 if(org.get('email') == emailDomain) {
