@@ -7,14 +7,33 @@ export default Ember.Controller.extend({
     return this.get('controllers.application.currentUser.uid');
   }.property(),
   threadFocused: false,
+
   messages: function() {
     if (this.get('threadFocused')) {
       Ember.debug('In messages');
-      // autoscroll new messages
-      $(".messenger .messages").animate({ scrollTop: $(".messenger .messages")[0].scrollHeight }, 500)
+      var scrollheight = $(".messenger .messages .messages-body")[0].scrollHeight;
+      $(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600)
       return this.get('thread.messages');
     }
-  }.property('threadFocused', 'thread', 'updateMessagesToggle'),
+  }.property('threadFocused', 'thread', 'thread.messages.length', 'updateMessagesToggle'),
+
+  // prepares a scroll to be made, uses a 300ms buffer to prevent scroll spaming
+  autoScrollBuffer: function() {
+    this.set('autoScrollPrepared', true);
+  }.observes('thread.messages.@each.body'),
+
+  autoScrollPrepared: false,
+  autoScroll: function() {
+    var _this = this;
+    Ember.run.later(function() {
+      // autoscroll new messages
+      Ember.debug('making scroll');
+      var scrollheight = $(".messenger .messages .messages-body")[0].scrollHeight;
+      $(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600)
+      // clear prep buffer;
+      _this.set('autoScrollPrepared', false);
+    }, 300);
+  }.observes('autoScrollPrepared'),
 
   updateMessagesToggle: false,
 

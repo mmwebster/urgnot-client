@@ -42,10 +42,10 @@
       transition: all .4s;
       width: 50%;
       height: 100%;
-      overflow-y: scroll;
       float: left;
     }
     .threads {
+      overflow-y: scroll;
       background-color: #fff;
       .row.newThread {
         border-bottom: 1px solid rgba(0, 136, 255, 0.8);
@@ -113,6 +113,7 @@
     .messages {
       .messages-body {
         height: calc(100% - 47px);
+        overflow-y: scroll;
       }
       .newMessage {
         height: 47px;
