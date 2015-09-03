@@ -61,6 +61,7 @@ export default Ember.Controller.extend({
             return newThread.save();
           });
         });
+        this.set('newThreadName', "");
       } else {
         this.displayError("Subject cannot be empty");
       }
