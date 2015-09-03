@@ -1,6 +1,10 @@
 <div class='messenger'>
   <div class='header'>
-    <h3>Messenger</h3>
+    {{#if displayThreadTitle}}
+      <h3>{{currentThreadTitle}}</h3>
+    {{else}}
+      <h3>Messenger</h3>
+    {{/if}}
   </div>
   {{#if errorIsDisplayed}}
     <div class='row'>
@@ -10,8 +14,10 @@
   <div class='body'>
     <div class="threads {{if threadFocused 'hide' 'show'}}">
       <div class='row newThread'>
-        {{input type="text" value=newThreadName class="name" placeholder="Subject"}}
-        <button type="submit" {{action 'createThread'}} class="submit">+</button>
+        <form>
+          {{input type="text" value=newThreadName class="name" placeholder="Subject"}}
+          <input type="submit" {{action 'createThread'}} class="submit" value="+">
+        </form>
       </div>
       {{#each threads as |thread|}}
         <div class='row thread' {{action 'focusThread' thread}}>
@@ -28,6 +34,12 @@
           <div class='col name'>id: {{thread.name}}</div>
         </div>
       {{/each}}
+      <div class='row newMessage'>
+        <form>
+          {{input type="text" value=newMessageName class="name" placeholder="Send something..."}}
+          <input type="submit" {{action 'createMessage'}} class="submit" value=">" />
+        </form>
+      </div>
     </div>
     <div class='clearfix'></div>
   </div>

@@ -84,7 +84,48 @@
       left: -275px;
     }
     .messages.show {
-      
+      left: 0px;
+    }
+    .messages.hide {
+      left: 275px;
+    }
+    .messages {
+      .newMessage {
+        height: auto;
+        box-sizing: border-box;
+        width: 273px;
+        position: fixed;
+        bottom: 0px;
+        .name {
+          width: 80%;
+          font-size: 16px;
+          color: rgba(0, 100, 0, 0.7);
+          border: none;
+          padding: 10px;
+          box-sizing: border-box;
+          float: left;
+          height: 47px;
+        }
+        .submit {
+          height: 47px;
+          width: 20%;
+          font-size: 25px;
+          color: rgba(0,136,255,1);
+          background-color: #fff;;
+          box-sizing: border-box;
+          transition: all 0.2s;
+          border: none;
+        }
+        .submit:hover {
+          color: rgba(0, 100, 0, 0.6);
+          background-color: #fff;
+          cursor: pointer;
+        }
+      }
+      .row {
+        .col {
+        }
+      }
     }
   }
 }

@@ -88,6 +88,11 @@ h2.page-header.active.action:hover {
   cursor: pointer;
 }
 
+// disables ugly highlighting on form input focus
+input:focus, button:focus, textarea:focus {
+    outline-width: 0;
+}
+
 // general
 ul {
   margin: 0px;

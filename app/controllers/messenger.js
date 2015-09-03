@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
   }.property('threadFocused','thread'),
 
   newThreadName: "",
+  currentThreadTitle: "",
 
   errorIsDisplayed: false,
   error: null,
@@ -72,6 +73,8 @@ export default Ember.Controller.extend({
     focusThread: function(thread) {
       this.set('threadFocused', true);
       this.set('thread', thread);
+      this.set('displayThreadTitle', true);
+      this.set('currentThreadTitle', thread.get('name'));
     }
   }
 });
