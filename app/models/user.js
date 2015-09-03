@@ -9,5 +9,6 @@ export default DS.Model.extend({
   adminOrganizations: DS.hasMany('organization', {inverse: 'adminUsers', async: true}),
   tags: DS.belongsTo('tag'),
   projects: DS.hasMany('project', {inverse: 'author'}),
-  collaborations: DS.hasMany('project', {inverse: 'collaborators'})
+  collaborations: DS.hasMany('project', {inverse: 'collaborators'}),
+  threads: DS.hasMany('thread', {inverse: 'endUser'})
 });

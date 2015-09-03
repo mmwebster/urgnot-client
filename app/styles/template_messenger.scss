@@ -14,5 +14,14 @@
   .body {
     background-color: rgba(0,124,165,.7);
     height: 100%;
+    .threads {
+      .thread {
+        padding: 10px;
+        border-top: 1px solid #fff;
+        .name {
+          font-weight: bold;
+        }
+      }
+    }
   }
 }

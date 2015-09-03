@@ -2,20 +2,45 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   updates: -1,
+  uid: function() {
+    return this.get('controllers.application.currentUser.uid');
+  }.property(),
+  threadFocused: false,
+  messages: [],
+
   needs: ['application'],
   data: function() {
   }.property(),
        
   modelIsUpdated: function() {
-    debugger;
   }.property('threads'),
 
   initController: function() {
-    debugger;
     var _this = this;
+    var uid = this.get('uid');
     
-    this.store.find('user', this.get('controllers.application.currentUser.uid')).then(function(user) {
-      _this.set('newModel', user);
+    // Need to figure out how to filter by user/project/organization
+    this.store.find('thread', {
+    }).then(function(threads) {
+      _this.set('threads', threads);
     });
-  }.on("init")
+  }.on("init"),
+
+  actions: {
+    createThread: function() {
+      var _this = this;
+      var newThread = this.store.createRecord('thread', {
+        name: this.get('uid')
+      });
+      this.store.find('user', this.get('uid')).then(function(user) {
+        newThread.get('endUser').addObject(user);
+        user.save().then(function() {
+          return newThread.save();
+        });
+      });
+    },
+    createMessage: function() {
+      
+    }
+  }
 });
