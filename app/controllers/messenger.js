@@ -1,15 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  needs: ['application'],
   updates: -1,
   uid: function() {
     return this.get('controllers.application.currentUser.uid');
   }.property(),
   threadFocused: false,
-  thread: null,
   messages: function() {
-    return this.get('thread.messages');
-  }.property('threadFocused','thread'),
+    if (this.get('threadFocused')) {
+      return this.get('thread.messages');
+    }
+  }.property('threadFocused', 'thread', 'updateMessagesToggle'),
+
+  updateMessagesToggle: false,
 
   newThreadName: "",
   currentThread: "",
@@ -17,7 +21,6 @@ export default Ember.Controller.extend({
   errorIsDisplayed: false,
   error: null,
 
-  needs: ['application'],
   data: function() {
   }.property(),
        
@@ -70,24 +73,29 @@ export default Ember.Controller.extend({
     createMessage: function() {
       // retrieve message, then nullify
       var body = this.get('newMessageBody');
-      this.set('newMessageBody');
-      var author = this.get('controller.application.currentUser.data');
+      this.set('newMessageBody', "");
+      var _this = this;
+      var author = this.get('controllers.application.currentUser.data');
 
       // send along the message to thread
-      var date = Date.now();
-      var newMessage = this.store.createRecord('message', {
-        author: author,
-        date: date,
-        body: body,
-      });
+      author.then(function(_author) {
+        var date = Date.now();
+        var newMessage = _this.store.createRecord('message', {
+          author: _author,
+          date: date,
+          body: body
+        });
 
-      var thread = this.get('currentThread');
-      newMessage.set('thread', thread);
-      thread.save().then(function() {
-        return newMessage.save();
+        var thread = _this.get('currentThread');
+        newMessage.set('thread', thread);
+        thread.save().then(function() {
+          return newMessage.save();
+        });
+
+        Ember.debug('INSERTED: author: ' + _author + ', date: ' + date + ', body: ' + body);
+        _this.toggleProperty('updateMessagesToggle');
+        
       });
-      
-      console.log('inserting ' + body);
     },
     focusThread: function(thread) {
       this.set('threadFocused', true);
