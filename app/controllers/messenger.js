@@ -109,6 +109,12 @@ export default Ember.Controller.extend({
       this.set('thread', thread);
       this.set('displayThreadTitle', true);
       this.set('currentThread', thread);
+    },
+    blurThread: function() {
+      this.set('threadFocused', false);
+      this.set('thread', null);
+      this.set('displayThreadTitle', false);
+      this.set('currentThread', null);
     }
   }
 });
