@@ -9,6 +9,9 @@ export default Ember.Controller.extend({
   threadFocused: false,
   messages: function() {
     if (this.get('threadFocused')) {
+      Ember.debug('In messages');
+      // autoscroll new messages
+      $(".messenger .messages").animate({ scrollTop: $(".messenger .messages")[0].scrollHeight }, 500)
       return this.get('thread.messages');
     }
   }.property('threadFocused', 'thread', 'updateMessagesToggle'),
@@ -27,13 +30,16 @@ export default Ember.Controller.extend({
   modelIsUpdated: function() {
   }.property('threads'),
 
+  autoscrollMessages: function() {
+  }.property('messages'),
+
   initController: function() {
     var _this = this;
     var uid = this.get('uid');
     
     // Need to figure out how to filter by user/project/organization
     this.store.find('thread', {
-      orderBy: 'date'
+      orderByChild: 'date'
     }).then(function(threads) {
       _this.set('threads', threads);
     });
@@ -95,6 +101,7 @@ export default Ember.Controller.extend({
         Ember.debug('INSERTED: author: ' + _author + ', date: ' + date + ', body: ' + body);
         _this.toggleProperty('updateMessagesToggle');
         
+        Ember.debug('In end of createMessage');
       });
     },
     focusThread: function(thread) {

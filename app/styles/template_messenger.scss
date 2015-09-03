@@ -14,14 +14,20 @@
   }
   .body {
     height: calc(100% - 50px);
-    overflow: scroll;
+    overflow: hidden;
     width: 100%;
     border-left: 1px solid rgba(0, 136, 255, 0.8);
     border-right: 1px solid rgba(0, 136, 255, 0.8);;
+    .body-inner-wrapper {
+      width: 200%;
+      height: 100%;
+    }
     .threads, .messages {
-      position: relative;
+      position: static;
       transition: all .4s;
-      width: 275px;
+      width: 50%;
+      height: 100%;
+      overflow-y: scroll;
       float: left;
     }
     .threads {
@@ -78,10 +84,10 @@
       }
     }
     .threads.show {
-      left: 0px;
+      margin-left: 0px;
     }
     .threads.hide {
-      left: -275px;
+      margin-left: -275px;
     }
     .messages.show {
       left: 0px;
@@ -90,6 +96,7 @@
       left: 275px;
     }
     .messages {
+      padding-bottom: 50px;
       .newMessage {
         height: auto;
         box-sizing: border-box;
@@ -122,8 +129,12 @@
           cursor: pointer;
         }
       }
-      .row {
-        .col {
+      .row.message {
+        border-left: 2px solid rgba(0, 136, 255, 0.8);
+        padding: 10px;
+        width: 95%;
+        .col.body {
+          border: none;
         }
       }
     }

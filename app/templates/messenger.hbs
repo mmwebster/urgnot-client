@@ -12,35 +12,37 @@
     </div>
   {{/if}}
   <div class='body'>
-    <div class="threads {{if threadFocused 'hide' 'show'}}">
-      <div class='row newThread'>
-        <form>
-          {{input type="text" value=newThreadName class="name" placeholder="Subject"}}
-          <input type="submit" {{action 'createThread'}} class="submit" value="+">
-        </form>
+    <div class='body-inner-wrapper'>
+      <div class="threads {{if threadFocused 'hide' 'show'}}">
+        <div class='row newThread'>
+          <form>
+            {{input type="text" value=newThreadName class="name" placeholder="Subject"}}
+            <input type="submit" {{action 'createThread'}} class="submit" value="+">
+          </form>
+        </div>
+        {{#each threads as |thread|}}
+          <div class='row thread' {{action 'focusThread' thread}}>
+            <div class='col name'>{{thread.name}}</div>
+            <div class='col arrow'>></div>
+            <div class='clearfix'></div>
+          </div>
+        {{/each}}
       </div>
-      {{#each threads as |thread|}}
-        <div class='row thread' {{action 'focusThread' thread}}>
-          <div class='col name'>{{thread.name}}</div>
-          <div class='col arrow'>></div>
+      <div class="messages {{if threadFocused 'show' 'hide'}}">
+        {{#each messages as |message|}}
+          <div class='row message'>
+            <div class='col body'>{{message.body}}</div>
+          </div>
           <div class='clearfix'></div>
+        {{/each}}
+        <div class='row newMessage'>
+          <form>
+            {{input type="text" value=newMessageBody class="name" placeholder="Send something..."}}
+            <input type="submit" {{action 'createMessage'}} class="submit" value=">" />
+          </form>
         </div>
-      {{/each}}
-    </div>
-    <div class="messages {{if threadFocused 'show' 'hide'}}">
-      {{#each messages as |message|}}
-        <div class='row message'>
-          <div class='col body'>{{message.body}}</div>
-        </div>
-        <div class='clearfix'></div>
-      {{/each}}
-      <div class='row newMessage'>
-        <form>
-          {{input type="text" value=newMessageBody class="name" placeholder="Send something..."}}
-          <input type="submit" {{action 'createMessage'}} class="submit" value=">" />
-        </form>
       </div>
+      <div class='clearfix'></div>
     </div>
-    <div class='clearfix'></div>
   </div>
 </div>
