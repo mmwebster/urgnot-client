@@ -9,6 +9,15 @@
           "$organization": {
             ".read": "auth != null"
           }
+        },
+        "threads": {
+          ".read": "true",
+          "$thread": {
+            "messages": {
+              "$message": {
+              }
+            }
+          }
         }
       }
     },
@@ -20,4 +29,3 @@
     }
   }
 }
-

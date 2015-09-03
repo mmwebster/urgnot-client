@@ -4,6 +4,11 @@ export default Ember.Route.extend({
   model: function() {
     return this.get('routeModel');
   },
+  setupController: function(controller, model) {
+    this.set('model', model);
+    
+
+  },
   routeModel: {
     // top level entity is project level
     entity: {
