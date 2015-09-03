@@ -3,24 +3,23 @@
     <h3>Messenger</h3>
   </div>
   <div class='body'>
-    <div class='row' {{action 'createThread'}}><button>New Message</button> {{input type='text' value=newThreadTitle}}</div>
-    <div class='threads'>
-    {{#each threads as |thread|}}
-      <div class='row thread' {{action 'focusThread' thread}}>
-        <div class='col name'>A New Message Thread!</div>
-        <div class='col name'>id: {{thread.name}}</div>
-      </div>
-    {{/each}}
+    <div class="threads {{if threadFocused 'hide' 'show'}}">
+      <div class='row' {{action 'createThread'}}><button>New Message</button> {{input type='text' value=newThreadTitle}}</div>
+      {{#each threads as |thread|}}
+        <div class='row thread' {{action 'focusThread' thread}}>
+          <div class='col name'>A New Message Thread!</div>
+          <div class='col name'>id: {{thread.name}}</div>
+        </div>
+      {{/each}}
     </div>
-    {{#if threadFocused}}
-      <div class='messages'>
-        {{#each messages as |message|}}
-          <div class='row message'>
-            <div class='col '>A New Message Thread!</div>
-            <div class='col name'>id: {{thread.name}}</div>
-          </div>
-        {{/each}}
-      </div>
-    {{/if}}
+    <div class="messages {{if threadFocused 'show' 'hide'}}">
+      {{#each messages as |message|}}
+        <div class='row message'>
+          <div class='col '>A New Message Thread!</div>
+          <div class='col name'>id: {{thread.name}}</div>
+        </div>
+      {{/each}}
+    </div>
+    <div class='clearfix'></div>
   </div>
 </div>

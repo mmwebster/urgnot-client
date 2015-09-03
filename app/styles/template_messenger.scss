@@ -13,6 +13,14 @@
     background-color: rgba(0,124,165,.8);
   }
   .body {
+    overflow: hidden;
+    width: 100%;
+    .threads, .messages {
+      position: relative;
+      transition: all .7s;
+      width: 275px;
+      float: left;
+    }
     .threads {
       .thread {
         padding: 10px;
@@ -21,6 +29,15 @@
           font-weight: bold;
         }
       }
+    }
+    .threads.show {
+      left: 0px;
+    }
+    .threads.hide {
+      left: -275px;
+    }
+    .messages.show {
+      
     }
   }
 }

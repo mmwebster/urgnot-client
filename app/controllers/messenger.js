@@ -6,7 +6,10 @@ export default Ember.Controller.extend({
     return this.get('controllers.application.currentUser.uid');
   }.property(),
   threadFocused: false,
-  messages: [],
+  thread: null,
+  messages: function() {
+    return this.get('thread.messages');
+  }.property('threadFocused','thread'),
 
   needs: ['application'],
   data: function() {
@@ -41,6 +44,10 @@ export default Ember.Controller.extend({
     },
     createMessage: function() {
       
+    },
+    focusThread: function(thread) {
+      this.set('threadFocused', true);
+      this.set('thread', thread);
     }
   }
 });
