@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
   }.property('threadFocused','thread'),
 
   newThreadName: "",
-  currentThreadTitle: "",
+  currentThread: "",
 
   errorIsDisplayed: false,
   error: null,
@@ -68,13 +68,32 @@ export default Ember.Controller.extend({
       }
     },
     createMessage: function() {
+      // retrieve message, then nullify
+      var body = this.get('newMessageBody');
+      this.set('newMessageBody');
+      var author = this.get('controller.application.currentUser.data');
+
+      // send along the message to thread
+      var date = Date.now();
+      var newMessage = this.store.createRecord('message', {
+        author: author,
+        date: date,
+        body: body,
+      });
+
+      var thread = this.get('currentThread');
+      newMessage.set('thread', thread);
+      thread.save().then(function() {
+        return newMessage.save();
+      });
       
+      console.log('inserting ' + body);
     },
     focusThread: function(thread) {
       this.set('threadFocused', true);
       this.set('thread', thread);
       this.set('displayThreadTitle', true);
-      this.set('currentThreadTitle', thread.get('name'));
+      this.set('currentThread', thread);
     }
   }
 });
