@@ -17,9 +17,4 @@ export default Ember.Controller.extend({
       return null;
     }
   }.property('session.content.isAuthenticated'),
-
-  // curentUserData: function() {
-  //   debugger;
-  //   return 
-  // }.property('updateData')
 });

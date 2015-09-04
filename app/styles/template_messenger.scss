@@ -146,12 +146,21 @@
         }
       }
       .row.message {
-        border-left: 2px solid rgba(0, 136, 255, 0.8);
         padding: 10px;
-        width: 95%;
+        width: 100%;
         .col.body {
           border: none;
         }
+      }
+      .row.message.type-admin {
+        border-left: 2px solid rgba(0, 136, 255, 0.8);
+        text-align: left;
+        color: rgba(0, 136, 255, 1);
+      }
+      .row.message.type-student {
+        border-right: 2px solid rgba(0, 136, 255, 0.8);
+        color: rgba(0, 0, 0, 0.8);
+        text-align: right;
       }
     }
   }

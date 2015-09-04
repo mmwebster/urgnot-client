@@ -41,6 +41,7 @@ export default Ember.Controller.extend({
                   newUser.get('endOrganizations').addObject(org);
                   org.save().then(function() {
                     return newUser.save();
+                    Em.debug('Created new user.');
                   });
                 }
               });
