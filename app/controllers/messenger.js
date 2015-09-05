@@ -7,8 +7,6 @@ export default Ember.Controller.extend({
   threadFocused: false,
   isMinimized: false,
 
-  updateMessagesToggle: false,
-
   newThreadName: "",
   currentThread: "",
 
@@ -20,21 +18,18 @@ export default Ember.Controller.extend({
     return this.get('controllers.application.currentUser.uid');
   }.property(),
 
-  messages: Ember.computed('threadFocused', 'thread', 'thread.messages.length', 'updateMessagesToggle', function(key, value) {
+  messages: Ember.computed('threadFocused', 'thread.messages.length', function(key, value) {
     // auto scroll and other func.s that required to be in messages
     if (this.get('threadFocused')) {
       Ember.debug('In messages');
       var scrollheight = $(".messenger .messages .messages-body")[0].scrollHeight;
       $(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600)
     }
-    // func.s that simply require a thread to be defined
-    if (this.get('thread')) {
-      var messages = this.get('thread.messages');
-      Ember.debug('Updated messages: ' + messages);
-      return messages;
-    } else {
-      return [{'body': 'No messages'}];
-    }
+    var threadId = this.get('thread.id');
+    return this.store.find('message', {
+      orderBy: 'thread',
+      equalTo: threadId
+    });
   }),
 
   // prepares a scroll to be made, uses a 300ms buffer to prevent scroll spaming
@@ -76,6 +71,17 @@ export default Ember.Controller.extend({
     }, 3500);
   },
 
+  focusThread: function(thread) {
+    this.set('threadFocused', true);
+    this.set('thread', thread);
+    this.set('displayThreadTitle', true);
+    this.set('currentThread', thread);
+    // focus new message field
+    Ember.run.later(function() {
+      $(".newMessage input.name").focus();
+    }, 300);
+  },
+
   actions: {
     createThread: function() {
       if(this.get('newThreadName') != "") {
@@ -88,8 +94,11 @@ export default Ember.Controller.extend({
         });
         this.store.find('user', this.get('uid')).then(function(user) {
           newThread.get('endUser').addObject(user);
-          user.save().then(function() {
+          var saved = user.save().then(function() {
             return newThread.save();
+          });
+          saved.then(function(thread) {
+            _this.focusThread(thread);
           });
         });
         this.set('newThreadName', "");
@@ -115,21 +124,20 @@ export default Ember.Controller.extend({
 
         var thread = _this.get('currentThread');
         newMessage.set('thread', thread);
-        thread.save().then(function() {
+        var saved = thread.save().then(function() {
           return newMessage.save();
         });
 
+        // saved.then(function() {
+        //   newMessage.deleteRecord();
+        // });
+
         Ember.debug('INSERTED: author: ' + _author + ', date: ' + date + ', body: ' + body);
-        _this.toggleProperty('updateMessagesToggle');
         
-        Ember.debug('In end of createMessage');
       });
     },
     focusThread: function(thread) {
-      this.set('threadFocused', true);
-      this.set('thread', thread);
-      this.set('displayThreadTitle', true);
-      this.set('currentThread', thread);
+      this.focusThread(thread);
     },
     blurThread: function() {
       this.set('threadFocused', false);
