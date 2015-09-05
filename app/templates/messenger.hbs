@@ -1,11 +1,12 @@
-<div class='messenger {{isMinimized}}'>
-  <div class='header' {{action 'minimize'}}>
+<div class="messenger {{if isMinimized 'is-minimized'}}">
+  <div class='header' >
     {{#if displayThreadTitle}}
       <div class='back' {{action 'blurThread'}}>&#60;</div>
       <h3>{{currentThread.name}}</h3>
     {{else}}
       <h3>Messenger</h3>
     {{/if}}
+    <div class="minimize-toggle {{if isMinimized 'is-minimized'}}" {{action 'minimize'}}>—<br/>—<br/>—</div>
   </div>
   {{#if errorIsDisplayed}}
     <div class='row'>

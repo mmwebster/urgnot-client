@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
   updates: -1,
   autoScrollPrepared: false,
   threadFocused: false,
+  isMinimized: false,
 
   updateMessagesToggle: false,
 
