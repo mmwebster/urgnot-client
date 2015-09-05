@@ -8,15 +8,22 @@ export default Ember.Controller.extend({
   }.property(),
   threadFocused: false,
 
-  messages: function() {
+  messages: Ember.computed('threadFocused', 'thread', 'thread.messages.length', 'updateMessagesToggle', function(key, value) {
     // auto scroll and other func.s that required to be in messages
     if (this.get('threadFocused')) {
       Ember.debug('In messages');
       var scrollheight = $(".messenger .messages .messages-body")[0].scrollHeight;
       $(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600)
     }
-    return this.get('thread.messages');
-  }.property('threadFocused', 'thread', 'thread.messages.length', 'updateMessagesToggle'),
+    // func.s that simply require a thread to be defined
+    if (this.get('thread')) {
+      var messages = this.get('thread.messages');
+      Ember.debug('Updated messages: ' + messages);
+      return messages;
+    } else {
+      return [{'body': 'No messages'}];
+    }
+  }),
 
   // prepares a scroll to be made, uses a 300ms buffer to prevent scroll spaming
   autoScrollBuffer: function() {

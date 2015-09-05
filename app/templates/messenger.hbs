@@ -31,6 +31,7 @@
       </div>
       <div class="messages {{if threadFocused 'show' 'hide'}}">
         <div class="messages-body">
+          <span style="display: none;">{{messages.length}}</span>
           {{#each messages as |message|}}
             <div class="row message {{if message.author.typeIsStudent 'type-student'}}{{if message.author.typeIsAdmin 'type-admin'}}">
               <div class="col body">{{message.body}}</div>
