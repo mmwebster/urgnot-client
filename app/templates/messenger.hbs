@@ -1,5 +1,5 @@
-<div class='messenger'>
-  <div class='header'>
+<div class='messenger {{isMinimized}}'>
+  <div class='header' {{action 'minimize'}}>
     {{#if displayThreadTitle}}
       <div class='back' {{action 'blurThread'}}>&#60;</div>
       <h3>{{currentThread.name}}</h3>

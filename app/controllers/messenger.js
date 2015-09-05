@@ -3,10 +3,21 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   needs: ['application'],
   updates: -1,
+  autoScrollPrepared: false,
+  threadFocused: false,
+
+  updateMessagesToggle: false,
+
+  newThreadName: "",
+  currentThread: "",
+
+  errorIsDisplayed: false,
+  error: null,
+
+
   uid: function() {
     return this.get('controllers.application.currentUser.uid');
   }.property(),
-  threadFocused: false,
 
   messages: Ember.computed('threadFocused', 'thread', 'thread.messages.length', 'updateMessagesToggle', function(key, value) {
     // auto scroll and other func.s that required to be in messages
@@ -30,7 +41,6 @@ export default Ember.Controller.extend({
     this.set('autoScrollPrepared', true);
   }.observes('thread.messages.@each.body'),
 
-  autoScrollPrepared: false,
   autoScroll: function() {
     var _this = this;
     Ember.run.later(function() {
@@ -42,23 +52,6 @@ export default Ember.Controller.extend({
       _this.set('autoScrollPrepared', false);
     }, 300);
   }.observes('autoScrollPrepared'),
-
-  updateMessagesToggle: false,
-
-  newThreadName: "",
-  currentThread: "",
-
-  errorIsDisplayed: false,
-  error: null,
-
-  data: function() {
-  }.property(),
-       
-  modelIsUpdated: function() {
-  }.property('threads'),
-
-  autoscrollMessages: function() {
-  }.property('messages'),
 
   initController: function() {
     var _this = this;
@@ -140,6 +133,9 @@ export default Ember.Controller.extend({
     blurThread: function() {
       this.set('threadFocused', false);
       this.set('displayThreadTitle', false);
+    },
+    minimize: function() {
+      this.toggleProperty('isMinimized');
     }
   }
 });
