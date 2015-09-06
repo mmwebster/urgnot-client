@@ -4,14 +4,14 @@ export default Ember.Controller.extend({
   transitionLength: null,
 
   back: function(autoback) {
-    var currentNode = Window.projectExplorer.currentNode;
+    var currentNode = window.projectExplorer.currentNode;
     
     // blur project explorer if not at root
     if (!currentNode.get('isRoot')) {
 
       // set transition length form element style if not null
       if (this.get('transitionLength') === null) {
-        var transitionStyle = $('.project-explorer').css('transition-duration');
+        var transitionStyle = Ember.$('.project-explorer').css('transition-duration');
         var transitionInMilliseconds = parseFloat(transitionStyle.split("s")[0]) * 1000; // convert seconds->miliseconds
         this.set('transitionLength', transitionInMilliseconds);
       }
@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
       });
 
       // reset current node - for use in project explorer interfacing
-      Window.projectExplorer.currentNode = currentNode.get('parentComponent');
+      window.projectExplorer.currentNode = currentNode.get('parentComponent');
 
       // continue back if autoback is true
       if (autoback) {
