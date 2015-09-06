@@ -1,15 +1,34 @@
-<div class='content type-{{nodeModel.type}}' style='transform: rotate(-{{rotation}}deg) !important;'>
+<div class='content type-{{nodeModel.displayData}}' style='transform: rotate(-{{rotation}}deg) !important;'>
   {{#if layer2}}
+    layer 2
     <div class='actionable' {{action 'click'}}></div>
   {{/if}}
-  <p class='text'>{{name}}
-  {{#if layer1}} 
-    <p style='font-size: 13px; color: #666;'>{{nodeModel._content}}</p>
+  {{#if id}}
+    yes id
+    <p class='text'>{{name}}
+    {{#if layer1}} 
+      lyaer 1
+      <p style='font-size: 13px; color: #666;'>{{nodeModel._content}}</p>
+    {{/if}}
+    </p>
+  {{else}}
+    no id
+    {{#if this.isRoot}}
+      no root node
+    {{/if}}
   {{/if}}
-  </p>
   {{#if nodeModel.children}}
+    node has children
     {{#each nodeModel.children as |child index|}}
-      {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index}}
+      {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index isAdmin=this.isAdmin}}
     {{/each}}
+  {{else}}
+    node has no children
+    {{#if isAdmin}}
+      is admin
+      <p>Create child node</p>
+    {{else}}
+      not admin
+    {{/if}}
   {{/if}}
 </div>

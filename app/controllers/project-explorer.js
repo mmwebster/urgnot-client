@@ -1,7 +1,177 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  needs: ['application'],
   transitionLength: null,
+  showActual: true,
+  showRootEditing: false,
+  noValidRootNode: false,
+  user: Ember.computed(function() {
+    return this.get('controllers.application.currentUser.data');
+  }),
+
+  projectExplorerRoot: Ember.computed('showActual', function() {
+    // var _this = this;
+    var id = this.get('user.activeOrganizationId');
+    var root = this.store.find('node', {
+      orderBy: 'organizationId',
+      equalTo: id
+    });
+    return root;
+    //   return this.get('fixtureRoot');
+    
+    // if (rootNode.content.length < 1) {
+    //   _this.set('noValidRootNode', true);
+    // } else {
+    //   _this.set('noValidRootNode', false);
+    //   Ember.debug('sending real root node');
+    // }
+  }),
+
+  fixtureRoot: {
+    id: 1,
+    name: 'Star',
+    type: 'star',
+    children: [ 
+      {
+        id: 2,
+        name: 'Planet 0',
+        type: 'planet',
+        children: [
+          {
+            id: 3,
+            name: 'moon 0',
+            type: 'moon',
+            children: [
+              {
+                id: 4,
+                name: 'crater 1',
+                type: 'crater'
+              },
+              {
+                id: 5,
+                name: 'crater 2',
+                type: 'crater'
+              }
+            ]
+          },
+          {
+            id: 5,
+            name: 'moon 2',
+            type: 'moon',
+            children: [
+              {
+                name: 'crater 1',
+                _content: 'This is a lovely crater, much fun!',
+                type: 'crater'
+              },
+              {
+                name: 'crater 2',
+                _content: 'Wow, here\'s another great one!',
+                type: 'crater'
+              },
+              {
+                name: 'crater 3',
+                _content: 'Woah there, now things are just getting out of hand.',
+                type: 'crater'
+              }
+            ]
+          },
+          {
+            id: 5,
+            name: 'moon 2',
+            type: 'moon'
+          },
+          {
+            id: 5,
+            name: 'moon 2',
+            type: 'moon'
+          },
+          {
+            id: 5,
+            name: 'moon 2',
+            type: 'moon'
+          },
+          {
+            id: 5,
+            name: 'moon 2',
+            type: 'moon'
+          }
+
+
+
+
+        ]
+      },
+      {
+        id: 6,
+        name: 'Planet 1',
+        type: 'planet'
+      },
+      {
+        id: 7,
+        name: 'Planet 2',
+        type: 'planet'
+      },
+      {
+        id: 8,
+        name: 'Planet 3',
+        type: 'planet'
+      },
+      {
+        id: 9,
+        name: 'Planet 4',
+        type: 'planet',
+        children: [
+          {
+            id: 5,
+            name: 'moon 2',
+            type: 'moon',
+            children: [
+              {
+                name: 'crater 1',
+                _content: 'This is a lovely crater, much fun!',
+                type: 'crater',
+                children: [
+                {name: 'another', type: 'crater', children: [{name: 'another final', type: 'star', isCurrent: true}]} 
+                  ]
+              },
+              {
+                name: 'crater 2',
+                _content: 'Wow, here\'s another great one!',
+                type: 'crater'
+              },
+              {
+                name: 'crater 3',
+                _content: 'Woah there, now things are just getting out of hand.',
+                type: 'crater'
+              }
+            ]
+          }, {
+            name: 'moon-2',
+            type: 'moon'
+          }
+        ]
+          
+      },
+      
+      {
+        id: 8,
+        name: 'Planet 3',
+        type: 'planet'
+      },
+      {
+        id: 9,
+        name: 'Planet 4',
+        type: 'planet'
+      },
+      {
+        id: 9,
+        name: 'Planet 4',
+        type: 'planet'
+      }
+    ]
+  },
 
   back: function(autoback) {
     var currentNode = window.projectExplorer.currentNode;
@@ -62,6 +232,32 @@ export default Ember.Controller.extend({
     },
     back: function() {
       this.back(false);
+    },
+    toggleActual: function() {
+      this.toggleProperty('showActual');
+    },
+    showRootEditing: function() {
+      this.toggleProperty('showRootEditing');
+    },
+    createRootNode: function() {
+      var name = this.get('newRootName');
+      if (name != "") {
+        var _this = this;
+        this.get('user').then(function(user) {
+          // create record
+          var newRoot = _this.store.createRecord('node', {
+            name: name,
+            organizationId: user.get('activeOrganizationId'),
+            isRoot: true,
+            level: 1,
+            displayData: 'star'
+          });
+          // save record
+          newRoot.save();
+        });
+      } else {
+        alert("Name cannot be empty");
+      }
     }
   },
 });

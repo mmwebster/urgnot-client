@@ -29,7 +29,8 @@ export default Ember.Component.extend({
     Ember.debug('Tree is ready.');
     // if tree root is not current node
     var rootIsCurrent = this.get('nodeModel.isCurrent');
-    if (!rootIsCurrent || rootIsCurrent === 'undefined') {
+    var hasChildren = this.get('nodeModel.children').length > 0;
+    if ((!rootIsCurrent || rootIsCurrent === 'undefined') && hasChildren) {
       // recursively find current node
       this.discoverCurrentNode(this.get('children'));
       // focus in to node
@@ -73,7 +74,7 @@ export default Ember.Component.extend({
   }.property(),
 
   type: function() {
-    return "type-" + this.get('nodeModel.type');
+    return "type-" + this.get('nodeModel.displayData');
   }.property(),
 
   // rotation computation
@@ -104,7 +105,7 @@ export default Ember.Component.extend({
       parent.get('children').push(this);
     }
     // set top level w/o animation
-    if (this.get('nodeModel.type') === 'star') {
+    if (this.get('nodeModel.displayData') === 'star') {
         this.set('layer1', true);
         this.set('scaleDown', true);
     }
@@ -122,8 +123,7 @@ export default Ember.Component.extend({
       });
     }
     // upon full hiearchy insertion (page load) animate in layers 
-    _this = this;
-    switch(this.get('nodeModel.type')) {
+    switch(this.get('nodeModel.displayData')) {
       case 'planet':
         Ember.run.next(function() {
           _this.set('layer2', true);
@@ -136,7 +136,7 @@ export default Ember.Component.extend({
         });
         break;
     }
-    console.log("Inserted component (" + this.get('nodeModel.type') + ").");
+    console.log("Inserted component (" + this.get('nodeModel.displayData') + ").");
   },
 
  // target is defined, now checking recursion to see why current node is not
@@ -158,7 +158,7 @@ export default Ember.Component.extend({
 
   focus: function(autofocusTargetNode, treeNodeFocusPath, treeNodeFocusPathLength) {
     // perform focus on this node
-    Ember.debug('Focusing (' + this.get('nodeModel.type') + ') - (' + this.get('nodeModel.name') + ')');
+    Ember.debug('Focusing (' + this.get('nodeModel.displayData') + ') - (' + this.get('nodeModel.name') + ')');
 
     // reset current node - for use in project explorer interfacing
     window.projectExplorer.currentNode = this;

@@ -4,8 +4,31 @@
   <h2 {{action 'current'}} class='inactive action button page-header'>Current</h2>
 </div>
 
-<div class='explorer-wrapper'>
-  <div class='explorer'>
-    {{explorer-entity nodeModel=model nodeIndex=0 isRoot=true}}
+<div class="explorer-wrapper {{if user.typeIsAdmin 'is-admin'}}">
+  {{#if user.typeIsAdmin}}
+    <span {{action 'toggleActual'}}>Toggle showActual</span>
+  {{/if}}
+  <div class="explorer">
+    {{#if noValidRootNode}}
+    <div class="ember-view node type-star id-1 index-0 layer-1 is-root no-valid-root-node">
+        <div class='content type-star'>
+          {{#unless showRootEditing}}
+            <div {{action 'showRootEditing'}} class='create-root'>
+              +
+            </div>
+          {{else}}
+            <form class='create-root-form'>
+              {{input class='name' type='text' value=newRootName placeholder='Project Name'}}
+              <input class='submit' type='submit' {{action 'createRootNode'}} value='Create Project' />
+            </form>
+          {{/unless}}
+        </div>
+      </div>
+    {{else}}
+      {{#each projectExplorerRoot as |root|}}
+        {{explorer-entity nodeModel=root nodeIndex=0 isRoot=true isAdmin=true}}
+        <!-- user.typeIsAdmin -->
+      {{/each}}
+    {{/if}}
   </div>
 </div>
