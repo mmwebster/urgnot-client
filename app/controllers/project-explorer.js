@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   needs: ['application'],
   transitionLength: null,
-  showActual: true,
   showRootEditing: false,
   noValidRootNode: false,
   user: Ember.computed(function() {
@@ -18,7 +17,7 @@ export default Ember.Controller.extend({
       equalTo: id
     });
     return root;
-    //   return this.get('fixtureRoot');
+    // return this.get('fixtureRoot');
     
     // if (rootNode.content.length < 1) {
     //   _this.set('noValidRootNode', true);
