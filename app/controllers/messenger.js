@@ -20,12 +20,12 @@ export default Ember.Controller.extend({
     return this.get('controllers.application.currentUser.uid');
   }.property(),
 
-  messages: Ember.computed('threadFocused', 'thread.messages.length', function(key, value) {
+  messages: Ember.computed('threadFocused', 'thread.messages.length', function() {
     // auto scroll and other func.s that required to be in messages
     if (this.get('threadFocused')) {
       Ember.debug('In messages');
-      var scrollheight = $(".messenger .messages .messages-body")[0].scrollHeight;
-      $(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600)
+      var scrollheight = Ember.$(".messenger .messages .messages-body")[0].scrollHeight;
+      Ember.$(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600);
     }
     var threadId = this.get('thread.id');
     return this.store.find('message', {
@@ -44,8 +44,8 @@ export default Ember.Controller.extend({
     Ember.run.later(function() {
       // autoscroll new messages
       Ember.debug('making scroll');
-      var scrollheight = $(".messenger .messages .messages-body")[0].scrollHeight;
-      $(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600)
+      var scrollheight = Ember.$(".messenger .messages .messages-body")[0].scrollHeight;
+      Ember.$(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600);
       // clear prep buffer;
       _this.set('autoScrollPrepared', false);
     }, 300);
@@ -53,8 +53,6 @@ export default Ember.Controller.extend({
 
   initController: function() {
     var _this = this;
-    var uid = this.get('uid');
-    
     // Need to figure out how to filter by user/project/organization
     this.store.find('thread', {
       orderByChild: 'date'
@@ -80,13 +78,13 @@ export default Ember.Controller.extend({
     this.set('currentThread', thread);
     // focus new message field
     Ember.run.later(function() {
-      $(".newMessage input.name").focus();
+      Ember.$(".newMessage input.name").focus();
     }, 300);
   },
 
   actions: {
     createThread: function() {
-      if(this.get('newThreadName') != "") {
+      if(this.get('newThreadName') !== "") {
         var _this = this;
         var date = Date.now();
         var newThread = this.store.createRecord('thread', {
@@ -110,7 +108,7 @@ export default Ember.Controller.extend({
     },
     createMessage: function() {
       var body = this.get('newMessageBody');
-      if(body != "") {
+      if(body !== "") {
         // retrieve message, then nullify
         this.set('newMessageBody', "");
         var _this = this;
@@ -127,7 +125,7 @@ export default Ember.Controller.extend({
 
           var thread = _this.get('currentThread');
           newMessage.set('thread', thread);
-          var saved = thread.save().then(function() {
+          thread.save().then(function() {
             return newMessage.save();
           });
 

@@ -6,7 +6,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   currentUser: function() {
     var userData = this.get('session').content;
-    if (userData.isAuthenticated && typeof(userData.uid) != "undefined") {
+    if (userData.isAuthenticated && typeof(userData.uid) !== "undefined") {
       // this.toggleProperty('updateData');
       return {
         'uid': userData.uid,

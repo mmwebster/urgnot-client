@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
         }).then(function(data) {
           Ember.debug(data.currentUser);
           var uid = _this.get('controllers.application.currentUser.uid');
-          _this.store.find('user', uid).catch(function(error) {
+          _this.store.find('user', uid).catch(function() {
             // no user record found create one
             var newUser = _this.store.createRecord('user', {
               id: data.uid,
@@ -36,23 +36,23 @@ export default Ember.Controller.extend({
             }).then(function(records) {
               var emailDomain = data.currentUser.email.split('@')[1];
               records.forEach(function(org) {
-                if(org.get('email') == emailDomain) {
+                if(org.get('email') === emailDomain) {
                   // found mapped organization, now add it to the user and save
                   newUser.get('endOrganizations').addObject(org);
                   org.save().then(function() {
+                    Ember.debug('Created new user.');
                     return newUser.save();
-                    Em.debug('Created new user.');
                   });
                 }
               });
             });
 
-          }).then(function(user) {
+          }).then(function() {
             // user record found or now created
             _this.transitionToRoute('app');
           });
 
-        }, function(error) {
+        }, function() {
           console.warn('Incorrect credentials');
         });
       } else {

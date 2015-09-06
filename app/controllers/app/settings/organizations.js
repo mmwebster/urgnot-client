@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 
         // split into email domain if possible
         var emailDomain = _this.get('newRowEmail');
-        if(emailDomain.indexOf("@") != -1) {
+        if(emailDomain.indexOf("@") !== -1) {
           emailDomain = emailDomain.split('@')[1];
         }
 
