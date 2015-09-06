@@ -193,6 +193,23 @@ export default Ember.Component.extend({
   actions: {
     click: function() {
       this.focus(false);
+    },
+    createChildNode: function(parent) {
+      var name = this.get('newChildName');
+      var type = this.get('newChildType');
+      var level = parent.get('level') + 1;
+      var _this = this;
+      var newChildNode = parent.store.createRecord('node', {
+        name: name,
+        displayData: type,
+        parent: parent,
+        level: level,
+        isRoot: false
+      });
+      newChildNode.save().then(function() {
+        _this.set('newChildName', null);
+        _this.set('newChildType', null);
+      });
     }
   },
 });

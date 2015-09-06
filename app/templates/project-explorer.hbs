@@ -5,9 +5,6 @@
 </div>
 
 <div class="explorer-wrapper {{if user.typeIsAdmin 'is-admin'}}">
-  {{#if user.typeIsAdmin}}
-    <span {{action 'toggleActual'}}>Toggle showActual</span>
-  {{/if}}
   <div class="explorer">
     {{#if noValidRootNode}}
     <div class="ember-view node type-star id-1 index-0 layer-1 is-root no-valid-root-node">

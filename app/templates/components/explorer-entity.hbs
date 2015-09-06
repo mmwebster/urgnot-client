@@ -4,31 +4,23 @@
     <div class='actionable' {{action 'click'}}></div>
   {{/if}}
   {{#if id}}
-    yes id
     <p class='text'>{{name}}
     {{#if layer1}} 
-      lyaer 1
       <p style='font-size: 13px; color: #666;'>{{nodeModel._content}}</p>
+      <!-- admin editing -->
+      <!-- {{#if isAdmin}} -->
+      <!--   <form class='create&#45;node'> -->
+      <!--     {{input type='text' value=newChildName placeholder='Name' class='new&#45;child&#45;name'}} -->
+      <!--     {{input type='text' value=newChildType placeholder='Type' class='new&#45;child&#45;type'}} -->
+      <!--     <button type='submit' class='create&#45;node' {{action 'createChildNode' nodeModel}}>Create Child Node</button> -->
+      <!--   </form> -->
+      <!-- {{/if}} -->
     {{/if}}
     </p>
-  {{else}}
-    no id
-    {{#if this.isRoot}}
-      no root node
-    {{/if}}
   {{/if}}
   {{#if nodeModel.children}}
-    node has children
     {{#each nodeModel.children as |child index|}}
       {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index isAdmin=this.isAdmin}}
     {{/each}}
-  {{else}}
-    node has no children
-    {{#if isAdmin}}
-      is admin
-      <p>Create child node</p>
-    {{else}}
-      not admin
-    {{/if}}
   {{/if}}
 </div>

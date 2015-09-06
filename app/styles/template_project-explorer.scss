@@ -44,7 +44,22 @@ $transitionLength: .60s;
         }
       }
     }
-    .is-root.no-valid-root-node:hover {
+    .content {
+      .create-node {
+        button[type='submit'], input {
+          padding: 10px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          color: #a00;
+          border-radius: 6px;
+        }
+        button[type='submit']:hover {
+          color: #fff;
+          background-color: #a00;
+          cursor: pointer;
+          border-color: #a00;
+        }
+      }
     }
   }
 }
