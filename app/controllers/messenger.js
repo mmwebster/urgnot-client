@@ -107,34 +107,34 @@ export default Ember.Controller.extend({
       }
     },
     createMessage: function() {
-      // retrieve message, then nullify
       var body = this.get('newMessageBody');
-      this.set('newMessageBody', "");
-      var _this = this;
-      var author = this.get('controllers.application.currentUser.data');
+      if(body != "") {
+        // retrieve message, then nullify
+        this.set('newMessageBody', "");
+        var _this = this;
+        var author = this.get('controllers.application.currentUser.data');
 
-      // send along the message to thread
-      author.then(function(_author) {
-        var date = Date.now();
-        var newMessage = _this.store.createRecord('message', {
-          author: _author,
-          date: date,
-          body: body
+        // send along the message to thread
+        author.then(function(_author) {
+          var date = Date.now();
+          var newMessage = _this.store.createRecord('message', {
+            author: _author,
+            date: date,
+            body: body
+          });
+
+          var thread = _this.get('currentThread');
+          newMessage.set('thread', thread);
+          var saved = thread.save().then(function() {
+            return newMessage.save();
+          });
+
+          Ember.debug('INSERTED: author: ' + _author + ', date: ' + date + ', body: ' + body);
+          
         });
-
-        var thread = _this.get('currentThread');
-        newMessage.set('thread', thread);
-        var saved = thread.save().then(function() {
-          return newMessage.save();
-        });
-
-        // saved.then(function() {
-        //   newMessage.deleteRecord();
-        // });
-
-        Ember.debug('INSERTED: author: ' + _author + ', date: ' + date + ', body: ' + body);
-        
-      });
+      } else {
+        this.displayError("Message cannot be empty");
+      }
     },
     focusThread: function(thread) {
       this.focusThread(thread);
