@@ -13,12 +13,16 @@ export default Ember.Controller.extend({
   errorIsDisplayed: false,
   error: null,
 
-  threadsSorting: ['date:desc'],
-  sortedThreads: Ember.computed.sort('threads', 'threadsSorting'),
-
   uid: function() {
     return this.get('controllers.application.currentUser.uid');
   }.property(),
+
+  threads: Ember.computed(function() {
+    return this.store.find('thread'); 
+  }),
+  threadsSorting: ['date:desc'],
+  sortedThreads: Ember.computed.sort('threads', 'threadsSorting'),
+
 
   messages: Ember.computed('threadFocused', 'thread.messages.length', function() {
     // auto scroll and other func.s that required to be in messages
@@ -50,16 +54,6 @@ export default Ember.Controller.extend({
       _this.set('autoScrollPrepared', false);
     }, 300);
   }.observes('autoScrollPrepared'),
-
-  initController: function() {
-    var _this = this;
-    // Need to figure out how to filter by user/project/organization
-    this.store.find('thread', {
-      orderByChild: 'date'
-    }).then(function(threads) {
-      _this.set('threads', threads);
-    });
-  }.on("init"),
 
   displayError: function(error) {
     this.set('errorIsDisplayed', true);

@@ -12,6 +12,6 @@ export default DS.Model.extend({
   tags: DS.belongsTo('tag'),
   projects: DS.hasMany('project', {inverse: 'author'}),
   collaborations: DS.hasMany('project', {inverse: 'collaborators'}),
-  threads: DS.hasMany('thread', {inverse: 'endUser'})
-  // messages: DS.hasMany('message')
+  threads: DS.hasMany('thread', {inverse: 'endUser'}),
+  activeOrganizationId: DS.attr('string')
 });

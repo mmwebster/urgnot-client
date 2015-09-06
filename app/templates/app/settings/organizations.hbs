@@ -11,8 +11,8 @@
     <div class='col end'>Students</div>
     <div class='clearfix'></div>
   </div>
-  {{#each model as |org|}}
-    <div class='row content'>
+  {{#each bufferedRows as |org|}}
+  <div {{action 'selectActiveRow' org}} class="row content {{if org.showIsActive 'show-is-active'}}">
       <div class='col name'>{{org.name}}</div>
       <div class='col admin'>{{org.adminUsers.length}}</div>
       <div class='col end'>{{org.endUsers.length}}</div>
