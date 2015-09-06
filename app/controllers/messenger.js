@@ -13,6 +13,8 @@ export default Ember.Controller.extend({
   errorIsDisplayed: false,
   error: null,
 
+  threadsSorting: ['date:desc'],
+  sortedThreads: Ember.computed.sort('threads', 'threadsSorting'),
 
   uid: function() {
     return this.get('controllers.application.currentUser.uid');
@@ -86,7 +88,7 @@ export default Ember.Controller.extend({
     createThread: function() {
       if(this.get('newThreadName') != "") {
         var _this = this;
-        var date = -1 * Date.now();
+        var date = Date.now();
         var newThread = this.store.createRecord('thread', {
           name: this.get('newThreadName'),
           date: date,

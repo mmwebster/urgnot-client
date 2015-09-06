@@ -24,7 +24,7 @@
             <input type="submit" {{action 'createThread'}} class="submit" value="+">
           </form>
         </div>
-        {{#each threads as |thread|}}
+        {{#each sortedThreads as |thread|}}
           <div class='row thread' {{action 'focusThread' thread}}>
             <div class='col name'>{{thread.name}}</div>
             <div class='col arrow'>></div>
