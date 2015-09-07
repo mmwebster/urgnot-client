@@ -83,8 +83,9 @@ export default Ember.Component.extend({
     var output = "";
     // if is not root and node is at layer 2
     if (parent) {
+      // debugger;
       // degree increments for each sibling
-      var rotationIncrements = (360 / parent.children.length);
+      var rotationIncrements = (360 / parent.get('children.length'));
       var rotation = rotationIncrements * this.get('nodeIndex');
       if (!this.get('layer1') && !this.get('layer2')) {
         rotation = -360;
@@ -198,17 +199,23 @@ export default Ember.Component.extend({
       var name = this.get('newChildName');
       var type = this.get('newChildType');
       var level = parent.get('level') + 1;
+      var organizationId = parent.get('organizationId');
       var _this = this;
       var newChildNode = parent.store.createRecord('node', {
         name: name,
         displayData: type,
         parent: parent,
         level: level,
-        isRoot: false
+        isRoot: false,
+        organizationId: organizationId
       });
-      newChildNode.save().then(function() {
-        _this.set('newChildName', null);
-        _this.set('newChildType', null);
+      // save record
+      parent.get('children').addObject(newChildNode);
+      parent.save().then(function() {
+        newChildNode.save().then(function() {
+          _this.set('newChildName', null);
+          _this.set('newChildType', null);
+        });
       });
     }
   },

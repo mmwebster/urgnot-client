@@ -23,8 +23,9 @@
       </div>
     {{else}}
       {{#each projectExplorerRoot as |root|}}
-        {{explorer-entity nodeModel=root nodeIndex=0 isRoot=true isAdmin=true}}
-        <!-- user.typeIsAdmin -->
+        {{#if root.isRoot}}
+          {{explorer-entity nodeModel=root nodeIndex=0 isRoot=true isAdmin=user.typeIsAdmin}}
+        {{/if}}
       {{/each}}
     {{/if}}
   </div>

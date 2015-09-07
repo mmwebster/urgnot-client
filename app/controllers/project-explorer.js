@@ -8,23 +8,17 @@ export default Ember.Controller.extend({
   user: Ember.computed(function() {
     return this.get('controllers.application.currentUser.data');
   }),
-
-  projectExplorerRoot: Ember.computed('showActual', function() {
+  
+  projectExplorerRoot: Ember.computed('user.activeOrganizationId', function() {
     // var _this = this;
     var id = this.get('user.activeOrganizationId');
-    var root = this.store.find('node', {
-      orderBy: 'organizationId',
-      equalTo: id
-    });
-    return root;
-    // return this.get('fixtureRoot');
-    
-    // if (rootNode.content.length < 1) {
-    //   _this.set('noValidRootNode', true);
-    // } else {
-    //   _this.set('noValidRootNode', false);
-    //   Ember.debug('sending real root node');
-    // }
+    if (id) {
+      var root = this.store.find('node', {
+        orderBy: 'organizationId',
+        equalTo: id
+      });
+      return root;
+    }
   }),
 
   fixtureRoot: {
