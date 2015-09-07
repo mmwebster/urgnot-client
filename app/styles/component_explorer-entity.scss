@@ -1,5 +1,86 @@
 $transitionLength: .7s; // .7s
 
+// Admin styles
+.project-explorer .explorer-wrapper.is-admin {
+  .explorer {
+    .is-root.no-valid-root-node {
+      background-color: rgba(0,100,0,.6);
+      .create-root {
+        padding: 0% 28%;
+        font-size: 18vw;
+        color: #fff;
+      }
+      .create-root:hover {
+        color: #a00;
+        cursor: pointer;
+      }
+      .create-root-form {
+        width: 100%;
+        padding: 10% 10% 0px 10%;
+        box-sizing: border-box;
+        input {
+          padding: 10%;
+          font-size: 2vw;
+          width: 100%;
+        }
+        input.name {
+          border-radius: 6px;
+          border: 1px solid #ccc;
+          color: rgba(0,100,0,.8);
+          margin-top: 20%;
+        }
+        input.submit {
+          border-radius: 100%;
+          border: none;
+          background: none;
+          color: #a00;
+          transition: color .3s;
+          margin-top: 10%;
+        }
+        input.submit:hover {
+          color: #800;
+          cursor: pointer;
+        }
+      }
+    }
+    .content {
+      form.create-node {
+        top: 10%;
+        left: 150%;
+      }
+      form.create-task {
+        top: 10%;
+        left: 250%;
+      }
+      form {
+        position: absolute;
+        border: 1px solid #aaa;
+        border-radius: 6px;
+        padding: 10px;
+        with: 200px;
+        h6 {
+          font-size: 23px;
+          color: #111 !important;
+        }
+        button[type='submit'], input {
+          padding: 10px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          color: #a00;
+          border-radius: 6px;
+          font-size: 12px;
+        }
+        button[type='submit']:hover {
+          color: #fff;
+          background-color: #a00;
+          cursor: pointer;
+          border-color: #a00;
+        }
+      }
+    }
+  }
+}
+
 .project-explorer {
   width: 40%;
   height: 100%;
@@ -7,10 +88,6 @@ $transitionLength: .7s; // .7s
   float: left;
   transition: none $transitionLength;
 
-
-
-
-    
   .explorer-wrapper {
     width: 100%; 
     height: calc(100% - 43px);
@@ -175,8 +252,12 @@ $transitionLength: .7s; // .7s
     color: rgba(250,250,250,1);
   }
   .layer-2 > .content > .text {
-    font-size: 1.7vw;
-    padding: 1.7vw 0vw;
+    width: 100%;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 1.1vw;
+    padding: 1.3vw .5vw;
     font-weight: 100;
   }
   .layer-1 > .content > .text {
@@ -186,8 +267,8 @@ $transitionLength: .7s; // .7s
   }
   @media all and (max-width: 780px) {
     .layer-2 > .content > .text {
-      font-size: 13.3px;
-      padding: 13.3px 0px;
+      font-size: 9.2px;
+      padding: 10.3px 5px;
       font-weight: 100;
     }
     .layer-1 > .content > .text {

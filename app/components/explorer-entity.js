@@ -28,17 +28,20 @@ export default Ember.Component.extend({
   treeReady: function() {
     Ember.debug('Tree is ready.');
     // if tree root is not current node
-    var rootIsCurrent = this.get('nodeModel.isCurrent');
-    var hasChildren = this.get('nodeModel.children').length > 0;
-    if ((!rootIsCurrent || rootIsCurrent === 'undefined') && hasChildren) {
-      // recursively find current node
-      this.discoverCurrentNode(this.get('children'));
-      // focus in to node
-      var _this = this;
-      Ember.run.later(function() {
-        _this.get('discoveredCurrentNode').autofocus(_this.toString(), [], _this.get('discoveredCurrentNode'), _this.get('discoveredCurrentNode'));
-      }, 500);
-    }
+
+    // Autofocus currently dissabled
+
+    // var rootIsCurrent = this.get('nodeModel.isCurrent');
+    // var hasChildren = this.get('nodeModel.children').length > 0;
+    // if ((!rootIsCurrent || rootIsCurrent === 'undefined') && hasChildren) {
+    //   // recursively find current node
+    //   this.discoverCurrentNode(this.get('children'));
+    //   // focus in to node
+    //   var _this = this;
+    //   Ember.run.later(function() {
+    //     _this.get('discoveredCurrentNode').autofocus(_this.toString(), [], _this.get('discoveredCurrentNode'), _this.get('discoveredCurrentNode'));
+    //   }, 500);
+    // }
   },
 
   discoverCurrentNode: function(nodes) {
@@ -217,6 +220,26 @@ export default Ember.Component.extend({
           _this.set('newChildType', null);
         });
       });
+    },
+    createTask: function(node) {
+      var name = this.get('newTaskName');
+      var actionType = this.get('newTaskActionType');
+      var actionData = this.get('newTaskActionData');
+      var _this = this;
+      var newTask = node.store.createRecord('task', {
+        name: name,
+        actionType: actionType,
+        actionData: actionData,
+        node: node
+      });
+      node.get('tasks').addObject(newTask);
+      node.save().then(function() {
+        newTask.save().then(function() {
+          _this.set('newTaskName', null);
+          _this.set('newTaskActionType', null);
+          _this.set('newTaskActionData', null);
+        });
+      });
     }
-  },
+  }
 });

@@ -8,5 +8,5 @@ export default DS.Model.extend({
   displayData: DS.attr('string'), // currently just node type
   parent: DS.belongsTo('node', {inverse: 'children'}), // not to be used for reference
   children: DS.hasMany('node', {inverse: 'parent'}),
-  tasks: DS.hasMany('task')
+  tasks: DS.hasMany('task', {async: true})
 });

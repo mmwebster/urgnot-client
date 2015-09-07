@@ -3,9 +3,9 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
-  assignedTo: DS.belongsTo('user'),
-  assignedOnto: DS.belongsTo('node'),
-  completed: DS.attr('boolean'),
-  actionType: DS.attr('number'),
+  node: DS.belongsTo('node'),
+  // assignedTo: DS.belongsTo('user'),
+  // assignedOnto: DS.belongsTo('node'),
+  actionType: DS.attr('string'),
   actionData: DS.attr('string')
 });

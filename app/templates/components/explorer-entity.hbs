@@ -4,13 +4,28 @@
   {{/if}}
   <p class='text'>{{nodeModel.name}}
   {{#if layer1}} 
-    <p style='font-size: 13px; color: #666;'>{{nodeModel.content}}</p>
+    <div class='node-tasks'>
+      {{#each nodeModel.tasks as |task index|}}
+      <p style='font-size: 13px; color: #666;'><input type='checkbox' />{{task.name}}</p>
+      {{else}}
+        <p style='font-size: 13px; color: #666;'>Node has no tasks</p>
+      {{/each}}
+    </div>
     <!-- admin editing -->
     {{#if isAdmin}}
       <form class='create-node'>
+        <h6>Create Child Node</h6>
         {{input type='text' value=newChildName placeholder='Name' class='new-child-name'}}
         {{input type='text' value=newChildType placeholder='Type' class='new-child-type'}}
         <button type='submit' class='create-node' {{action 'createChildNode' nodeModel}}>Create Child Node</button>
+      </form>
+      <br />
+      <form class='create-task'>
+        <h6>Create Task</h6>
+        {{input type='text' value=newTaskName placeholder='Task name' class='new-task-name'}}
+        {{input type='text' value=newTaskActionType placeholder='Action type' class='new-task-action-type'}}
+        {{input type='text' value=newTaskActionData placeholder='Action data' class='new-task-action-data'}}
+        <button type='submit' class='create-task' {{action 'createTask' nodeModel}}>Create Task</button>
       </form>
     {{/if}}
   {{/if}}
