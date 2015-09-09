@@ -112,6 +112,7 @@ $transitionLength: .7s; // .7s
 
   .scale-down > .content{
     transform: scale3d(.4,.4,0);
+    -webkit-transform: scale3d(.4,.4,0);
   }
 
   .node {
@@ -144,7 +145,6 @@ $transitionLength: .7s; // .7s
   }
   .node{
     position: absolute;
-    // transform: rotate(45deg);
     margin-top: 80%;
     margin-left: 20%;
   }

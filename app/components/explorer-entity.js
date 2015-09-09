@@ -97,6 +97,7 @@ export default Ember.Component.extend({
       this.set('rotation', rotation);
       // return styling
       output = "transform: rotate(" + rotation + "deg) !important;";
+      output += "-webkit-transform: rotate(" + rotation + "deg) !important;";
     }  
     // confirm string is safe, non integer operations will always result in NaN
     return new Ember.Handlebars.SafeString(output);
