@@ -61,7 +61,7 @@
       float: left;
     }
     .threads {
-      overflow-y: scroll;
+      overflow-y: auto;
       background-color: #fff;
       .row.newThread {
         border-bottom: 1px solid rgba(0, 136, 255, 0.8);
@@ -129,7 +129,7 @@
     .messages {
       .messages-body {
         height: calc(100% - 47px);
-        overflow-y: scroll;
+        overflow-y: auto;
       }
       .newMessage {
         height: 47px;
