@@ -1,0 +1,21 @@
+.current-document {
+  width: 80%;
+  height: 100%;
+  padding: 10px;
+  float: left;
+  button.save {
+    padding: 10px;
+    border: none;
+  }
+  button.save-able:hover {
+    cursor: pointer;
+  }
+  button.save-able {
+    background-color: rgba(0,100,0,.8);
+    color: #fff;
+  }
+  button.unsave-able {
+    background-color: rgba(0,0,0,.3);
+    color: #999;
+  }
+}

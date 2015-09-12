@@ -1,0 +1,16 @@
+<div class="name">
+  {{input type='text' value=doc.name placeholder="Document name"}}
+</div>
+<div class="toolbar">
+  Toolbar
+  <div class='save'>
+    {{#if saveAble}}
+      <button {{action 'save'}} class="save save-able">Save</button>
+    {{else}}
+      <button class="save unsave-able">Saved</button>
+    {{/if}}
+  </div>
+</div>
+<div class="content">
+  {{textarea value=doc.content placeholder="Document content"}}
+</div>

@@ -1,0 +1,16 @@
+<div class="document-list">
+  {{#each documents as |document|}}
+    <div class="document {{if document.isActive 'active' 'inactive'}}" {{action 'openDocument' document}}>
+      <div class="name">
+        {{document.name}}
+      </div>
+      <div class="content-preview">
+        {{document.content}}
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{document-editor doc=currentDocument store=store user=user}}
+
+<div class='clearfix'></div>
