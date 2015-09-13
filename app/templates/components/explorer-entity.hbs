@@ -6,7 +6,7 @@
   {{#if layer1}} 
     <div class='node-tasks'>
       {{#each nodeModel.tasks as |task index|}}
-      <p style='font-size: 13px; color: #666;'><input type='checkbox' />{{task.name}}</p>
+      <p style='font-size: 13px; color: #666;' {{action 'triggerTask' task}}><input type='checkbox' />{{task.name}}</p>
       {{else}}
         <p style='font-size: 13px; color: #666;'>Node has no tasks</p>
       {{/each}}
@@ -32,7 +32,7 @@
   </p>
   {{#if nodeModel.children}}
     {{#each nodeModel.children as |child index|}}
-      {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index isAdmin=this.isAdmin}}
+      {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index isAdmin=this.isAdmin triggerTask=(action 'triggerTask')}}
     {{/each}}
   {{/if}}
 </div>

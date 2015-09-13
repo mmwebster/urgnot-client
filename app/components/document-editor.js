@@ -102,7 +102,8 @@ export default Ember.Component.extend({
             name: doc.name || "Untitled",
             content: doc.content,
             author: user,
-            createdAt: new Date()
+            createdAt: new Date(),
+            identifier: doc.identifier || null
           });
           // save with inverse
           user.get('documents').addObject(newDoc);

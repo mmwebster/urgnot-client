@@ -24,7 +24,7 @@
     {{else}}
       {{#each projectExplorerRoot as |root|}}
         {{#if root.isRoot}}
-          {{explorer-entity nodeModel=root nodeIndex=0 isRoot=true isAdmin=user.typeIsAdmin}}
+          {{explorer-entity nodeModel=root nodeIndex=0 isRoot=true isAdmin=user.typeIsAdmin triggerTask=(action 'triggerTask')}}
         {{/if}}
       {{/each}}
     {{/if}}

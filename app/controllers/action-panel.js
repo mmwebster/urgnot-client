@@ -24,27 +24,44 @@ export default Ember.Controller.extend({
     });
   }),
 
-  actionData: { // used to send down actions to components
-    trigger: false, 
+  action: { // used to send down actions to components
+    trigger: false,
     type: null,
-    data: null,
-  }, 
+    data: {
+      identifier: null,
+      defaultName: null,
+      defaultContent: null
+    },
+  },
 
   /**
    * Triggers an action in the action panel according to the received action type and data.
    * Var values are dasherized and options can viewed in the switch.
    */
   triggerAction: function(type, data) {
+    var data = JSON.parse(data); // must parse out JSON
     switch(type) {
       case "edit-document":
         this.set("currentPanel", "documentExplorer"); // set active panel
-        var actionData = {
+        var action = {
           trigger: true,
           type: "edit-document",
           data: data,
         };
-        this.set("actionData", actionData);
+        this.set("action", action);
         break;
     }
+  },
+
+  actions: {
+    trig: function() {
+      this.triggerAction("edit-document", {
+        identifier: "research-plan",
+        defaultName: "Research Plan",
+        placeholder: "Get started outlining your research plan!",
+        defaultContent: ""
+      });
+    }
   }
+
 });

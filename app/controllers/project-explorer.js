@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['application'],
+  needs: ['application', 'actionPanel'],
   transitionLength: null,
   showRootEditing: false,
   noValidRootNode: false,
@@ -251,6 +251,10 @@ export default Ember.Controller.extend({
       } else {
         alert("Name cannot be empty");
       }
+    },
+    triggerTask: function(task) {
+      var actionPanel = this.get('controllers.actionPanel');
+      actionPanel.triggerAction(task.get('actionType'), task.get('actionData'));
     }
   },
 });

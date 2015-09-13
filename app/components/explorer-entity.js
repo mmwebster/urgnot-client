@@ -241,6 +241,9 @@ export default Ember.Component.extend({
           _this.set('newTaskActionData', null);
         });
       });
+    },
+    triggerTask: function(task) {
+      this.attrs.triggerTask(task);
     }
   }
 });

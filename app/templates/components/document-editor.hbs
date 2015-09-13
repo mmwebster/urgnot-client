@@ -16,5 +16,9 @@
   {{/if}}
 </div>
 <div class="content">
-  {{textarea value=doc.content placeholder="Write something awesome..."}}
+  {{#if doc.placeholder}}
+    {{textarea value=doc.content placeholder=doc.placeholder}}
+  {{else}}
+    {{textarea value=doc.content placeholder="Write something awesome..."}}
+  {{/if}}
 </div>
