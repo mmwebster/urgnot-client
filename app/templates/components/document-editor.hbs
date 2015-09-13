@@ -8,6 +8,8 @@
   {{else}}
     <button tabindex="-1" class="save inactive">Saved</button>
   {{/if}}
+  <!-- live updates -->
+  <button {{action 'toggleLive'}} tabindex="-1" class="toggle-live {{if isLive 'active' 'inactive'}}">Live</button>
   <!-- delete -->
   {{#if deleteAble}}
     <button tabindex="-1" {{action 'delete'}} class="delete">Delete</button>

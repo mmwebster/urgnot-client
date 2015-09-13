@@ -63,6 +63,33 @@ export default Ember.Component.extend({
     }
   }),
 
+  autosavePrepared: false,
+  prepareAutosave: function() {
+    if (this.get('isLive')) {
+      if (this.get('saveAble')) {
+        if (!this.get('autosavePrepared')) {
+          this.set('autosaveUnhandled', true);
+          Ember.debug('Preparing autosave.');
+        }
+        this.set('autosavePrepared', true);
+      }
+    }
+  }.observes("saveAble"),
+
+  autosave: function() {
+    if (this.get('autosaveUnhandled')) {
+      var _this = this;
+      Ember.run.later(function() {
+        _this.set('doc.saved', true);
+        _this.toggleProperty('doc.saving', true);
+        _this.get('doc').save();
+        _this.set('autosavePrepared', false);
+        Ember.debug('Autosaved document.');
+      }, 50);
+      this.set('autosaveUnhandled', false);
+    }
+  }.observes('autosavePrepared'),
+
   actions: {
     save: function() {
       var doc = this.get('doc');
@@ -101,6 +128,19 @@ export default Ember.Component.extend({
       if (destroy) {
         this.get('doc').destroyRecord();
         this.attrs.openBlankDocument();
+      }
+    },
+
+    toggleLive: function() {
+      if (!this.get('isLive')) {
+        // turning on
+        var goLive = confirm("The \"Live\" feature is still under development and you may encounter problems, are you sure you would like to continue?");
+        if (goLive) {
+          this.set('isLive', true);
+        }
+      } else {
+        //turning off
+        this.set('isLive', false);
       }
     }
   }
