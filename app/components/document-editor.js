@@ -80,8 +80,8 @@ export default Ember.Component.extend({
     if (this.get('autosaveUnhandled')) {
       var _this = this;
       Ember.run.later(function() {
-        _this.set('doc.saved', true);
-        _this.toggleProperty('doc.saving', true);
+        // _this.set('doc.saved', true);
+        // _this.toggleProperty('doc.saving', true);
         _this.get('doc').save();
         _this.set('autosavePrepared', false);
         Ember.debug('Autosaved document.');
