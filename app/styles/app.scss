@@ -3,19 +3,19 @@
 @import 'route_index';
 @import 'route_app';
 @import 'route_app_settings';
-@import 'template_top-nav';
-@import 'template_project-explorer';
-@import 'template_action-panel';
-@import 'template_messenger';
-@import 'component_explorer-entity';
-@import 'component_document-explorer';
-@import 'component_document-editor';
-//showww
+// @import 'template_top-nav';
+// @import 'template_project-explorer';
+// @import 'template_action-panel';
+// @import 'template_messenger';
+// @import 'component_explorer-entity';
+// @import 'component_document-explorer';
+// @import 'component_document-editor';
 
 // universal
 html {
   width: 100%;
   height: 100%;
+  background-color: rgba(0,0,0,1);
 }
 body {
   background-color: rgba(0,0,0,.0);

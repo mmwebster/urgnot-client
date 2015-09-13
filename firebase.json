@@ -3,7 +3,12 @@
   "public": "dist",
   "ignore": [
     "firebase.json",
+    "bkp_firebase.json",
     "**/.*",
     "**/node_modules/**"
-  ]
+  ],
+  "rewrites": [ {
+    "source": "**",
+    "destination": "/index.html"
+  } ]
 }
