@@ -1,6 +1,6 @@
 {
   "firebase": "urgnot",
-  "public": "dist",
+  "public": "./dist",
   "ignore": [
     "firebase.json",
     "bkp_firebase.json",
