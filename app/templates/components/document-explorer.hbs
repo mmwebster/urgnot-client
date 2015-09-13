@@ -1,5 +1,8 @@
 <div class="document-list">
-  {{#each documents as |document|}}
+  <div class="document new {{if currentDocument.new 'active' 'inactive'}}" {{action 'openBlankDocument'}}>
+    +
+  </div>
+  {{#each sortedDocuments as |document|}}
     <div class="document {{if document.isActive 'active' 'inactive'}}" {{action 'openDocument' document}}>
       <div class="name">
         {{document.name}}
@@ -7,10 +10,13 @@
       <div class="content-preview">
         {{document.content}}
       </div>
+      <div class="created-at">
+        {{format-date document.createdAt}}
+      </div>
     </div>
   {{/each}}
 </div>
 
-{{document-editor doc=currentDocument store=store user=user}}
+{{document-editor doc=currentDocument openBlankDocument=(action 'openBlankDocument') store=store user=user}}
 
 <div class='clearfix'></div>

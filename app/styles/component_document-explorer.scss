@@ -1,10 +1,28 @@
 .document-explorer {
-  height: 100%;
+  height: calc(100% - 43px);
   .document-list {
     height: 100%;
     width: 20%;
     box-sizing: border-box;
     float: left;
+    overflow-y: auto;
+    .document.new {
+      font-size: 35px;
+      line-height: 28px;
+      border: none;
+      margin-top: 5px;
+      text-align: center;
+    }
+    .document.new.inactive {
+      color: rgba(0, 100, 0, 0.6);
+      background-color: #fff;
+      cursor: pointer;
+      background-color: rgba(0,100,0,.1);
+    }
+    .document.new.active, .document.new.inactive:hover {
+      color: #fff;
+      background-color: rgba(0, 100, 0, 0.5);
+    }
     .document.inactive:hover {
       cursor: pointer;
       background-color: #ddd;
@@ -21,6 +39,8 @@
       .name {
         font-size: 17px;
         padding: 0px 0px 5px 0px;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
       .content-preview {
         font-size: 12px;
@@ -28,6 +48,14 @@
         overflow: hidden;
         text-overflow: ellipsis;
         width: 100%;
+        padding: 0px 0px 5px 0px;
+      }
+      .created-at {
+        font-size: 14px;
+        color: #999;
+        padding: 0px 0px 5px 0px;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
   }

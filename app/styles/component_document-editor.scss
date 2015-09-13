@@ -1,21 +1,57 @@
 .current-document {
   width: 80%;
   height: 100%;
-  padding: 10px;
+  padding-top: 5px;
   float: left;
-  button.save {
-    padding: 10px;
-    border: none;
+  .name{
+    input {
+      border: none;
+      font-size: 25px;
+      line-height: 28px;
+      box-sizing: border-box;
+      height: 48px;
+      padding: 0px 10px 0px 10px;
+      color: rgba(0,0,0,.7);
+    }
   }
-  button.save-able:hover {
-    cursor: pointer;
+  .toolbar {
+    padding: 0px 10px 0px 10px;
+    button {
+      float: left;
+      margin-right: 10px;
+      padding: 7px 15px;
+      border: none;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+    button.save.active {
+      background-color: rgba(0,100,0,.7);
+      color: #fff;
+    }
+    button.save.inactive {
+      background-color: #ddd;
+      color: #999;
+    }
+    button.delete {
+      color: #fff;
+      float: right;
+      background-color: rgba(100,0,0,.6);
+    }
+    button.delete:hover {
+      background-color: rgba(100,0,0,.7);
+    }
   }
-  button.save-able {
-    background-color: rgba(0,100,0,.8);
-    color: #fff;
-  }
-  button.unsave-able {
-    background-color: rgba(0,0,0,.3);
-    color: #999;
+  .content {
+    height: 80%;
+    textarea {
+      padding: 10px;
+      font-size: 15px;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   }
 }

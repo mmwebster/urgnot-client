@@ -1,16 +1,18 @@
 <div class="name">
-  {{input type='text' value=doc.name placeholder="Document name"}}
+  {{input type='text' value=doc.name placeholder="Name"}}
 </div>
 <div class="toolbar">
-  Toolbar
-  <div class='save'>
-    {{#if saveAble}}
-      <button {{action 'save'}} class="save save-able">Save</button>
-    {{else}}
-      <button class="save unsave-able">Saved</button>
-    {{/if}}
-  </div>
+  <!-- save -->
+  {{#if saveAble}}
+    <button {{action 'save'}} tabindex="-1" class="save active">Save</button>
+  {{else}}
+    <button tabindex="-1" class="save inactive">Saved</button>
+  {{/if}}
+  <!-- delete -->
+  {{#if deleteAble}}
+    <button tabindex="-1" {{action 'delete'}} class="delete">Delete</button>
+  {{/if}}
 </div>
 <div class="content">
-  {{textarea value=doc.content placeholder="Document content"}}
+  {{textarea value=doc.content placeholder="Write something awesome..."}}
 </div>

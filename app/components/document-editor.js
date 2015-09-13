@@ -7,8 +7,37 @@ export default Ember.Component.extend({
   nameIsEmpty: Ember.computed.empty('doc.name'),
   nameIsEmpty: Ember.computed.empty('doc.content'),
 
+  focus: function(field) {
+    var target;
+    if (field === "name") {
+      target = ".name input";
+    } else if (field === "content") {
+      target = ".content textarea";
+    }
+    Ember.$(this.get('element')).find(target).focus();
+  },
+
   formIsEmpty: Ember.computed('nameIsEmpty', 'contentIsEmpty', function() {
     if (this.get('nameIsEmpty') || this.get('contentIsEmpty')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
+  docChanged: function() {
+    Ember.debug('doc changed');
+    // determine autofocus
+    if (this.get('doc.new')) {
+      this.focus("name");
+    } else {
+      this.focus("content");
+    }
+  }.observes('doc'),
+
+  deleteAble: Ember.computed('doc', function() {
+    if (!this.get('doc.new')) {
+      // focus in on title
       return true;
     } else {
       return false;
@@ -43,13 +72,15 @@ export default Ember.Component.extend({
         this.get('user.data').then(function(user) {
           // create record
           var newDoc = _this.get('store').createRecord('document', {
-            name: doc.name,
+            name: doc.name || "Untitled",
             content: doc.content,
-            author: user
+            author: user,
+            createdAt: new Date()
           });
           // save with inverse
           user.get('documents').addObject(newDoc);
           user.save().then(function() {
+            newDoc.set('isActive', true);
             _this.set('doc', newDoc);
             _this.set('doc.saved', true);
             _this.toggleProperty('doc.saving');
@@ -61,6 +92,15 @@ export default Ember.Component.extend({
         this.set('doc.saved', true);
         this.toggleProperty('doc.saving', true);
         doc.save();
+      }
+    },
+
+    delete: function() {
+      var doc = this.get('doc');
+      var destroy = confirm("Are you sure you want to permanently delete \"" + doc.get('name') + "\"?");
+      if (destroy) {
+        this.get('doc').destroyRecord();
+        this.attrs.openBlankDocument();
       }
     }
   }

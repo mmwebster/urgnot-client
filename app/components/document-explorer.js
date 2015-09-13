@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['document-explorer'],
   currentDocument: {new: true, saved: false, saving: false}, //object-> name:string, content:string, createdAt:string
+  documentsSorting: ['createdAt:desc'],
+  sortedDocuments: Ember.computed.sort('documents', 'documentsSorting'),
   documents: Ember.computed(function() {
     return this.get('store').find('document', {
       orderBy: 'author',
@@ -20,6 +22,10 @@ export default Ember.Component.extend({
       } else {
         Ember.debug('Document already selected');
       }
+    },
+    openBlankDocument: function() {
+      this.set('currentDocument.isActive', false);
+      this.set('currentDocument', {new: true, saved: false, saving: false});
     }
   }
 });
