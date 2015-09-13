@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   tagName: 'form',
 
   nameIsEmpty: Ember.computed.empty('doc.name'),
-  nameIsEmpty: Ember.computed.empty('doc.content'),
+  contentIsEmpty: Ember.computed.empty('doc.content'),
 
   focus: function(field) {
     var target;

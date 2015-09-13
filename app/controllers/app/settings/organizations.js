@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
     var selected = rows.filterBy('id', this.get('activeRowId'));
     if (selected[0]) {
       selected[0].set('showIsActive', true);
-      Ember.debug('set \"' + selected[0].get('name') + '\" is active')
+      Ember.debug('set \"' + selected[0].get('name') + '\" is active');
     }
     return rows;
   }),
