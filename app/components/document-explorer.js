@@ -11,6 +11,16 @@ export default Ember.Component.extend({
       equalTo: this.get('user.uid')
     });
   }),
+
+  triggerAction: Ember.observer('actionData.trigger', function() {
+    if (this.get('actionData.trigger')) {
+      // handle incoming action
+      Ember.debug('triggering action' + this.get('actionData.type'));
+      Ember.debug('..with data ' + this.get('actionData.data'));
+      this.set('actionData.trigger', false);
+    }
+  }),
+
   actions: {
     openDocument: function(doc) {
       if (this.get('currentDocument.id') !== doc.get('id')) {

@@ -1,2 +1,4 @@
 <h2 class='page-header'>Action Panel</h2>
-{{document-explorer user=user store=store}}
+{{#if documentExplorer}}
+  {{document-explorer actionData=actionData user=user store=store}}
+{{/if}}
