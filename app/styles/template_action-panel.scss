@@ -8,6 +8,13 @@
     padding: 4px;
     border-bottom: 1px solid #aaa;
     background-color: rgba(0,0,0,.1);
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+    transition: filter .6s, -webkit-filter .6s;
+  }
+  h2.receivingAction {
+    -webkit-filter: brightness(200%);
+    filter: brightness(200%);
   }
 }
 

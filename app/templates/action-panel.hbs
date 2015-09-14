@@ -1,4 +1,4 @@
-<h2 class='page-header'>Action Panel</h2>
+<h2 class="page-header {{if receivingAction 'receivingAction'}}">Action Panel</h2>
 {{#if documentExplorer}}
   {{document-explorer action=action user=user store=store}}
 {{/if}}

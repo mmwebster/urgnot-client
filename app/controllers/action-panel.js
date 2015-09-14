@@ -51,9 +51,16 @@ export default Ember.Controller.extend({
         this.set("action", action);
         break;
     }
+    // show feedback
+    var _this = this;
+    this.set('receivingAction', true);
+    Ember.run.later(function() {
+      _this.set('receivingAction', false);
+    }, 600);
   },
 
   actions: {
+    // TEMP for testing
     trig: function() {
       this.triggerAction("edit-document", {
         identifier: "research-plan",

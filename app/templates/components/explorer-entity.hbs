@@ -1,35 +1,50 @@
+<div class='background-image content type-{{nodeModel.displayData}}' style="transform: rotate(-{{rotation}}deg) !important;-webkit-transform: rotate(-{{rotation}}deg) !important;"></div>
 <div class='content type-{{nodeModel.displayData}}' style="transform: rotate(-{{rotation}}deg) !important;-webkit-transform: rotate(-{{rotation}}deg) !important;">
   {{#if layer2}}
     <div class='actionable' {{action 'click'}}></div>
   {{/if}}
-  <p class='text'>{{nodeModel.name}}
-  {{#if layer1}} 
-    <div class='node-tasks'>
-      {{#each nodeModel.tasks as |task index|}}
-      <p style='font-size: 13px; color: #666;' {{action 'triggerTask' task}}><input type='checkbox' />{{task.name}}</p>
-      {{else}}
-        <p style='font-size: 13px; color: #666;'>Node has no tasks</p>
-      {{/each}}
+  <div class='inner'>
+    <div class="name">
+      {{nodeModel.name}}
     </div>
-    <!-- admin editing -->
-    {{#if isAdmin}}
-      <form class='create-node'>
-        <h6>Create Child Node</h6>
-        {{input type='text' value=newChildName placeholder='Name' class='new-child-name'}}
-        {{input type='text' value=newChildType placeholder='Type' class='new-child-type'}}
-        <button type='submit' class='create-node' {{action 'createChildNode' nodeModel}}>Create Child Node</button>
-      </form>
-      <br />
-      <form class='create-task'>
-        <h6>Create Task</h6>
-        {{input type='text' value=newTaskName placeholder='Task name' class='new-task-name'}}
-        {{input type='text' value=newTaskActionType placeholder='Action type' class='new-task-action-type'}}
-        {{input type='text' value=newTaskActionData placeholder='Action data' class='new-task-action-data'}}
-        <button type='submit' class='create-task' {{action 'createTask' nodeModel}}>Create Task</button>
-      </form>
-    {{/if}}
-  {{/if}}
-  </p>
+    <div class="inner-content">
+      {{#if layer1}} 
+        <div class='tasks'>
+          {{#each nodeModel.tasks as |task index|}}
+          <div class="task {{if task.active 'active' 'inactive'}} incomplete">
+              <div class="checkbox"></div>
+              {{#if task.active}}
+                <div class="name">{{task.name}}</div>
+              {{else}}
+                <div class="name" {{action 'triggerTask' task}}>{{task.name}}</div>
+              {{/if}}
+            </div>
+          {{else}}
+            <!-- <div class="task empty"> -->
+            <!--   <div class="name">Node has no tasks</div> -->
+            <!-- </div> -->
+          {{/each}}
+        </div>
+        <!-- admin editing -->
+        {{#if isAdmin}}
+          <form class='create-node'>
+            <h6>Create Child Node</h6>
+            {{input type='text' value=newChildName placeholder='Name' class='new-child-name'}}
+            {{input type='text' value=newChildType placeholder='Type' class='new-child-type'}}
+            <button type='submit' class='create-node' {{action 'createChildNode' nodeModel}}>Create Child Node</button>
+          </form>
+          <br />
+          <form class='create-task'>
+            <h6>Create Task</h6>
+            {{input type='text' value=newTaskName placeholder='Task name' class='new-task-name'}}
+            {{input type='text' value=newTaskActionType placeholder='Action type' class='new-task-action-type'}}
+            {{input type='text' value=newTaskActionData placeholder='Action data' class='new-task-action-data'}}
+            <button type='submit' class='create-task' {{action 'createTask' nodeModel}}>Create Task</button>
+          </form>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
   {{#if nodeModel.children}}
     {{#each nodeModel.children as |child index|}}
       {{explorer-entity action='blurParent' parentComponent=this parentModel=nodeModel nodeModel=child nodeIndex=index isAdmin=this.isAdmin triggerTask=(action 'triggerTask')}}
