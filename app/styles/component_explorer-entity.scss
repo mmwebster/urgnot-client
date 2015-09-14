@@ -198,10 +198,10 @@ $transitionLength: .7s; // .7s
     transition: width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   }
   .content.background-image {
-    transition: filter $transitionLength, -webkit-filter $transitionLength, width $transitionLength, height $transitionLength;
+    // transition: -webkit-filter $transitionLength, width $transitionLength, height $transitionLength !important;
   }
   .content {
-    transition: box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+    transition: -webkit-filter $transitionLength, box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   }
   .layer-2 > .content {
     transition: box-shadow .2s, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
@@ -237,6 +237,9 @@ $transitionLength: .7s; // .7s
     width: 100%;
     opacity: 1;
   }
+  .node.parent-blur > .content.background-image {
+    -webkit-filter: opacity(0%);
+  } 
   // origin - star layer
   .node.layer-1 {
     top: 50%;
