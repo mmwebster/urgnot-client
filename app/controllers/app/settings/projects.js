@@ -10,9 +10,9 @@ export default Ember.Controller.extend({
       _this.set('activeRowId', data.get('activeProjectId'));
     });
   }),
-  bufferedRows: Ember.computed('activeRowId', function() {
+  bufferedRows: Ember.computed('model.content.length', 'activeRowId', function() {
     var rows = this.get('model');
-    if (rows) {
+    if (rows.content.length > 0) {
       var unselected = rows.rejectBy('id', this.get('activeRowId'));
       unselected.forEach(function(org) {
         org.set('showIsActive', false);

@@ -9,10 +9,8 @@ export default DS.Model.extend({
   typeIsAdmin: DS.attr('boolean'),
   endOrganizations: DS.hasMany('organization', {inverse: 'endUsers', async: true}),
   adminOrganizations: DS.hasMany('organization', {inverse: 'adminUsers', async: true}),
-  tags: DS.belongsTo('tag'),
   projects: DS.hasMany('project', {inverse: 'author'}),
   collaborations: DS.hasMany('project', {inverse: 'collaborators'}),
-  threads: DS.hasMany('thread', {inverse: 'endUser'}),
   activeOrganizationId: DS.attr('string'),
-  documents: DS.hasMany('document', {async: true})
+  activeProjectId: DS.attr('string')
 });

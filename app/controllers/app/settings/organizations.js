@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       _this.set('activeRowId', data.get('activeOrganizationId'));
     });
   }),
-  bufferedRows: Ember.computed('activeRowId', function() {
+  bufferedRows: Ember.computed('model.content.length', 'activeRowId', function() {
     var rows = this.get('model');
     var unselected = rows.rejectBy('id', this.get('activeRowId'));
     unselected.forEach(function(org) {
