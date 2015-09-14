@@ -1,1 +1,24 @@
-This is the projects route!
+<div class='list'>
+  <form class='row newRow'>
+    <div class='col name'>{{input type='text' value=newRowName placeholder='Project name...'}}</div>
+    <div class='col newRowEmail'>{{input type='text' value=newRowEmail placeholder='Email Ex/ @ucsc.edu'}}</div>
+    <div class='col newRowSubmit'><button type='submit' {{action 'newRow'}}>+</button></div>
+    <div class='clearfix'></div>
+  </form>
+  <div class='row labels'>
+    <div class='col name'>Name</div>
+    <div class='col admin'>Administrators</div>
+    <div class='col end'>Students</div>
+    <div class='clearfix'></div>
+  </div>
+  {{#each bufferedRows as |project|}}
+  <div {{action 'selectActiveRow' project}} class="row content {{if project.showIsActive 'show-is-active'}}">
+      <div class='col name'>{{project.name}}</div>
+      <div class='col admin'>{{project.adminUsers.length}}</div>
+      <div class='col end'>{{project.endUsers.length}}</div>
+      <div class='clearfix'></div>
+    </div>
+  {{/each}}
+  <div class='clearfix'></div>
+</div>
+
