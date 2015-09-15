@@ -1,9 +1,14 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Controller.extend({
   needs: ['application'],
 
   displayLogin: false,
+
+  version: Ember.computed(function() {
+    return config.version;
+  }),
 
   actions: {
     start: function() {

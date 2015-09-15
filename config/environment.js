@@ -4,6 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'urgnot',
     environment: environment,
+    version: "0.0.1",
 
     contentSecurityPolicy: { 
       'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
