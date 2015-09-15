@@ -243,7 +243,6 @@ export default Ember.Component.extend({
       });
     },
     triggerTask: function(task) {
-      Ember.debug('Trigger made on ' + this.get('nodeModel.name'));
       this.attrs.triggerTask(task);
     }
   }

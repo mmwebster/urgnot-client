@@ -1,0 +1,4 @@
+<h2 class="page-header {{if receivingAction 'receivingAction'}}">Action Panel</h2>
+{{#if documentExplorer}}
+  {{document-explorer user=model.user project=model.project store=store commLink=commLink}}
+{{/if}}

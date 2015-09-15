@@ -25,6 +25,14 @@ export default Ember.Component.extend({
     }
   }),
 
+  commLinkActive: Ember.observer('commLink.active', function() {
+    if (this.get('commLink.active')) {
+      Ember.debug('Comm Link Active - in document-editor component');
+    } else {
+      Ember.debug('Comm Link Inactive');
+    }
+  }),
+
   docChanged: function() {
     Ember.debug('doc changed');
     // determine autofocus

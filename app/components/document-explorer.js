@@ -13,40 +13,37 @@ export default Ember.Component.extend({
     });
   }),
 
-  triggerAnother: Ember.observer('somePropD', function() {
-    Ember.debug('someProp observer fired');
-  }),
-
-  triggerAction: Ember.observer('actionData', 'actionData.trigger', function() {
-    Ember.debug('action trigger observer fired');
-    if (this.get('actionData.trigger')) {
-      var data = this.get('actionData.data');
-      // handle incoming actions
-      switch(this.get('action.type')) {
-        case "edit-document":
-          var existingDoc = this.get('sortedDocuments').findBy("identifier", data.identifier);
-          if (existingDoc) {
-            // document already created
-            existingDoc.set('saved', true);
-            this._action_openDocument(existingDoc);
-          } else {
-            // document not created
-            var newDoc = {
-              new: true, 
-              saved: false, 
-              saving: false,
-              name: data.defaultName,
-              content: data.defaultContent,
-              identifier: data.identifier,
-              placeholder: data.placeholder,
-              projectId: this.get('user.activeProjectId')
-            };
-            this._action_openBlankDocument(newDoc);
-          }
-          
-          break;
-      }
-      this.set('action.trigger', false); // clear flag, action was handled
+  commLinkActive: Ember.observer('commLink.active', function() {
+    if (this.get('commLink.active')) {
+      Ember.debug('Comm Link Active - in document-explorer component');
+        var data = this.get('commLink.data');
+        // handle incoming actions
+        switch(this.get('commLink.type')) {
+          case "edit-document":
+            var existingDoc = this.get('sortedDocuments').findBy("identifier", data.identifier);
+            if (existingDoc) {
+              // document already created
+              existingDoc.set('saved', true);
+              this._action_openDocument(existingDoc);
+            } else {
+              // document not created
+              var newDoc = {
+                new: true, 
+                saved: false, 
+                saving: false,
+                name: data.defaultName,
+                content: data.defaultContent,
+                identifier: data.identifier,
+                placeholder: data.placeholder,
+                projectId: this.get('user.activeProjectId')
+              };
+              this._action_openBlankDocument(newDoc);
+            }
+            break;
+        }
+        this.set('commLink.active', false); // clear flag, action was handled
+    } else {
+      Ember.debug('Comm Link Inactive');
     }
   }),
 

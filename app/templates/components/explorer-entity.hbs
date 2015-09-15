@@ -10,8 +10,10 @@
     <div class="inner-content">
       {{#if layer1}} 
         <div class='tasks'>
+
+          {{debugger}}
           {{#each nodeModel.tasks as |task index|}}
-          <div class="task {{if task.active 'active' 'inactive'}} incomplete">
+            <div class="task {{if task.active 'active' 'inactive'}} incomplete">
               <div class="checkbox"></div>
               {{#if task.active}}
                 <div class="name">{{task.name}}</div>

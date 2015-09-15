@@ -1,7 +1,0 @@
-<h2 class="page-header {{if receivingAction 'receivingAction'}}">Action Panel</h2>
-{{someProp}}
-{{#if documentExplorer}}
-is {{#if actionData.trigger}}yes trigger{{else}}no trigger{{/if}}
-prop is: {{someProp}}, click --><span {{action 'trig'}}>here</span><--
-  {{document-explorer somePropD=someProp actionData=actionData user=model.user project=model.project store=store}}
-{{/if}}

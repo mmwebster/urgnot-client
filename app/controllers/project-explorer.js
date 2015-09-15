@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['application'],
-  actionPanel: Ember.inject.controller(),
+  app: Ember.inject.controller("app/index"),
   transitionLength: null,
   showRootEditing: false,
   noValidRootNode: false,
@@ -257,24 +257,19 @@ export default Ember.Controller.extend({
     triggerTask: function(task) {
       // show feedback in project explorer
       // disable currently active task
-      // var activeTask = this.get('activeTask');
-      // if (activeTask) {
-      //   activeTask.set('active', false);
-      // }
-      // // set new to active
-      // task.set('active', true);
-      // // save this task as activeTask
-      // this.set('activeTask', task);
-      // // send action to the action panel
-      var actionPanel = this.get('actionPanel');
-      // debugger;
-      // actionPanel.set('someProp', 'heya');
-      // var type = task.get('actionType');
-      // var data = task.get('actionData');
-      // Ember.debug('triggering action function in action panel with ' + type + ', ' + data);
-      // actionPanel.triggerAction(type, data);
-      actionPanel.send("trig");
-      return false;
+      var activeTask = this.get('activeTask');
+      if (activeTask) {
+        activeTask.set('active', false);
+      }
+      // set new to active
+      task.set('active', true);
+      // save this task as activeTask
+      this.set('activeTask', task);
+      // send action to the action panel
+      var controller = this.get('app');
+      var type = task.get('actionType');
+      var data = JSON.parse(task.get('actionData'));
+      controller.set("commLink", {active: true, type: type, data: data});
     }
   },
 });

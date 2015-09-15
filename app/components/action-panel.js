@@ -1,11 +1,7 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  application: Ember.inject.controller('application'),
-  user: Ember.computed('application.currentUser', function() {
-    return this.get('application.currentUser');
-  }),
-
+export default Ember.Component.extend({
+  classNames: ['action-panel'],
   init: function() {
     this._super();
     this.computeCurrentPanel(); // must compute on init
@@ -24,17 +20,32 @@ export default Ember.Controller.extend({
     });
   }),
 
-  someProp: 'hi',
-  // someDidChange: Ember.observer('someProp', function() {
-  //   debugger;
-  //   window.propChanged = true;
-  // }),
+  commLinkActive: Ember.observer('commLink.active', function() {
+    if (this.get('commLink.active')) {
+      Ember.debug('Comm Link Active - in actionPanel component');
+
+      // actions to be taken at the action-panel level
+      switch(this.get('commLink.type')) {
+        case "edit-document":
+          this.set("currentPanel", "documentExplorer"); // set active panel
+          break;
+      }
+      // show feedback
+      var _this = this;
+      this.set('receivingAction', true);
+      Ember.run.later(function() {
+        _this.set('receivingAction', false);
+      }, 600);
+    } else {
+      Ember.debug('Comm Link Inactive');
+    }
+  }),
 
   actionData: Ember.computed('actionDataBuffer.trigger', function() {
     return this.get('actionDataBuffer');
   }),
 
-  actionDataBuffer: { // used to send down actions to components
+  actionDataBuffer: { // used to send down actions to children
     trigger: false,
     type: null,
     data: {
@@ -48,37 +59,12 @@ export default Ember.Controller.extend({
    * Triggers an action in the action panel according to the received action type and data.
    * Var values are dasherized and options can viewed in the switch.
    */
-  triggerBetterAction: function() {
-    this.set('someProp', 'ho');
-  },
   triggerAction: function(type, data) {
-    // this.set('someProp', 'hey2');
-    // debugger;
-    // debugger;
-    // var data = JSON.parse(data); // must parse out JSON
-    // switch(type) {
-    //   case "edit-document":
-    //     this.set("currentPanel", "documentExplorers"); // set active panel
-    //     var action = {
-    //       trigger: true,
-    //       type: "edit-document",
-    //       data: data,
-    //     };
-    //     this.set("actionDataBuffer", action);
-    //     break;
-    // }
-    // show feedback
-    // var _this = this;
-    // this.set('receivingAction', true);
-    // Ember.run.later(function() {
-    //   _this.set('receivingAction', false);
-    // }, 600);
   },
 
   actions: {
     // TEMP for testing
     trig: function() {
-      debugger;
       this.set('someProp', 'hey');
       this.triggerAction("edit-document", {
         identifier: "research-plan",
