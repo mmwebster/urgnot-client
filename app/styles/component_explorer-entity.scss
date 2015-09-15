@@ -148,6 +148,7 @@ $transitionLength: .7s; // .7s
   .node.layer-1, .node.layer-2 {
     .content.background-image.type-star {
       -webkit-filter: brightness(123%) contrast(138%) opacity(100%);
+      filter: brightness(123%) contrast(138%) opacity(100%);
       background-image: url("images/sun_icon_650.png");
     }
     .content.background-image.type-planet {
@@ -177,9 +178,11 @@ $transitionLength: .7s; // .7s
 
   .node.layer-2 > .content.background-image {
     -webkit-filter: opacity(100%) brightness(120%);
+    filter: opacity(100%) brightness(120%);
   }
   .node.layer-1 > .content.background-image {
     -webkit-filter: opacity(65%) brightness(120%);
+    filter: opacity(65%) brightness(120%);
   }
 
   .node{
@@ -207,7 +210,7 @@ $transitionLength: .7s; // .7s
     // transition: -webkit-filter $transitionLength, width $transitionLength, height $transitionLength !important;
   }
   .content {
-    transition: -webkit-filter $transitionLength, box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
+    transition: filter $transitionLength, -webkit-filter $transitionLength, box-shadow .2s, width $transitionLength, height $transitionLength, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
   }
   .layer-2 > .content {
     transition: box-shadow .2s, top $transitionLength, left $transitionLength, opacity $transitionLength, margin $transitionLength, background-color $transitionLength, transform $transitionLength, border $transitionLength;
@@ -251,6 +254,7 @@ $transitionLength: .7s; // .7s
   }
   .node.parent-blur > .content.background-image {
     -webkit-filter: opacity(0%);
+    filter: opacity(0%);
   } 
   // origin - star layer
   .node.layer-1 {
