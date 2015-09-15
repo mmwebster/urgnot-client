@@ -25,9 +25,10 @@ export default Ember.Controller.extend({
   }),
 
   someProp: 'hi',
-  someDidChange: Ember.observer('someProp', function() {
-    debugger;
-  }),
+  // someDidChange: Ember.observer('someProp', function() {
+  //   debugger;
+  //   window.propChanged = true;
+  // }),
 
   actionData: Ember.computed('actionDataBuffer.trigger', function() {
     return this.get('actionDataBuffer');
@@ -51,7 +52,9 @@ export default Ember.Controller.extend({
     this.set('someProp', 'ho');
   },
   triggerAction: function(type, data) {
-    debugger;
+    // this.set('someProp', 'hey2');
+    // debugger;
+    // debugger;
     // var data = JSON.parse(data); // must parse out JSON
     // switch(type) {
     //   case "edit-document":
@@ -75,6 +78,7 @@ export default Ember.Controller.extend({
   actions: {
     // TEMP for testing
     trig: function() {
+      debugger;
       this.set('someProp', 'hey');
       this.triggerAction("edit-document", {
         identifier: "research-plan",
@@ -82,6 +86,7 @@ export default Ember.Controller.extend({
         placeholder: "Get started outlining your research plan!",
         defaultContent: ""
       });
+      return false;
     }
   }
 

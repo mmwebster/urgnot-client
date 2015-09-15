@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['application', 'actionPanel'],
+  needs: ['application'],
+  actionPanel: Ember.inject.controller(),
   transitionLength: null,
   showRootEditing: false,
   noValidRootNode: false,
@@ -265,10 +266,15 @@ export default Ember.Controller.extend({
       // // save this task as activeTask
       // this.set('activeTask', task);
       // // send action to the action panel
-      var actionPanel = this.get('controllers.actionPanel');
+      var actionPanel = this.get('actionPanel');
       // debugger;
-      actionPanel.set('someProp', 'heya');
-      // actionPanel.triggerAction(task.get('actionType'), task.get('actionData'));
+      // actionPanel.set('someProp', 'heya');
+      // var type = task.get('actionType');
+      // var data = task.get('actionData');
+      // Ember.debug('triggering action function in action panel with ' + type + ', ' + data);
+      // actionPanel.triggerAction(type, data);
+      actionPanel.send("trig");
+      return false;
     }
   },
 });

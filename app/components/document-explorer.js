@@ -13,12 +13,12 @@ export default Ember.Component.extend({
     });
   }),
 
-  triggerAnother: Ember.observer('someProp', function() {
-    debugger;
+  triggerAnother: Ember.observer('somePropD', function() {
+    Ember.debug('someProp observer fired');
   }),
 
   triggerAction: Ember.observer('actionData', 'actionData.trigger', function() {
-    debugger;
+    Ember.debug('action trigger observer fired');
     if (this.get('actionData.trigger')) {
       var data = this.get('actionData.data');
       // handle incoming actions
@@ -77,7 +77,6 @@ export default Ember.Component.extend({
     },
     // open blank document, optionally with predesignated content
     openBlankDocument: function(doc) {
-      debugger;
       this._action_openBlankDocument(doc);
     }
   }
