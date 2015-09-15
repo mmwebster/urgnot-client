@@ -103,6 +103,14 @@ export default Ember.Component.extend({
     return new Ember.Handlebars.SafeString(output);
   }.property('layer2', 'parentModel'),
 
+  // backgroundStyle: function() {
+  //   var color = "#93a";
+  //   if (this.get('nodeModel.color')) {
+  //     color = this.get('nodeModel.color');
+  //   }
+  //   return Ember.Handlebars.SafeString(color);
+  // },
+  //
   willInsertElement: function() {
     // populate node's parent's children
     var parent = this.get('parentComponent');
@@ -110,7 +118,7 @@ export default Ember.Component.extend({
       parent.get('children').push(this);
     }
     // set top level w/o animation
-    if (this.get('nodeModel.displayData') === 'star') {
+    if (this.get('nodeModel.isRoot')) {
         this.set('layer1', true);
         this.set('scaleDown', true);
     }
@@ -128,20 +136,20 @@ export default Ember.Component.extend({
       });
     }
     // upon full hiearchy insertion (page load) animate in layers 
-    switch(this.get('nodeModel.displayData')) {
-      case 'planet':
-        Ember.run.next(function() {
-          _this.set('layer2', true);
-        });
-        break;
-      case 'star':
+    switch(this.get('nodeModel.level')) {
+      case 1: // star
         Ember.run.next(function() {
           _this.set('scaleDown', false);
           _this.treeReady();
         });
         break;
+      case 2: // planet
+        Ember.run.next(function() {
+          _this.set('layer2', true);
+        });
+        break;
     }
-    console.log("Inserted component (" + this.get('nodeModel.displayData') + ").");
+    console.log("Inserted component @ level (" + this.get('nodeModel.level') + ").");
   },
 
  // target is defined, now checking recursion to see why current node is not
