@@ -6,15 +6,21 @@ export default Ember.Component.extend({
   documentsSorting: ['createdAt:desc'],
   sortedDocuments: Ember.computed.sort('documents', 'documentsSorting'),
   documents: Ember.computed(function() {
+    var projectId = this.get('user.activeProjectId');
     return this.get('store').find('document', {
-      orderBy: 'author',
-      equalTo: this.get('user.uid')
+      orderBy: 'projectId',
+      equalTo: projectId
     });
   }),
 
-  triggerAction: Ember.observer('action.trigger', function() {
-    if (this.get('action.trigger')) {
-      var data = this.get('action.data');
+  triggerAnother: Ember.observer('someProp', function() {
+    debugger;
+  }),
+
+  triggerAction: Ember.observer('actionData', 'actionData.trigger', function() {
+    debugger;
+    if (this.get('actionData.trigger')) {
+      var data = this.get('actionData.data');
       // handle incoming actions
       switch(this.get('action.type')) {
         case "edit-document":
@@ -33,6 +39,7 @@ export default Ember.Component.extend({
               content: data.defaultContent,
               identifier: data.identifier,
               placeholder: data.placeholder,
+              projectId: this.get('user.activeProjectId')
             };
             this._action_openBlankDocument(newDoc);
           }
@@ -48,7 +55,7 @@ export default Ember.Component.extend({
     if (doc) {
       this.set('currentDocument', doc);
     } else {
-      this.set('currentDocument', {new: true, saved: false, saving: false});
+      this.set('currentDocument', {new: true, saved: false, saving: false, projectId: this.get('user.activeProjectId')});
     }
   },
 
@@ -70,6 +77,7 @@ export default Ember.Component.extend({
     },
     // open blank document, optionally with predesignated content
     openBlankDocument: function(doc) {
+      debugger;
       this._action_openBlankDocument(doc);
     }
   }

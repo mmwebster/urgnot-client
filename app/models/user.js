@@ -12,5 +12,6 @@ export default DS.Model.extend({
   projects: DS.hasMany('project', {inverse: 'author'}),
   collaborations: DS.hasMany('project', {inverse: 'collaborators'}),
   activeOrganizationId: DS.attr('string'),
-  activeProjectId: DS.attr('string')
+  activeProjectId: DS.attr('string'),
+  documents: DS.hasMany('document', {async: true})
 });

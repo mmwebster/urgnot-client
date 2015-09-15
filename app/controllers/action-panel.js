@@ -24,7 +24,16 @@ export default Ember.Controller.extend({
     });
   }),
 
-  action: { // used to send down actions to components
+  someProp: 'hi',
+  someDidChange: Ember.observer('someProp', function() {
+    debugger;
+  }),
+
+  actionData: Ember.computed('actionDataBuffer.trigger', function() {
+    return this.get('actionDataBuffer');
+  }),
+
+  actionDataBuffer: { // used to send down actions to components
     trigger: false,
     type: null,
     data: {
@@ -38,30 +47,35 @@ export default Ember.Controller.extend({
    * Triggers an action in the action panel according to the received action type and data.
    * Var values are dasherized and options can viewed in the switch.
    */
+  triggerBetterAction: function() {
+    this.set('someProp', 'ho');
+  },
   triggerAction: function(type, data) {
-    var data = JSON.parse(data); // must parse out JSON
-    switch(type) {
-      case "edit-document":
-        this.set("currentPanel", "documentExplorer"); // set active panel
-        var action = {
-          trigger: true,
-          type: "edit-document",
-          data: data,
-        };
-        this.set("action", action);
-        break;
-    }
+    debugger;
+    // var data = JSON.parse(data); // must parse out JSON
+    // switch(type) {
+    //   case "edit-document":
+    //     this.set("currentPanel", "documentExplorers"); // set active panel
+    //     var action = {
+    //       trigger: true,
+    //       type: "edit-document",
+    //       data: data,
+    //     };
+    //     this.set("actionDataBuffer", action);
+    //     break;
+    // }
     // show feedback
-    var _this = this;
-    this.set('receivingAction', true);
-    Ember.run.later(function() {
-      _this.set('receivingAction', false);
-    }, 600);
+    // var _this = this;
+    // this.set('receivingAction', true);
+    // Ember.run.later(function() {
+    //   _this.set('receivingAction', false);
+    // }, 600);
   },
 
   actions: {
     // TEMP for testing
     trig: function() {
+      this.set('someProp', 'hey');
       this.triggerAction("edit-document", {
         identifier: "research-plan",
         defaultName: "Research Plan",

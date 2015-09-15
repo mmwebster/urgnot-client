@@ -96,24 +96,25 @@ export default Ember.Component.extend({
       if (doc.new) {
         // create record
         var _this = this;
-        this.get('user.data').then(function(user) {
-          // create record
-          var newDoc = _this.get('store').createRecord('document', {
-            name: doc.name || "Untitled",
-            content: doc.content,
-            author: user,
-            createdAt: new Date(),
-            identifier: doc.identifier || null
-          });
-          // save with inverse
-          user.get('documents').addObject(newDoc);
-          user.save().then(function() {
-            newDoc.set('isActive', true);
-            _this.set('doc', newDoc);
-            _this.set('doc.saved', true);
-            _this.toggleProperty('doc.saving');
-            return newDoc.save();
-          });
+        var user = this.get('user');
+        var project = this.get('project');
+        // create record
+        var newDoc = _this.get('store').createRecord('document', {
+          name: doc.name || "Untitled",
+          content: doc.content,
+          author: user,
+          createdAt: new Date(),
+          identifier: doc.identifier || null,
+          projectId: project.get('id')
+        });
+        // save with inverse
+        user.get('documents').addObject(newDoc);
+        user.save().then(function() {
+          newDoc.set('isActive', true);
+          _this.set('doc', newDoc);
+          _this.set('doc.saved', true);
+          _this.toggleProperty('doc.saving');
+          return newDoc.save();
         });
       } else {
         // save record

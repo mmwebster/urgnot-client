@@ -256,17 +256,19 @@ export default Ember.Controller.extend({
     triggerTask: function(task) {
       // show feedback in project explorer
       // disable currently active task
-      var activeTask = this.get('activeTask');
-      if (activeTask) {
-        activeTask.set('active', false);
-      }
-      // set new to active
-      task.set('active', true);
-      // save this task as activeTask
-      this.set('activeTask', task);
-      // send action to the action panel
+      // var activeTask = this.get('activeTask');
+      // if (activeTask) {
+      //   activeTask.set('active', false);
+      // }
+      // // set new to active
+      // task.set('active', true);
+      // // save this task as activeTask
+      // this.set('activeTask', task);
+      // // send action to the action panel
       var actionPanel = this.get('controllers.actionPanel');
-      actionPanel.triggerAction(task.get('actionType'), task.get('actionData'));
+      // debugger;
+      actionPanel.set('someProp', 'heya');
+      // actionPanel.triggerAction(task.get('actionType'), task.get('actionData'));
     }
   },
 });

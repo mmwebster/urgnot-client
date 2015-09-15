@@ -1,5 +1,5 @@
 {{render "projectExplorer"}}
 
-{{render "actionPanel"}}
+{{render "actionPanel" model}}
 
-{{project-messenger user=model store=store}}
+{{project-messenger user=model.user store=store}}
