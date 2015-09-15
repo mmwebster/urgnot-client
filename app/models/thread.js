@@ -6,5 +6,6 @@ export default DS.Model.extend({
   authorUid: DS.attr('string'), // currently the uid of the student
   endUser: DS.hasMany('user'),
   organization: DS.belongsTo('organization'),
+  projectId: DS.attr('string'),
   messages: DS.hasMany('message', {async: 'true'})
 });

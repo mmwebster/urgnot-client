@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  needs: ['application'],
+export default Ember.Component.extend({
+  classNames: ['messenger'],
+  classNameBindings: ['isMinimized:is-minimized'],
+  isMinimized: true,
   updates: -1,
   autoScrollPrepared: false,
   threadFocused: false,
-  isMinimized: true,
 
   newThreadName: "",
   currentThread: "",
@@ -13,12 +14,14 @@ export default Ember.Controller.extend({
   errorIsDisplayed: false,
   error: null,
 
-  uid: function() {
-    return this.get('controllers.application.currentUser.uid');
-  }.property(),
-
-  threads: Ember.computed(function() {
-    return this.store.find('thread'); 
+  threads: Ember.computed('user.data', function() {
+    var projectId = this.get('user.activeProjectId');
+    // var projectId = "-JzD3jRsoRuQsLA5LkUO";
+    Ember.debug('project id is "' + projectId + '"');
+    return this.get('store').find('thread', {
+      orderBy: 'projectId',
+      equalTo: projectId
+    }); 
   }),
   threadsSorting: ['date:desc'],
   sortedThreads: Ember.computed.sort('threads', 'threadsSorting'),
@@ -32,7 +35,7 @@ export default Ember.Controller.extend({
       Ember.$(".messenger .messages .messages-body").animate({ scrollTop: scrollheight}, 600);
     }
     var threadId = this.get('thread.id');
-    return this.store.find('message', {
+    return this.get('store').find('message', {
       orderBy: 'thread',
       equalTo: threadId
     });
@@ -81,12 +84,12 @@ export default Ember.Controller.extend({
       if(this.get('newThreadName') !== "") {
         var _this = this;
         var date = Date.now();
-        var newThread = this.store.createRecord('thread', {
+        var newThread = this.get('store').createRecord('thread', {
           name: this.get('newThreadName'),
           date: date,
-          authorUid: this.get('uid')
+          authorUid: this.get('user.id')
         });
-        this.store.find('user', this.get('uid')).then(function(user) {
+        this.get('store').find('user', this.get('user.id')).then(function(user) {
           newThread.get('endUser').addObject(user);
           var saved = user.save().then(function() {
             return newThread.save();
@@ -105,27 +108,24 @@ export default Ember.Controller.extend({
       if(body !== "") {
         // retrieve message, then nullify
         this.set('newMessageBody', "");
-        var _this = this;
-        var author = this.get('controllers.application.currentUser.data');
+        var author = this.get('user');
 
         // send along the message to thread
-        author.then(function(_author) {
-          var date = Date.now();
-          var newMessage = _this.store.createRecord('message', {
-            author: _author,
-            date: date,
-            body: body
-          });
-
-          var thread = _this.get('currentThread');
-          newMessage.set('thread', thread);
-          thread.save().then(function() {
-            return newMessage.save();
-          });
-
-          Ember.debug('INSERTED: author: ' + _author + ', date: ' + date + ', body: ' + body);
-          
+        var date = Date.now();
+        var newMessage = this.get('store').createRecord('message', {
+          author: author,
+          date: date,
+          body: body
         });
+
+        var thread = this.get('currentThread');
+        newMessage.set('thread', thread);
+        thread.save().then(function() {
+          return newMessage.save();
+        });
+
+        Ember.debug('INSERTED: author: ' + author + ', date: ' + date + ', body: ' + body);
+          
       } else {
         this.displayError("Message cannot be empty");
       }

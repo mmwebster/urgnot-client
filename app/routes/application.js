@@ -25,9 +25,9 @@ export default Ember.Route.extend({
         this.transitionTo('index');
       }
     },
-    willTransition: function() {
-      // prevent un auth'ed clients attempt to access auth requiring routes
+    willTransition: function(transition) {
       if(!this.get('session').content.isAuthenticated) {
+        // prevent un auth'ed clients attempt to access auth requiring routes
         this.transitionTo('application');
       }
     },

@@ -21,7 +21,7 @@
     margin-bottom: 20px;
   }
   .nav-item:hover {
-    opacity: .7;
+    -webkit-filter: brightness(120%);
   }
   .settings.nav-item {
     background-image: url('images/gear-blanked.svg');
