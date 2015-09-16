@@ -4,8 +4,8 @@ export default Ember.Controller.extend({
   showAdvanced: false,
 
   socketedName: function() {
-    return this.get('model.name');
-  }.property('model.name'),
+    return this.get('model.fullName');
+  }.property('model.fullName'),
 
   socketedEmail: function() {
     return this.get('model.email');
