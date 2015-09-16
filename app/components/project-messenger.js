@@ -16,7 +16,6 @@ export default Ember.Component.extend({
 
   threads: Ember.computed('user.data', function() {
     var projectId = this.get('user.activeProjectId');
-    // var projectId = "-JzD3jRsoRuQsLA5LkUO";
     Ember.debug('project id is "' + projectId + '"');
     return this.get('store').find('thread', {
       orderBy: 'projectId',
