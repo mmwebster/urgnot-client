@@ -25,7 +25,16 @@
       </div>
       {{#each sortedThreads as |thread|}}
         <div class='row thread' {{action 'focusThread' thread}}>
-          <div class='col name'>{{thread.name}}</div>
+          <div class='col name'>
+            <div class='row thread-author'>
+              {{#if thread.author.fullName}}
+                {{thread.author.fullName}}
+              {{else}}
+                {{thread.author.email}}
+              {{/if}}
+            </div>
+            <div class='row thread-name'>{{thread.name}}</div>
+          </div>
           <div class='col arrow'>></div>
           <div class='clearfix'></div>
         </div>

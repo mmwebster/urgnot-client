@@ -2,7 +2,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   uid: DS.attr('string'),
-  name: DS.attr('string'),
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
   email: DS.attr('string'),
   type: DS.attr('string'),
   typeIsStudent: DS.attr('boolean'),
@@ -13,5 +14,15 @@ export default DS.Model.extend({
   collaborations: DS.hasMany('project', {inverse: 'collaborators'}),
   activeOrganizationId: DS.attr('string'),
   activeProjectId: DS.attr('string'),
-  documents: DS.hasMany('document', {async: true})
+  documents: DS.hasMany('document', {async: true}),
+
+  // COMPUTED
+  fullName: Ember.computed('firstName', 'lastName', function() {
+    if (this.get('firstName') && this.get('lastName')) {
+      return this.get('firstName') + " " + this.get('lastName');
+    } else {
+      return false;
+    }
+  })
+
 });

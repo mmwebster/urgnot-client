@@ -101,11 +101,24 @@
         .name {
           width: 90%;
           float: left;
+          .thread-author, .thread-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .thread-author {
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          .thread-name {
+          }
         }
         .arrow {
           float: left;
           width: 10%;
           color: #fff;
+          font-size: 25px;
+          line-height: 50px;
         }
       }
       .thread:hover {

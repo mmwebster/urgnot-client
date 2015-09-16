@@ -15,12 +15,23 @@ export default Ember.Component.extend({
   error: null,
 
   threads: Ember.computed('user.data', function() {
-    var projectId = this.get('user.activeProjectId');
-    Ember.debug('project id is "' + projectId + '"');
-    return this.get('store').find('thread', {
-      orderBy: 'projectId',
-      equalTo: projectId
-    }); 
+    if(this.get('user.typeIsAdmin')) {
+      // USER ADMIN
+      var organizationId = this.get('user.activeOrganizationId');
+      Ember.debug('project id is "' + organizationId + '"');
+      return this.get('store').find('thread', {
+        orderBy: 'organizationId',
+        equalTo: organizationId
+      });
+    } else {
+      // USER STUDENT
+      var projectId = this.get('user.activeProjectId');
+      Ember.debug('project id is "' + projectId + '"');
+      return this.get('store').find('thread', {
+        orderBy: 'projectId',
+        equalTo: projectId
+      });
+    }
   }),
   threadsSorting: ['date:desc'],
   sortedThreads: Ember.computed.sort('threads', 'threadsSorting'),
@@ -86,7 +97,10 @@ export default Ember.Component.extend({
         var newThread = this.get('store').createRecord('thread', {
           name: this.get('newThreadName'),
           date: date,
-          authorUid: this.get('user.id')
+          author: this.get('user'),
+          authorUid: this.get('user.id'),
+          projectId: this.get('user.activeProjectId'),
+          organizationId: this.get('user.activeOrganizationId')
         });
         this.get('store').find('user', this.get('user.id')).then(function(user) {
           newThread.get('endUser').addObject(user);
