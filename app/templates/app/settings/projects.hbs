@@ -14,13 +14,19 @@
   </h2>
   <div class='row labels'>
     <div class='col name'>Name</div>
-    <div class='col admin'>Collaborator(s)</div>
+    <div class='col admin'>{{#if model.user.typeIsAdmin}}Student(s){{else}}Collaborator(s){{/if}}</div>
     <div class='clearfix'></div>
   </div>
   {{#each bufferedRows as |project|}}
   <div {{action 'selectActiveRow' project}} class="row content {{if project.showIsActive 'show-is-active'}}">
       <div class='col name'>{{project.name}}</div>
-      <div class='col collaborators'>{{project.author.email}}</div>
+      <div class='col collaborators'>
+        {{#if project.author.fullName}}
+          {{project.author.fullName}}
+        {{else}}
+          {{project.author.email}}
+        {{/if}}
+      </div>
       <div class='clearfix'></div>
     </div>
   {{/each}}

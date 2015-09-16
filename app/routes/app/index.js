@@ -25,6 +25,11 @@ export default Ember.Route.extend({
               model.project = project;
               resolve(model);
             });
+          } else if (user.get('typeIsAdmin')) {
+            // ADMIN, NO PROJECT
+            alert("Select a project in the settings to view a student's dashboard.");
+            model.adminPanel = true;
+            resolve(model);
           } else {
             // CREATE PROJECT
             alert("Welcome to Urgnot!"); // temp welcome message
