@@ -103,14 +103,6 @@ export default Ember.Component.extend({
     return new Ember.Handlebars.SafeString(output);
   }.property('layer2', 'parentModel'),
 
-  // backgroundStyle: function() {
-  //   var color = "#93a";
-  //   if (this.get('nodeModel.color')) {
-  //     color = this.get('nodeModel.color');
-  //   }
-  //   return Ember.Handlebars.SafeString(color);
-  // },
-  //
   willInsertElement: function() {
     // populate node's parent's children
     var parent = this.get('parentComponent');
