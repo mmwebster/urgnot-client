@@ -1,10 +1,13 @@
 <div class='list'>
-  <form class='row newRow'>
-    <div class='col name'>{{input type='text' value=newRowName placeholder='Organization name...'}}</div>
-    <div class='col newRowEmail'>{{input type='text' value=newRowEmail placeholder='Email Ex/ @ucsc.edu'}}</div>
-    <div class='col newRowSubmit'><button type='submit' {{action 'newRow'}}>+</button></div>
-    <div class='clearfix'></div>
-  </form>
+  <h2 class="{{if model.user.typeIsAdmin 'type-admin'}}">Your Current Organization</h2>
+  {{#if model.user.typeIsAdmin}}
+    <form class='row newRow'>
+      <div class='col name'>{{input type='text' value=newRowName placeholder='Organization name...'}}</div>
+      <div class='col newRowEmail'>{{input type='text' value=newRowEmail placeholder='Email Ex/ @ucsc.edu'}}</div>
+      <div class='col newRowSubmit'><button type='submit' {{action 'newRow'}}>+</button></div>
+      <div class='clearfix'></div>
+    </form>
+  {{/if}}
   <div class='row labels'>
     <div class='col name'>Name</div>
     <div class='col admin'>Administrators</div>

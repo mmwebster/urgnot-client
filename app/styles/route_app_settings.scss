@@ -95,6 +95,14 @@
     }
   }
   .organizations, .projects {
+    h2 {
+      border-bottom: 1px solid rgba(0,100,0,.6);
+      padding-bottom: 10px;
+    }
+    h2.type-admin {
+      border-bottom: none;
+      padding-bottom: 15px;
+    }
     .list {
       .row {
         width: 100%;
@@ -111,6 +119,10 @@
         }
         .col.admin {
           width: 30%;
+        }
+        .col.collaborators {
+          width: 50%;
+          border-right: none;
         }
         .col.end, .col.newRowSubmit {
           width: 20%;
