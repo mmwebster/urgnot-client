@@ -13,6 +13,7 @@ Router.map(function() {
       this.route('organizations');
     });  
   });
+  this.route('login');
 });
 
 export default Router;

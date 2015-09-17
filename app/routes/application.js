@@ -5,8 +5,29 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  beforeModel: function() {
-    return this.get("session").fetch().catch(function() {});
+  // User authentication control
+  beforeModel: function(transition) {
+    var _this = this;
+    return new Ember.RSVP.Promise(function(resolve) {
+      _this.get("session").fetch().then(function(session) {
+
+        // return session
+        resolve(session);
+
+      }, function() {
+
+        // user not authenticated. transition to login if not accessing validUnauthTransition
+        var validUnauthTransition = (transition.targetName == "index") || 
+          (transition.targetName == "login");
+        if(!validUnauthTransition) {
+          _this.transitionTo("login");
+        }
+
+        // resolve promise
+        resolve(false);
+        
+      });
+    });
   },
 
   actions: {
@@ -23,18 +44,6 @@ export default Ember.Route.extend({
       } else {
         console.warn('User already signed out');
         this.transitionTo('index');
-      }
-    },
-    willTransition: function(transition) {
-      if(!this.get('session').content.isAuthenticated) {
-        // prevent un auth'ed clients attempt to access auth requiring routes
-        this.transitionTo('application');
-      }
-    },
-    didTransition: function() {
-      // prevent un auth'ed clients attempt to access auth requiring routes
-      if(!this.get('session').content.isAuthenticated) {
-        this.transitionTo('application');
       }
     }
   }

@@ -17,4 +17,13 @@ export default Ember.Controller.extend({
       return null;
     }
   }.property('session.content.isAuthenticated'),
+
+  // Controller side authentication control
+  transitioned: Ember.observer('currentPath', function() {
+    var path = this.get('currentPath');
+    var validUnauthTransition = (path == "index") || (path == "login");
+    if(!this.get('session').content.isAuthenticated && !validUnauthTransition) {
+      this.transitionToRoute("login");
+    }
+  })
 });

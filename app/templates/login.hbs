@@ -1,0 +1,10 @@
+<div id='left' class='urgnot flex'></div>
+<div id='right'>
+  <h2>Time to go Urgnot</h2>
+  <form>
+    {{input type='email' placeholder='Email' value=email}}
+    {{input type='password' placeholder='Password' value=password}}
+    <input type='submit' value='Continue Greatness' {{action 'signIn' email password}}/>
+  </form>
+</div>
+<div class='clearfix'></div>
