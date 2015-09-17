@@ -7,8 +7,9 @@
   position: absolute;
   bottom: 0px;
   right: 5%;
-  transition: height .4s;
+  transition: height .3s;
   box-shadow: 0px 0px 10px rgba(0,0,0,.3);
+  background-color: rgba(255,255,255,1);
   .header {
     height: 50px;
     padding: 10px;
@@ -16,7 +17,7 @@
     border-bottom: 1px solid #fff;
     color: #fefefe;
     background-color: #0098ff;
-    .back, .minimize-toggle {
+    .back, .hamburger {
       top: 0px;
       height: 50px;
       position: absolute;
@@ -25,7 +26,7 @@
       transition: color 0.2s, rotateX .3s;
       // transition: all .2s;
     }
-    .back:hover, .minimize-toggle:hover {
+    .back:hover, .hamburger .toggle:hover {
       color: rgba(0, 100, 0, 0.6);
       cursor: pointer;
     }
@@ -34,14 +35,19 @@
       font-size: 25px;
       padding: 7px 10px 10px 10px;
     }
-    .minimize-toggle {
-      right: 0px;
-      font-size: 24px;
-      padding: 11px 10px 10px 10px;
-      line-height: 7px;
+    .hamburger {
+      left: 0px;
+      .toggle {
+        padding: 11px 10px 10px 10px;
+        font-size: 24px;
+        line-height: 7px;
+      }
     }
-    .minimize-toggle.is-minimized {
-      transform: rotate(90deg);
+    h3 {
+      height: 100%;
+    }
+    h3:hover {
+      cursor: pointer;
     }
   }
   .body {
@@ -53,6 +59,33 @@
     .body-inner-wrapper {
       width: 200%;
       height: 100%;
+    }
+    .hamburger-options {
+      height: 100%;
+      float: left;
+      transition: all .3s;
+      overflow: hidden;
+      box-sizing: border-box;
+      .option {
+        padding: 10px;
+        border-bottom: 1px solid #fff;
+        background-color: rgba(0, 136, 255, 0.3);
+        transition: all .3s;
+        color: rgba(0, 136, 255, 1);
+        text-align: center;
+      }
+      .option:hover, .option.active {
+        cursor: pointer;
+        background-color: rgba(0, 136, 255, 0.5);
+        color: rgba(0, 100, 200, 1);
+      }
+    }
+    .hamburger-options.hide {
+      width: 0px;
+    }
+    .hamburger-options.show {
+      width: 170px;
+      border-right: 1px solid rgba(0, 136, 255, 0.8);;
     }
     .threads, .messages {
       position: static;

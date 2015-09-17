@@ -7,6 +7,8 @@ export default Ember.Component.extend({
   updates: -1,
   autoScrollPrepared: false,
   threadFocused: false,
+  hamburgerOptions: false,
+  hamburgerActive: {}, // contains all active hamburger toggles
 
   newThreadName: "",
   currentThread: "",
@@ -79,14 +81,18 @@ export default Ember.Component.extend({
   },
 
   focusThread: function(thread) {
-    this.set('threadFocused', true);
-    this.set('thread', thread);
-    this.set('displayThreadTitle', true);
-    this.set('currentThread', thread);
-    // focus new message field
-    Ember.run.later(function() {
-      Ember.$(".newMessage input.name").focus();
-    }, 300);
+    if (!this.get('hamburgerOptions')) {
+      this.set('threadFocused', true);
+      this.set('thread', thread);
+      this.set('displayThreadTitle', true);
+      this.set('currentThread', thread);
+      // focus new message field
+      Ember.run.later(function() {
+        Ember.$(".newMessage input.name").focus();
+      }, 300);
+    } else {
+      this.set('hamburgerOptions', false);
+    }
   },
 
   actions: {
@@ -152,6 +158,20 @@ export default Ember.Component.extend({
     },
     minimize: function() {
       this.toggleProperty('isMinimized');
+    },
+    hamburger: function() {
+      this.toggleProperty('hamburgerOptions');
+    },
+    hamburgerAction: function(action) {
+      switch(action) {
+        case "advanced":
+          this.toggleProperty("hamburgerActive.advanced");
+          break;
+        case "contacts":
+          this.toggleProperty("hamburgerActive.contacts");
+      }
+      // close the menu
+      this.set('hamburgerOptions', false);
     }
   }
 });

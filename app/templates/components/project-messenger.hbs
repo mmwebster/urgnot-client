@@ -1,13 +1,20 @@
 <div class='header' >
   {{#if displayThreadTitle}}
     {{#unless isMinimized}}
-    <div class='back' {{action 'blurThread'}}>&#60;</div>
+      <div class='back' {{action 'blurThread'}}>&#60;</div>
+    {{else}}
     {{/unless}}
-    <h3>{{currentThread.name}}</h3>
+    <h3 {{action 'minimize'}}>{{currentThread.name}}</h3>
   {{else}}
-    <h3>Messenger</h3>
+    {{#unless isMinimized}}
+      <div class="hamburger">
+        <div class="toggle" {{action 'hamburger'}}>
+          —<br/>—<br/>—
+        </div>
+      </div>
+    {{/unless}}
+    <h3 {{action 'minimize'}}>Messenger</h3>
   {{/if}}
-  <div class="minimize-toggle {{if isMinimized 'is-minimized'}}" {{action 'minimize'}}>—<br/>—<br/>—</div>
 </div>
 {{#if errorIsDisplayed}}
   <div class='row'>
@@ -16,6 +23,10 @@
 {{/if}}
 <div class='body'>
   <div class='body-inner-wrapper'>
+    <div class="hamburger-options {{if hamburgerOptions 'show' 'hide'}}">
+      <div class="option {{if hamburgerActive.advanced 'active' 'inactive'}}" {{action 'hamburgerAction' "advanced"}}>Advanced</div>
+      <div class="option {{if hamburgerActive.contacts 'active' 'inactive'}}" {{action 'hamburgerAction' "contacts"}}>Contacts</div>
+    </div>
     <div class="threads {{if threadFocused 'hide' 'show'}}">
       <div class='row newThread'>
         <form>
