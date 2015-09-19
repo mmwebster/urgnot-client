@@ -49,6 +49,7 @@
         {{#if user.typeIsAdmin}}
             {{input type="text" value=newThread.recipients class="name" placeholder="To"}}
             {{input type="text" value=newThread.name class="name" placeholder="Subject"}}
+            {{textarea value=newThread.message class="name"}}
             <input type="submit" {{action 'createThread'}} class="submit" value="+">
             <div class="clearfix"></div>
         {{else}}
