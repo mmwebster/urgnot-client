@@ -15,7 +15,10 @@
           —<br/>—<br/>—
         </div>
       </div>
-      <div class="createThread" {{action 'createThread'}}>+</div>
+      <div class="newThreadToggle {{if newThread.active 'active' 'inactive'}}" {{action 'newThreadToggle'}}>
+        <!-- show "x" if making new thread -->
+        {{#if newThread.active}}x{{else}}+{{/if}}
+      </div>
     {{/if}}
     <!-- right -->
   {{else}}
@@ -41,7 +44,7 @@
       <div class="option {{if hamburgerActive.advanced 'active' 'inactive'}}" {{action 'hamburgerAction' "advanced"}}>Advanced</div>
       <div class="option {{if hamburgerActive.contacts 'active' 'inactive'}}" {{action 'hamburgerAction' "contacts"}}>Contacts</div>
     </div>
-    <div class="row newThread {{if newThread.active 'show' 'hide'}}">
+    <div class="newThread {{if newThread.active 'show' 'hide'}}">
       <form>
         {{#if user.typeIsAdmin}}
             {{input type="text" value=newThread.recipients class="name" placeholder="To"}}

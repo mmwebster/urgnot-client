@@ -47,6 +47,25 @@
         line-height: 7px;
       }
     }
+    .newThreadToggle {
+      top: 0px;
+      height: 50px;
+      position: absolute;
+      width: 55px;
+      box-sizing: border-box;
+      right: 0px;
+      padding: 20px 10px 10px 10px;
+      font-size: 35px;
+      line-height: 7px;
+    }
+    .newThreadToggle.active {
+      font-size: 25px;
+      line-height: 2px;
+    }
+    .newThreadToggle:hover {
+      cursor: pointer;
+      color: rgba(0, 100, 0, 0.6);
+    }
     h3 {
       height: 100%;
     }
@@ -98,15 +117,21 @@
       height: 100%;
       float: left;
     }
-    .row.newThread.hide {
+    .newThread.hide {
       opacity: 0;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
     }
-    .row.newThread.show {
+    .newThread.show {
       opacity: 1;
+      transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+      z-index: 10;
     }
-    .row.newThread {
+    .newThread {
       border-bottom: 1px solid rgba(0, 136, 255, 0.8);
       position: absolute;
+      transition: all .3s;
       .name {
         width: calc(100% - 54.5px);
         font-size: 16px;
@@ -138,6 +163,7 @@
     .threads {
       overflow-y: auto;
       background-color: #fff;
+      transition: all .3s;
       .thread {
         padding: 10px;
         border-bottom: 1px solid #fff;
@@ -172,6 +198,16 @@
         background-color: rgba(0, 136, 255, 0.5);
         color: rgba(0, 100, 200, 1);
       }
+    }
+    .threads.no-flip {
+      opacity: 1;
+      transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+    }
+    .threads.flip {
+      opacity: 0;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
     }
     .threads.show {
       margin-left: 0px;

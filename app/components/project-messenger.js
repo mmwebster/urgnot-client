@@ -101,6 +101,9 @@ export default Ember.Component.extend({
   },
 
   actions: {
+    newThreadToggle: function() {
+      this.toggleProperty('newThread.active');
+    },
     createThread: function() {
       if(this.get('newThread.name') !== "") {
         var _this = this;
