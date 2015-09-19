@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['messenger'],
-  classNameBindings: ['isMinimized:is-minimized'],
+  classNameBindings: ['isMinimized:is-minimized', 'hamburgerActive.advanced:advanced'],
   isMinimized: true,
   updates: -1,
   autoScrollPrepared: false,

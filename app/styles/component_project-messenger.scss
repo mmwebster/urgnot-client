@@ -1,5 +1,9 @@
-.messenger.is-minimized {
+.messenger.is-minimized, .messenger.is-minimized.advanced {
   height: 50px;
+}
+.messenger.advanced {
+  height: 500px;
+  width: 600px;
 }
 .messenger {
   width: 275px;
@@ -7,7 +11,7 @@
   position: absolute;
   bottom: 0px;
   right: 5%;
-  transition: height .3s;
+  transition: all .3s;
   box-shadow: 0px 0px 10px rgba(0,0,0,.3);
   background-color: rgba(255,255,255,1);
   .header {
@@ -21,7 +25,7 @@
       top: 0px;
       height: 50px;
       position: absolute;
-      width: 20%;
+      width: 55px;
       box-sizing: border-box;
       transition: color 0.2s, rotateX .3s;
       // transition: all .2s;
@@ -100,7 +104,7 @@
       .row.newThread {
         border-bottom: 1px solid rgba(0, 136, 255, 0.8);
         .name {
-          width: 80%;
+          width: calc(100% - 54.5px);
           font-size: 16px;
           color: rgba(0,100,0,.7);
           border: none;
@@ -111,7 +115,7 @@
         }
         .submit {
           height: 100%;
-          width: 20%;
+          width: 54.5px;
           font-size: 35px;
           color: #fff;
           border: none;
@@ -133,7 +137,7 @@
         transition: all .3s;
         color: rgba(0, 136, 255, 1);
         .name {
-          width: 90%;
+          width: calc(100% - 25px);
           float: left;
           .thread-author, .thread-name {
             white-space: nowrap;
@@ -149,7 +153,7 @@
         }
         .arrow {
           float: left;
-          width: 10%;
+          width: 25px;
           color: #fff;
           font-size: 25px;
           line-height: 50px;
@@ -165,13 +169,13 @@
       margin-left: 0px;
     }
     .threads.hide {
-      margin-left: -275px;
+      margin-left: -50%;//-275px;
     }
     .messages.show {
       left: 0px;
     }
     .messages.hide {
-      left: 275px;
+      left: -50%;//275px;
     }
     .messages {
       .messages-body {
@@ -181,9 +185,9 @@
       .newMessage {
         height: 47px;
         box-sizing: border-box;
-        width: 273px;
+        width: 100%;
         .name {
-          width: 80%;
+          width: calc(100% - 54.5px);
           font-size: 16px;
           color: rgba(0, 100, 0, 0.7);
           border: none;
@@ -194,7 +198,7 @@
         }
         .submit {
           height: 47px;
-          width: 20%;
+          width: 54.5px;
           font-size: 25px;
           color: rgba(0,136,255,1);
           background-color: #fff;;

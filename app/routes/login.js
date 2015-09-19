@@ -73,7 +73,7 @@ export default Ember.Route.extend({
           });
 
         }, function(reason) {
-          var message = "Oops! " + reason.message;
+          var message = "Whoops! " + reason.message;
           console.warn(message);
           alert(message);
         });
