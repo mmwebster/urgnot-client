@@ -44,7 +44,7 @@
       <div class="option {{if hamburgerActive.advanced 'active' 'inactive'}}" {{action 'hamburgerAction' "advanced"}}>Advanced</div>
       <div class="option {{if hamburgerActive.contacts 'active' 'inactive'}}" {{action 'hamburgerAction' "contacts"}}>Contacts</div>
     </div>
-    <div class="newThread {{if newThread.active 'show' 'hide'}}">
+    <div class="newThread {{if newThread.active 'show' 'hide'}} {{if hamburgerOptions 'slide-right' 'slide-none'}}">
       <form>
         {{#if user.typeIsAdmin}}
             {{input type="text" value=newThread.recipients class="name" placeholder="To"}}

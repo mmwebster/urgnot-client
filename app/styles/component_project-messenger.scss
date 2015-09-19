@@ -128,8 +128,17 @@
       -webkit-transform: rotateY(0deg);
       z-index: 10;
     }
+    .newThread.slide-right {
+      left: 170px;
+      width: calc(100% - 170px);
+    }
+    .newThread.slide-none {
+      left: 0px;
+      width: 100%;
+    }
     .newThread {
       border-bottom: 1px solid rgba(0, 136, 255, 0.8);
+      border-left: 1px solid rgba(0, 136, 255, 0.8);
       position: absolute;
       transition: all .3s;
       .name {
