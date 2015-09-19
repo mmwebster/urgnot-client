@@ -1,20 +1,34 @@
 <div class='header' >
-  {{#if displayThreadTitle}}
-    {{#unless isMinimized}}
+
+
+
+  <!-- Now creating the plus button in the header. Then need to set up the new thread display, built out the flip transitions and the fades. Then finish the actual multi recipient stuff, making it default to the org admin for students and potentially not having this alterable for them. -->
+
+  <!-- display conditional left and right header buttons -->
+  {{#unless isMinimized}}
+    <!-- left -->
+    {{#if threadFocused}}
       <div class='back' {{action 'blurThread'}}>&#60;</div>
     {{else}}
-    {{/unless}}
-    <h3 {{action 'minimize'}}>{{currentThread.name}}</h3>
-  {{else}}
-    {{#unless isMinimized}}
       <div class="hamburger">
         <div class="toggle" {{action 'hamburger'}}>
           —<br/>—<br/>—
         </div>
       </div>
-    {{/unless}}
+      <div class="createThread" {{action 'createThread'}}>+</div>
+    {{/if}}
+    <!-- right -->
+  {{else}}
+  {{/unless}}
+
+  <!-- display conditional header -->
+  {{#if displayThreadTitle}}
+    <h3 {{action 'minimize'}}>{{currentThread.name}}</h3>
+  {{else}}
     <h3 {{action 'minimize'}}>Messenger</h3>
   {{/if}}
+
+
 </div>
 {{#if errorIsDisplayed}}
   <div class='row'>
@@ -27,13 +41,21 @@
       <div class="option {{if hamburgerActive.advanced 'active' 'inactive'}}" {{action 'hamburgerAction' "advanced"}}>Advanced</div>
       <div class="option {{if hamburgerActive.contacts 'active' 'inactive'}}" {{action 'hamburgerAction' "contacts"}}>Contacts</div>
     </div>
-    <div class="threads {{if threadFocused 'hide' 'show'}}">
-      <div class='row newThread'>
-        <form>
-          {{input type="text" value=newThreadName class="name" placeholder="Subject"}}
-          <input type="submit" {{action 'createThread'}} class="submit" value="+">
-        </form>
-      </div>
+    <div class="row newThread {{if newThread.active 'show' 'hide'}}">
+      <form>
+        {{#if user.typeIsAdmin}}
+            {{input type="text" value=newThread.recipients class="name" placeholder="To"}}
+            {{input type="text" value=newThread.name class="name" placeholder="Subject"}}
+            <input type="submit" {{action 'createThread'}} class="submit" value="+">
+            <div class="clearfix"></div>
+        {{else}}
+            {{input type="text" value=newThread.name class="name" placeholder="Subject"}}
+            <input type="submit" {{action 'createThread'}} class="submit" value="+">
+            <div class="clearfix"></div>
+        {{/if}}
+      </form>
+    </div>
+    <div class="threads {{if threadFocused 'hide' 'show'}} {{if newThread.active 'flip' 'no-flip'}}">
       {{#each sortedThreads as |thread|}}
         <div class='row thread' {{action 'focusThread' thread}}>
           <div class='col name'>

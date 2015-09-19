@@ -98,38 +98,46 @@
       height: 100%;
       float: left;
     }
+    .row.newThread.hide {
+      opacity: 0;
+    }
+    .row.newThread.show {
+      opacity: 1;
+    }
+    .row.newThread {
+      border-bottom: 1px solid rgba(0, 136, 255, 0.8);
+      position: absolute;
+      .name {
+        width: calc(100% - 54.5px);
+        font-size: 16px;
+        color: rgba(0,100,0,.7);
+        border: none;
+        padding: 10px;
+        box-sizing: border-box;
+        float: left;
+        height: 47px;
+      }
+      .submit {
+        float: left;
+        height: 100%;
+        width: 54.5px;
+        font-size: 35px;
+        color: #fff;
+        border: none;
+        background-color: rgba(0, 136, 255, 0.6);
+        box-sizing: border-box;
+        border-left: 1px solid rgba(0, 136, 255, 0.6);
+        transition: all .2s;
+      }
+      .submit:hover {
+        color: rgba(0, 100, 0, 0.6);
+        background-color: #fff;
+        cursor: pointer;
+      }
+    }
     .threads {
       overflow-y: auto;
       background-color: #fff;
-      .row.newThread {
-        border-bottom: 1px solid rgba(0, 136, 255, 0.8);
-        .name {
-          width: calc(100% - 54.5px);
-          font-size: 16px;
-          color: rgba(0,100,0,.7);
-          border: none;
-          padding: 10px;
-          box-sizing: border-box;
-          float: left;
-          height: 47px;
-        }
-        .submit {
-          height: 100%;
-          width: 54.5px;
-          font-size: 35px;
-          color: #fff;
-          border: none;
-          background-color: rgba(0, 136, 255, 0.6);
-          box-sizing: border-box;
-          border-left: 1px solid rgba(0, 136, 255, 0.6);
-          transition: all .2s;
-        }
-        .submit:hover {
-          color: rgba(0, 100, 0, 0.6);
-          background-color: #fff;
-          cursor: pointer;
-        }
-      }
       .thread {
         padding: 10px;
         border-bottom: 1px solid #fff;

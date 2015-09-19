@@ -9,8 +9,13 @@ export default Ember.Component.extend({
   threadFocused: false,
   hamburgerOptions: false,
   hamburgerActive: {}, // contains all active hamburger toggles
+  
+  newThread: {
+    active: false, // true if new message being created
+    recipients: [],
+    subject: null,
+  },
 
-  newThreadName: "",
   currentThread: "",
 
   errorIsDisplayed: false,
@@ -97,11 +102,11 @@ export default Ember.Component.extend({
 
   actions: {
     createThread: function() {
-      if(this.get('newThreadName') !== "") {
+      if(this.get('newThread.name') !== "") {
         var _this = this;
         var date = Date.now();
         var newThread = this.get('store').createRecord('thread', {
-          name: this.get('newThreadName'),
+          name: this.get('newThread.name'),
           date: date,
           author: this.get('user'),
           authorUid: this.get('user.id'),
@@ -117,7 +122,7 @@ export default Ember.Component.extend({
             _this.focusThread(thread);
           });
         });
-        this.set('newThreadName', "");
+        this.set('newThread.name', "");
       } else {
         this.displayError("Subject cannot be empty");
       }
